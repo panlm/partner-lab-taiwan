@@ -72,7 +72,7 @@ Configure Blueprint Variables
 The **windowsMSSQL2014** blueprint uses service variables to configure pre and post runtime behavior.  The blueprint configuration variables can be accessed by clicking on the **Service** tab of blueprint located to the right of blueprint workspace.
 
 +-----------------------+----------------------------------------------------------------------+
-|variable               | Description                                                          |
+|**Variable**           |**Description**                                                       |
 +-----------------------+----------------------------------------------------------------------+
 |install_location       |A location directive (internal/external) definng if the image is      |
 |                       |accessible internally (fiel share), or externally                     |
