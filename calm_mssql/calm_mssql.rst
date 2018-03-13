@@ -64,7 +64,7 @@ Since Blureprints are exported as clear text, they do not retain credential info
   Secrete         : password
   Password        : nutanix/4u
   
-Once complete, click the **Back** buttoin located in the upper right, and then click **Save** along the top menu bar.
+Once complete, click the **Back** buttoin located in the upper right, and then click **Save** along the top menu-bar.
 
 
 Configure Blueprint Variables
@@ -91,7 +91,7 @@ The **windowsMSSQL2014** blueprint uses service variables to configure pre and p
 |mapped_drive           |The logical drive designator if using a mapped location/drive.        |
 +-----------------------+----------------------------------------------------------------------+
 
-The following Blueprint variables should be configured before use: 
+The following Blueprint variables should be configured as follows: 
 
 .. code-block:: bash
 
@@ -103,7 +103,7 @@ The following Blueprint variables should be configured before use:
   sql_iso_path         : SQLServer2014SP2-FullSlipstream-x64-ENU.iso
   mapped_drive         : z
 
-Once complete, click **Save** along the top menu bar.
+Once complete, click **Save** located along the top menu-bar.
 
 Enable CredSSP
 ==============
