@@ -109,8 +109,12 @@ Enable CredSSP
 ==============
 To Enable CredSSP on the Karan host, please follow steps below:
 
-1. On the Karan Host run the following command to enable CredSSP as a client role and allow Karan host to Delegate credentials to all computers ( Wild card mask "*")
- Enable-WSManCredSSP -Role Client -DelegateComputer *
+1. On the Karan Host run the following command to enable CredSSP as a client role and allow Karan host to Delegate credentials to all computers ( Wild card mask "*"):
+
+.. code-block:: bash
+
+  Enable-WSManCredSSP -Role Client -DelegateComputer *
+  
 2. From command prompt window run “gpedit.msc”
 3. In the group policy editor window Goto Computer-configuration -> administrative templates -> system ->credential delegation
 4. Double click on “Allow Delgating Fresh Credentials with NTLM-only server authentication”
