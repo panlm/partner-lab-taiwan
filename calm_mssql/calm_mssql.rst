@@ -111,7 +111,7 @@ The **windowsMSSQL2014** blueprint uses **Guest Custiomizations** to configure r
 1. Guest Customization can be  accessed by clicking on the **VM** tab of blueprint located to the right of blueprint workspace.
 2. Click the **Guest Customization** Check-Box to access the script window.
 3. Select the **Sysprep** radio button.
-4. Copy the **xml** located here and paste it to the **Script** window.
+4. Copy the contents from unattend.xml_ and paste it to the **Script** window.
 
 Once complete, click **Save** located along the top menu-bar.
 
@@ -176,3 +176,5 @@ Takeaways
 
 .. |image1| image:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab3/image1.png
 .. |image5| image:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab3/image5.png
+
+.. _unattend.xml: ./unattend.html
