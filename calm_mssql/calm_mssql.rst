@@ -55,25 +55,55 @@ A modal dialog will appear prompting for a name and project when saving. Complet
 
 Assign Credential
 =================
+Since Blureprints are exported as clear text, they do not retain credential information that could potentially be used maliciously.  You'll be required to set the **Credentials**.  set the creddentials as follows:
 
-Since Blureprints are exported as clear text, they do not retain credential information that could potentially be used maliciously.  You'll be required to set the **Credentials**.
+.. code-block:: bash
+
+  Credential Name : WINDOWS
+  Username        : ntnxlab.local\administrator
+  Secrete         : password
+  Password        : nutanix/4u
+  
+Once complete, click the **Back** buttoin located in the upper right, and then click **Save** along the top menu bar.
+
 
 Configure Blueprint Variables
 =============================
+The **windowsMSSQL2014** blueprint uses service variables to configure pre and post runtime behavior.  The blueprint configuration variables can be accessed by clicking on the **Service** tab of blueprint located to the right of blueprint workspace.
+
++-----------------------+----------------------------------------------------------------------+
+|variable               | Description                                                          |
++-----------------------+----------------------------------------------------------------------+
+|install_location       |A location directive (internal/external) definng if the image is      |
+|                       |accessible internally (fiel share), or externally                     |
+|                       |(Microsoft download site).                                            |
++-----------------------+----------------------------------------------------------------------+
+|file_share_user        |The username used to authenticate to the internal/external file share.|
++-----------------------+----------------------------------------------------------------------+
+|file_share_password    |The username used to authenticate to the internal/external file share.|
++-----------------------+----------------------------------------------------------------------+
+|file_server_ip         |IP Address of the server hosting the file share.                      |
++-----------------------+----------------------------------------------------------------------+
+|file_share_name        |The name of the share/folder containing the image to be downloaded.   |
++-----------------------+----------------------------------------------------------------------+
+|sql_iso_path           |The image name including the full path 9if applicable),               |
++-----------------------+----------------------------------------------------------------------+
+|mapped_drive           |The logical drive designator if using a mapped location/drive.        |
++-----------------------+----------------------------------------------------------------------+
 
 The following Blueprint variables should be configured before use: 
 
-On the SQL Service, set the variable "install_location" to external to download ISO from internet, or internal to download from a file share. If set to external, no further variables need to be modified.
+.. code-block:: bash
 
-If set to internal, you will need to fill out the following variables:
+  install_location     : internal
+  file_share_user      : administrator
+  file_share_password  : nutanix/4u
+  file_server_ip       : 10.21.66.59
+  file_share_name      : sql
+  sql_iso_path         : SQLServer2014SP2-FullSlipstream-x64-ENU.iso
+  mapped_drive         : z
 
-- file_share_user
-- file_share_password
-- file_server_ip
-- file_share_name
-- sql_iso_path (include path and iso file)
-- mapped_drive
-
+Once complete, click **Save** along the top menu bar.
 
 Enable CredSSP
 ==============
