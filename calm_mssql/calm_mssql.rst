@@ -108,7 +108,8 @@ Guest Customization
 ===================
 The **windowsMSSQL2014** blueprint uses **Guest Custiomizations** to configure runtime behavior.  
 
-- Guest Customization can be  accessed by clicking on the **VM** tab of blueprint located to the right of blueprint workspace.
+Guest Customization can be  accessed by clicking on the **VM** tab of blueprint located to the right of blueprint workspace.
+
 - Click the **Guest Customization** Check-Box to access the script window.
 - Select the **Sysprep** radio button.
 - Copy the contents from unattend.xml_ and paste it to the **Script** window.
@@ -120,13 +121,13 @@ Enable CredSSP
 ==============
 To Enable CredSSP on the Karan host, please follow steps below:
 
-- On the Karan Host run the following command to enable CredSSP as a client role and allow Karan host to Delegate credentials to all computers ( Wild card mask "*"):
+On the Karan Host run the following command to enable CredSSP as a client role and allow Karan host to Delegate credentials to all computers ( Wild card mask "*"):
 
 .. code-block:: bash
 
   Enable-WSManCredSSP -Role Client -DelegateComputer *
   
-- From command prompt window run:
+From command prompt window run:
 
 .. code-block:: bash
 
