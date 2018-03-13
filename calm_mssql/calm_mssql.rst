@@ -35,7 +35,6 @@ Certain prerequisites must be met before installation will succeed. The followin
 
 Blueprint:
 ***********
-
 Download the MSSQL Blueprint by clikcing the link provided below:
 
 :download:`mssql2014.json <./blueprints/windowsMSSQL2014.json>`
@@ -104,6 +103,18 @@ The following Blueprint variables should be configured as follows:
   mapped_drive         : z
 
 Once complete, click **Save** located along the top menu-bar.
+
+Guest Customization
+===================
+The **windowsMSSQL2014** blueprint uses **Guest Custiomizations** to configure runtime behavior.  
+
+1. Guest Customization can be  accessed by clicking on the **VM** tab of blueprint located to the right of blueprint workspace.
+2. Click the **Guest Customization** Check-Box to access the script window.
+3. Select the **Sysprep** radio button.
+4. Copy the **xml** located here and paste it to the **Script** window.
+
+Once complete, click **Save** located along the top menu-bar.
+
 
 Enable CredSSP
 ==============
