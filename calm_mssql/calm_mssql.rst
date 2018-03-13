@@ -172,8 +172,6 @@ Takeaways
 - Learned to se variables changing blueprint behavior to source imnages and define credentials.
 - Learned how to setup and configure a Karan proxy server for exeucting powershell to provision windows servers.
 
-
-
 .. _karan-setup: ../karan/karan_sa_setup.html
 
 .. |image1| image:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab3/image1.png
