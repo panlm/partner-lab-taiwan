@@ -143,7 +143,7 @@ From command prompt window run:
 Privileges:
 ============
 
-.. note:: The instructions in this section are applicable to the karan server and are required for SQL Server deployments.
+.. note:: The instructions in this section are applicable to the karan server and required for SQL Server deployments.
 
 To assign the correct privileges, please follow the steps below:
 
