@@ -143,7 +143,7 @@ From command prompt window run:
 Privileges:
 ============
 
-.. note:: The instructions in this section are applicable to the **Windows Server 2012 R2**  QCOW Image only.  The image used in this lab have been configured in the QCOW image and prepped in the Blueprint. 
+.. note:: The instructions in this section are applicable to the karan servder.
 
 To assign the correct privileges, please follow the steps below:
 
