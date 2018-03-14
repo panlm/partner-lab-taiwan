@@ -125,13 +125,13 @@ On the Karan Host run the following command to enable CredSSP as a client role a
 
 .. code-block:: bash
 
-  Enable-WSManCredSSP -Role Client -DelegateComputer *
+  C:>\ Enable-WSManCredSSP -Role Client -DelegateComputer *
   
 From command prompt window run:
 
 .. code-block:: bash
 
-   C:>\ gpedit.msc
+  C:>\ gpedit.msc
    
 - In the group policy editor window Goto **Computer-configuration -> administrative templates -> system ->credential delegation**.
 - Double click on **Allow Delgating Fresh Credentials with NTLM-only server authentication**.
