@@ -87,7 +87,7 @@ The steps for deploying Karan are as follows.
 - Click Next
 - Specify the account information (for demo environments, the Karan VM’s local administrator account is OK)
 - Complete the wizard until Karan is installed
-- Once karan has successfully installed, you'll need to insure that the PC VM firewall can communicate through port 8090.  We'll accomplish as follows:
+- Once karan has successfully installed, perform the following steps to insure that the PC VM firewall can communicate through port 8090.  
 
 .. code-block::  bash
 
