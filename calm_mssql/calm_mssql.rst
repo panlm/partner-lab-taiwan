@@ -142,6 +142,9 @@ From command prompt window run:
 
 Privileges:
 ============
+
+.. note:: The instructions in this section are applicable to the **Windows Server 2012 R2**  QCOW Image only.  
+
 To assign the correct privileges, please follow the steps below:
 
 - Idenitfy the user account that the Karan service is running as 
