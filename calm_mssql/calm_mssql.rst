@@ -145,7 +145,7 @@ Privileges:
 
 .. note:: The instructions in this section are applicable to the karan server and required for SQL Server deployments.
 
-To assign the correct privileges, please follow the steps below:
+Follow the steps below to assign the correct privileges on the karan server:
 
 - Idenitfy the user account that the Karan service is running as 
 - From the Start menu, point to Administrative Tools, and then click Local Security Policy.
