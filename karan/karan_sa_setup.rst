@@ -140,4 +140,7 @@ Takeaways
 *********
  
 Congratulations you have successfully configured a guest VM and Karan!
+
+.. _karan-installer:: http://10.21.64.50/images/Karan-1.6.0.0.exe
+
  
