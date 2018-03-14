@@ -85,7 +85,7 @@ The **windowsMSSQL2014** blueprint uses service variables to configure pre and p
 +-----------------------+----------------------------------------------------------------------+
 |file_share_name        |The name of the share/folder containing the image to be downloaded.   |
 +-----------------------+----------------------------------------------------------------------+
-|sql_iso_path           |The image name including the full path 9if applicable),               |
+|sql_iso_path           |The image name including the full path (if applicable),               |
 +-----------------------+----------------------------------------------------------------------+
 |mapped_drive           |The logical drive designator if using a mapped location/drive.        |
 +-----------------------+----------------------------------------------------------------------+
