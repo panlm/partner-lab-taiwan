@@ -40,11 +40,14 @@ The steps for deploying Karan are as follows.
 
 .. code-block:: bash
 
-  vCPU    : 1x
-  Cores   : 2x (2x cores/vCPU)
-  Mem     : 2GB
-  Storage : 40GB (default-container)
-  Network : Primary
+  vCPU       : 1x
+  Cores      : 2x (2x cores/vCPU)
+  Mem        : 2GB
+  Storage    : 40GB (default-container)
+  Network    : Primary
+  Image      : Windows Server 2012 QCOW
+  Image Type : Disk
+  Bus        : SCSI
   
 - Add the Karan VM to the domain, for this lab we will use ntnxlab.local
 - Enable PowerShell remote execution on the Karan Windows VM:
