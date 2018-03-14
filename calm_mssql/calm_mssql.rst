@@ -143,7 +143,7 @@ From command prompt window run:
 Privileges:
 ============
 
-.. note:: The instructions in this section are applicable to the karan servder.
+.. note:: The instructions in this section are applicable to the karan server.
 
 To assign the correct privileges, please follow the steps below:
 
@@ -162,13 +162,9 @@ Once the blueprint has been successfully updated and saved, click the (|image5|)
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab3/image6.png
 
-.. note:: Please note that an XML script to auto join the MSSQL VM to the domain is included in this lab. This would usually be an additional step for deployment.
-
-
 Click **Create** to launch the application.
 
 Once the application has been launched, the Application Management Dialog will appear showing the state of the Application.  Click the *Audit* button in the tool-bar located along the top of the Application Management Dialog to monitor or audit the provisioning progress of the application.
-
 
 Takeaways
 ***********
