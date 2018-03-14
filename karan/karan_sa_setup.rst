@@ -118,12 +118,8 @@ For MSSQL to work with Karan you will need to also make the below changes.
 4. Click Add User or Group, and, in the Enter the object names to select box, type the user or group name to which you want to assign the user right, and then click OK.
 5. Click OK again, and then, in the details pane, double-click Replace a process level token. This is the **SE_ASSIGNPRIMARYTOKEN_NAME** user right.
 6. Click Add User or Group, and, in the Enter the object names to select box, type the user or group name to which you want to assign the user right, and then click OK.
-  
-Using Karan
-===========
-Karan itself isn’t ‘used’ in the traditional sense i.e. there’s no Karan ‘application’. By installing Karan and having it available for Calm itself to use, PowerShell scripts will be automatically ‘proxied’ through the Karan instance, when required.
  
-.. note:: When deploying or working with Windows VMs from Calm, the only change that is required is to set the operating system to Windows, as opposed to Linux (the default). 
+.. note:: When deploying or working with Windows VMs deployed by Calm, the only change required is to set the operating system to Windows, as opposed to Linux (default) within the blueprint. 
 
 Takeaways
 *********
