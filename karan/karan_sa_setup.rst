@@ -72,18 +72,18 @@ The steps for deploying Karan are as follows.
 - Select http or https as required
 - Set the port to 8090 (note that this must not be changed and port 8090 must be allowed through the Windows firewall on both host and client VMs)
 - Set the number of Karan instances (leave as 1 for demo environments)
-- Enter the hostname or IP address of the Karan instance. This hostname or IP address must be accessible from the Calm/Prism Central VM!
+- Enter the IP Address of the Karan instance. The IP address must be accessible from the Calm/Prism Central VM!
 - Set the gateway UUID to:
  
 .. code-block:: bash
  
     2067b70d-bd3f-4b3d-9d82-3add93f30a0a
  
-- Enter the Prism Central VM IP hostname or IP address, as follows:
+- Enter the Prism Central VM IP Address, as follows:
  
 .. code-block:: bash
  
-    http://<prism_central_hostname_or_ip_address>:8090
+    http://<prism_central_ip_address>:8090
  
 .. note:: Don't forget to specify the port, as per the example above!
  
