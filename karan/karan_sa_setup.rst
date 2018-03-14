@@ -15,7 +15,6 @@ Karan is a component that allows the Calm services to run PowerShell scripts on 
  
 Configure Karan
 ******************
- 
 Using Windows with Calm
  
 In order for Calm to work with Windows virtual machines, an additional step is required. After deploying Prism Central and completing the configuration of Calm itself, an additional virtual machine must be deployed that runs the ‘Karan’ service.
@@ -24,7 +23,6 @@ In order for Calm to work with Windows virtual machines, an additional step is r
  
 Before you begin
 ================
- 
 - The Karan service will be installed on Windows Server 2012 R2.
 - Your Windows Server should always be up and running to support Calm automation for windows.
 - Powershell 3.0 or onwards should be installed on the Karan server.
@@ -32,7 +30,6 @@ Before you begin
  
 Deploying Karan
 ===============
- 
 The steps for deploying Karan are as follows.
  
 - Download the karan-installer_ . The link referenced is correct as at January 2018.
@@ -116,29 +113,20 @@ For Karan to have access to the Windows target/client VMs, the following command
 For MSSQL to work with Karan you will need to also make the below changes.
 
 1. From the Start menu, point to Administrative Tools, and then click Local Security Policy.
-
 2. In the Local Security Settings dialog box, double-click Local Policies, and then double-click User Rights Assignment.
-
-3. In the details pane, double-click Adjust memory quotas for a process. This is the SE_INCREASE_QUOTA_NAME user right.
-
+3. In the details pane, double-click Adjust memory quotas for a process. This is the **SE_INCREASE_QUOTA_NAME** user right.
 4. Click Add User or Group, and, in the Enter the object names to select box, type the user or group name to which you want to assign the user right, and then click OK.
-
-5. Click OK again, and then, in the details pane, double-click Replace a process level token. This is the SE_ASSIGNPRIMARYTOKEN_NAME user right.
-
+5. Click OK again, and then, in the details pane, double-click Replace a process level token. This is the **SE_ASSIGNPRIMARYTOKEN_NAME** user right.
 6. Click Add User or Group, and, in the Enter the object names to select box, type the user or group name to which you want to assign the user right, and then click OK.
   
- 
 Using Karan
 ===========
- 
 Karan itself isn’t ‘used’ in the traditional sense i.e. there’s no Karan ‘application’. By installing Karan and having it available for Calm itself to use, PowerShell scripts will be automatically ‘proxied’ through the Karan instance, when required.
  
 .. note:: When deploying or working with Windows VMs from Calm, the only change that is required is to set the operating system to Windows, as opposed to Linux (the default). 
- 
- 
+
 Takeaways
 *********
- 
 Congratulations you have successfully configured a guest VM and Karan!
 
 .. _karan-installer: http://10.21.64.50/images/Karan-1.6.0.0.exe
