@@ -1,3 +1,5 @@
+.. _ssp_lab:
+
 -------------------
 Self-Service Portal
 -------------------
@@ -37,7 +39,6 @@ Fill out the following fields and click **Save**:
 - **Service Account Password** - nutanix/4u
 
   .. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/ssp/ssp01.png
-     :scale: 50 %
 
 Mouse over the **!** icon and select **Click here** to define role mappings.
 
@@ -56,24 +57,22 @@ Fill out the following fields and click **Save**:
 
 Click **Close > Close**.
 
+The **DC** VM is pre-populated with the following groups and user accounts:
+
++-----------------+-----------------------+--------------------------------+
+| **Group**       | **Usernames**         | **Password**                   |
++-----------------+-----------------------+--------------------------------+
+| SSP Admins      | adminuser01-25        | nutanix/4u                     |
++-----------------+-----------------------+--------------------------------+
+| SSP Developers  | devuser01-25          | nutanix/4u                     |
++-----------------+-----------------------+--------------------------------+
+| SSP Power Users | poweruser01-25        | nutanix/4u                     |
++-----------------+-----------------------+--------------------------------+
+| SSP Basic Users | basicuser01-25        | nutanix/4u                     |
++-----------------+-----------------------+--------------------------------+
+
 Enabling Self Service Portal
 ++++++++++++++++++++++++++++
-
-.. note::
-
-  The **DC** VM is pre-populated with the following groups and user accounts:
-
-  +-----------------+-----------------------+--------------------------------+
-  | **Group**       | **Usernames**         | **Password**                   |
-  +-----------------+-----------------------+--------------------------------+
-  | SSP Admins      | adminuser01-25        | nutanix/4u                     |
-  +-----------------+-----------------------+--------------------------------+
-  | SSP Developers  | devuser01-25          | nutanix/4u                     |
-  +-----------------+-----------------------+--------------------------------+
-  | SSP Power Users | poweruser01-25        | nutanix/4u                     |
-  +-----------------+-----------------------+--------------------------------+
-  | SSP Basic Users | basicuser01-25        | nutanix/4u                     |
-  +-----------------+-----------------------+--------------------------------+
 
 In **Prism Central**, click :fa:`cog` **> Self-Service Admin Management**.
 

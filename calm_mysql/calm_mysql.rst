@@ -1,172 +1,169 @@
-*******************************
+.. _calm_mysql_lab:
+
+**********************
 Calm Blueprint (MySQL)
-*******************************
+**********************
 
 
 Overview
 ********
 
-.. note:: Estimated time to complete: **40 MINUTES** 
+.. note::
 
-This lab steps a user through a basic MySQL Deployment. In this lab you'll start with a very
-basic, single service that deploys MySQL ona CentOS v7 Server
+  This lab should be completed **AFTER** the :ref:`ssp_lab` lab.
 
+  Estimated time to complete: **40 MINUTES**
+
+In this exercise you will explore the basics of Nutanix Calm by building and deploying a Blueprint that installs and configures a single service, MySQL, on a CentOS image.
 
 Getting Engaged with the Product Team
 =====================================
 - **Slack** - #calm
 - **Product Manager** - Jasnoor Gill, jasnoor.gill@nutanix.com
-- **Product Marketing Manager** - Gil Haberman, gil.haberman@nutanix.com
-- **Technical Marketing Engineer** - Chris Brown, christopher.brown@nutanix.com
+- **Product Marketing Manager** - Chris Brown, christopher.brown@nutanix.com
+- **Technical Marketing Engineer** - Brian Suhr, brian.suhr@nutanix.com
 - **Field Specialists** - Mark Lavi, mark.lavi@nutanix.com; Andy Schmid, andy.schmid@nutanix.com
 
+Calm Basics
+***********
 
-Calm Glossary
-*************
+Glossary
+========
 - **Service**: One tier of a multiple tier application. This can be made up of 1 more VMs (or existing machines) that all have the same config and do the same thing
 - **Application (App):** A whole application with multiple parts that are all working towards the same thing (for example, a Web Application might be made up of an Apache Server, a MySQL database and a HAProxy Load balancer. Alone each service doesn’t do much, but as a whole they do what they’re supposed to).
 - **Macro:** A Calm construct that is evaluated and expanded before being ran on the target machine. Macros and Variables are denoted in the @@{[name]}@@ format in the scripts.
-- **Subtrate:** A Calm object used to encapsulate the VM(s) within a Blueprint 
+- **Subtrate:** A Calm object used to encapsulate the VM(s) within a Blueprint
 
-Accessing and Navigating Calm
-******************************
+Accessing Calm
+==============
 
-Getting Familiar with the Tools
-===============================
+Open \https://<*Prism-Central-IP*>:9440/ in a browser.
 
-1. Connect to https://<HPOC.PC:9440>
-2. Login to Prism Central using the credentials specified above (usethese credentials unless specified otherwise throughout this lab.
-3. Click on the Apps tab across the top of Prism
+Log in as **admin**.
 
-You are, by default, dropped into the Applications tab and can see all the instances of applications that have been launched from a blueprint.
+From the navigation bar, select **Apps**.
+
+Calm will default to the **Applications** tab, showing all instances of applications that have been launched from a Blueprint.
 
 Tabbed Navigation
 =================
-Upon accessing App management you will notice a new ribbon along the left - this is used to navigate through Calm.
 
-For now, let’s step through each tab:
+Calm introduces a new sidebar to Prism Central. Note the titles and description of each tab:
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab1/image2.png
 
-Blueprint Editor Overview
-=========================
+Blueprint Editor
+================
 
-Welcome to the Blueprint Editor! Let’s take a look at the interface.
+The Blueprint Editor is the UI within Prism Central used to easily, graphically construct applications that consist of multiple clouds, VMs, and services. Note the key sections:
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab1/image4.png
 
-There are 2 more buttons that are helpful to use while making a blueprint:
+Note the additional buttons below as they can be helpful when actively editing a Blueprint:
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab1/image5.png
 
 
-Your Entry Level Blueprint
-***************************
+Building A Blueprint
+********************
 
-This section provides the steps to create a simple service.
+Creating Blueprint
+==================
 
-1. Navigate to the Blueprint (|image2|) tab.
-2. Click on **Create Application Blueprint**.
-3. Assign this Blueprint to the **Calm** project
+From **Prism Central > Apps**, select **Blueprints** from the sidebar and click **+ Create Application Blueprint**.
 
+Select **Calm** from the **Project** drop down menu and click **Proceed**.
 
-Create Blueprint Workflow
-=========================
+.. note::
 
-.. note:: In general, the Blueprint creation flow goes:
+  In general, the Blueprint creation workflow is as follows:
 
-1. Create Object in Application Overview or select existing object from the workspace or the Overview panel.
-2. Configure the object in the configuration pane.
-3. Repeat for each object.
-4. Connect dependencies in the workspace.
+  - Create Object in Application Overview or select existing Object from the Workspace or Application Overview panel.
+  - Configure the Object in the Configuration Pane.
+  - Repeat for each Object.
+  - Connect dependencies between Objects in the Workspace.
 
-Let’s get started by setting up the basics
+Specify **MySQL-Blueprint-<INITIALS>** in the **Name this Blueprint** field.
 
-Update the Blueprint Name to Calm_Workshop
+Click **Credentials >** :fa:`plus-circle` and fill out the following fields:
 
-Click on the **Credentials** button along the top of the Blueprint workspace. Update credentials as follows:
+- **Credential Name** - CENTOS
+- **Username** - root
+- **Secret** - Password
+- **Password** - nutanix/4u
 
-+-----------------------+---------------+
-| **Name**              | CENTOS        |
-+-----------------------+---------------+
-| **Username**          | root          |
-+-----------------------+---------------+
-| **Secret**            | Password      |
-+-----------------------+---------------+
-| **Password**          | nutanix/4u    |
-+-----------------------+---------------+
-| **Use as Default**    | Checked       |
-+-----------------------+---------------+
+Click **Back**.
 
-.. note:: Credentials are unique per Blueprint.
+.. note::
+
+  Credentials are unique to each Blueprint.
+
+  Each Blueprint requires a minimum of 1 Credential.
+
+Click **Save** to save your Blueprint.
 
 Setting Variables
 =================
 
-In this subsection we'll create some variables. It’s not necessary to do it at this point, however it will make things easier for the rest of the lab.
+Variables allow extensibility of Blueprints, meaning a single Blueprint can be used for multiple purposes and environments depending on the configuration of its variables. Variables can either be static values saved as part of the Blueprint or they can be specified at **Runtime** (when the Blueprint is launched). By default, variables are stored in plaintext and visible in the Configuration Pane. Setting a variable as **Secret** will mask the value and is ideal for variables such as passwords.
 
-- Variables have 2 settings, **Secret** and **Runtime**. Normally variables are stored in plaintext and shown in the window here, the **Secret** setting changes that (perfect for passwords). **Runtime** specifies if this variable should be static (and only editable here) or should be able to be changed during the Launch Process.
+Variables can be used in scripts executed against objects using the **@@{variable_name}@@** construct. Calm will expand and replace the variable with the appropriate value before sending to the VM.
 
-- Variables can be referred to while configuring VMs using the **@@{variable\_name}@@** construct - Calm will evaluate and replace that string before sending it down to the VM.
+In the **Configuration Pane** under **Variable List**, fill out the following fields:
+
++----------------------+------------------------------------------------------+------------+
+| **Variable Name**    | **Value**                                            | **Secret** |
++----------------------+------------------------------------------------------+------------+
+| Mysql\_user          | root                                                 |            |
++----------------------+------------------------------------------------------+------------+
+| Mysql\_password      | nutanix/4u                                           | X          |
++----------------------+------------------------------------------------------+------------+
+| Database\_name       | homestead                                            |            |
++----------------------+------------------------------------------------------+------------+
+| App\_git\_link       | https://github.com/ideadevice/quickstart-basic.git   |            |
++----------------------+------------------------------------------------------+------------+
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab1/image8.png
 
+Click **Save**.
 
-**Setup the variables as specified in the table below:**
+Adding DB Service
+=================
 
-+----------------------+------------------------------------------------------+
-| **Variable Name**    | **Value**                                            |
-+----------------------+------------------------------------------------------+
-| Mysql\_user          | root                                                 |
-+----------------------+------------------------------------------------------+
-| Mysql\_password      | nutanix/4u                                           |
-+----------------------+------------------------------------------------------+
-| Database\_name       | homestead                                            |
-+----------------------+------------------------------------------------------+
-| App\_git\_link       | https://github.com/ideadevice/quickstart-basic.git   |
-+----------------------+------------------------------------------------------+
+In **Application Overview > Services**, click :fa:`plus-circle`.
 
+Note **Service1** appears in the **Workspace** and the **Configuration Pane** reflects the configuration of the selected Service.
 
-Adding A DB Service
-===================
+Fill out the following fields:
 
-We'll now create the basic service.
+- **Service Name** - MySQL
+- **Name** - MySQLAHV
 
-- Click the + sign next to **Services** in the **Overview** pane.
+  .. note:: This defines the name of the substrate within Calm. Names can only contain alphanumeric characters, spaces, and underscores.
 
-- Notice that the **Configuration** pane has changed and there is now a box in the **Workspace.**
+- **Cloud** - Nutanix
+- **OS** - Linux
+- **VM Name** - MYSQL
+- **Image** - CentOS
+- **Device Type** - Disk
+- **Device Bus** - SCSI
+- Select **Bootable**
+- **vCPUs** - 2
+- **Cores per vCPU** - 1
+- **Memory (GiB)** - 4
+- Select :fa:`plus-circle` under **Network Adapters (NICs)**
+- **NIC** - Secondary
+- **Crendential** - CENTOS
 
-- Name your service **MYSQL** in the *Service Name* field.
+Scroll to the top of the **Configuration Panel**, click **Package**.
 
-- The *Substrate* section is the internal Calm name for this Service. Name this **MYSQLAHV**
+Fill out the following fields:
 
-- Make sure that the Cloud is set to **Nutanix** and the OS set to **Linux**
+- **Name** - MYSQL_PACKAGE
+- **Install Script Type** - Shell
+- **Credential** - CENTOS
 
-- Configure the VM as follows:
-
-.. code-block:: bash
-
-  VM Name .  : MYSQL
-  Image .    : CentOS
-  Disk Type .: DISK
-  Device Bus : SCSI
-  vCPU .     : 2
-  Core/vCPU .: 1
-  Memory     : 4 GB
-
-- Scroll to the bottom and add the NIC **secondary** to the **MYSQL** VM.
-- Configure the **Credentials** to use **CENTOS** created earlier.
-
-Package Configuration
-=====================
-
-- Scroll to the top of the Service Panel and click **Package**.
-
-- Name the install package **MYSQL_PACKAGE**
-
-- Set the install script to **shell** and select the credential **CENTOS** created earlier.
-
-- Copy the following script into the *script* field of the **install** window:
+Copy and paste the following script into the **Install Script** field:
 
 .. code-block:: bash
 
@@ -203,55 +200,53 @@ Package Configuration
    FLUSH PRIVILEGES;
    EOF
 
+.. note::
 
-- Looking at this script, we see that we’re using the variables we set before and doing basic mySQL configuration. This can be customized for whatever unique need you have.
+  You can click the **Pop Out** icon on the script field for a larger window to view/edit scripts.
 
-- Since we don’t need anything special ran when uninstalling, we will just add a very basic script to the uninstall. This can be useful for cleanup (for example, releasing DNS names or cleaning up AD), but we won’t use it here.
+  Looking at the script you can see the package will install MySQL, configure the credentials and create a database based on the variables specified earlier in the exercise.
 
-- Set the uninstall script to **shell** and select the credential **CENTOS** created earlier.
+Fill out the following fields:
 
-- Add the following to the *script* field in the **uninstall** window:
+- **Uninstall Script Type** - Shell
+- **Credential** - CENTOS
+
+Copy and paste the following script into the **Uninstall Script** field:
 
 .. code-block:: bash
 
    #!/bin/bash
    echo "Goodbye!"
 
-- After completing the configuration, click the **Save** button. If any errors come up, go back and review the configuration to ensure that all fields have been filled.
+.. note:: The uninstall script can be used for removing packages, updating network services like DHCP and DNS, removing entries from Active Directory, etc. It is not being used for this simple example.
 
-Launching the Blueprint
-***********************
+Click **Save**. You will be prompted with specific errors if there are validation issues such as missing fields or unacceptable characters.
 
-Now that the blueprint has been created and saved, you can launch it!
+Launching A Blueprint
+*********************
 
-- Click on the **Launch** button in the top right of the blueprint. This will bring up the the launch window.
-- Give this instance a unique name **Calm_Workshop_MYSQL_App_1**.
+From the toolbar at the top of the Blueprint Editor, click **Launch**.
 
-.. note:: Every launch performed requires a name change, making each launch unique - this can be done by incrementing the suffix in the name.
+In the **Name of the Application** field, specify a unique name (e.g. MySQL-Blueprint-<INITIALS>-1).
 
-- This will now bring you to the **Instance** page. The bar across the top allows you to see various information about the application instance:
+.. note::
+
+  A single Blueprint can be launched multiple times within the same environment but each instance requires a unique **Application Name** in Calm.
+
+Click **Create**.
+
+You will be taken directly to the **Applications** page to monitor the provisioning of your Blueprint.
+
+Select **Audit > Create** to view the progress of your application. After **MySQLAHV - Check Login** is complete, select **PackageInstallTask** to view the real time output of your installation script.
+
+Note the status changes to **Running** after the Blueprint has been successfully provisioned.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab1/image25.png
 
-
 Takeaways
 *********
-- Successfully created and saved a Calm blueprint.
-- Successfully deployed a Calm blueprint that stands up a CentOS v7 Guest VM, provisioned with MySQL.
-- Successfully automated IT infrastructure and application deployment through bash scripting within a Calm blueprint.
-
-
-.. |image0| image:: lab1/media/image1.png
-.. |image1| image:: lab1/media/image2.png
-.. |image2| image:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab1/image3.png
-.. |image3| image:: lab1/media/image4.png
-.. |image4| image:: lab1/media/image5.png
-.. |image5| image:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab1/image6.png
-.. |image6| image:: lab1/media/image7.png
-.. |image7| image:: lab1/media/image8.png
-.. |image10| image:: lab1/media/image11.png
-.. |image11| image:: lab1/media/image12.png
-.. |image12| image:: lab1/media/image13.png
-.. |image13| image:: lab1/media/image14.png
-.. |image14| image:: lab1/media/image15.png
-.. |image15| image:: lab1/media/image16.png
+- The Blueprint Editor provides a simple UI for modeling potentially complex applications.
+- Blueprints are tied to SSP Projects which can be used to enforce quotas and role based access control.
+- Having a Blueprint install and configure binaries means no longer creating specific images for individual applications. Instead the application can be modified through changes to the Blueprint or installation script, both of which can be stored in source code repositories.
+- Variables allow another dimension of customizing an application without having to edit the underlying Blueprint.
+- Application status can be monitored in real time.
