@@ -210,6 +210,8 @@ Launch Blueprint
 ================
 Once the blueprint has been successfully updated and saved, click the (|image5|) button to **lanuch** the Blueprint.  Name the application with *mssql2014*.
 
+.. note:: When performing deployments on a community/team cluster, append your initials to the deployment name.
+
 .. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/calm_mssql/image2.png
 
 Click **Create** to launch the application.
