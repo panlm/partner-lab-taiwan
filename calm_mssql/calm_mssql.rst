@@ -113,6 +113,8 @@ A Windows Server VM is required to host the MS SQL 2014 Database instance. VM se
   Cloud       : Nutanix
   OS          : Windows
 
+VDISK Settings
+===============
 Add a **VDISK** by clicking on the **(+)** to expand the **VDISKS** configuration window. Configure a **VDISK** using the following parameters:
 
 .. code-block:: bash
@@ -121,6 +123,8 @@ Add a **VDISK** by clicking on the **(+)** to expand the **VDISKS** configuratio
   Device Bus  : SCSI
   Size        : 100GB
 
+Guest VM Image Settings
+=======================
 Add an **Image** by clicking on the **(+)** to expand the **IMAGES** configuration window.  Configure the **Guest VM** using the following parameters:
 
 .. code-block:: bash
@@ -132,10 +136,6 @@ Add an **Image** by clicking on the **(+)** to expand the **IMAGES** configurati
   vCPU        : 2
   Core/vCPU   : 2
   Memory      : 4 GB
-
-Scroll to the bottom and add the NIC **secondary** to the Guest VM.
-
-Assign a *Credential* to the Guest VM using the **WINDOWS** credential created earlier.
 
 Guest Customization
 ===================
@@ -149,6 +149,28 @@ Guest Customization can be accessed as part of the **VM Configuration**:
 
 Once complete, click **Save** located along the top menu-bar.
 
+Guest VM Network Settings
+==========================
+Verify the Guest VM **NETWORK ADAPTERS (NICS)** settings are as follows:
+
+.. code-block:: bash
+
+  NIC  : secondary
+
+Guest VM Connection Settings
+=============================
+Verify the Guest VM **CONNECTION** settings are as follows:
+
+.. code-block:: bash
+
+  Check log-in upon create   : checked
+  Credential                 : WINDOWS
+  Address                    : @@{platform.status.resources.nic_list[0].ip_endpoint_list[0].ip}@@
+  Connection Type            : Windows (Powershell)
+  Connection Port            : 5985
+  Timeout (secs)             : 600
+  
+If there were any changes, click **Save** located along the top menu-bar.
 
 Enable CredSSP
 ==============
@@ -171,8 +193,7 @@ From command prompt window run:
 - Select the **Enable** radio button.
 - Click on the **show** button.
 - In the value field add  **WSMAN/***. This allows delegate fresh credentials to **WSMAN** running in any remote computer
-
-
+  
 Privileges:
 ============
 
