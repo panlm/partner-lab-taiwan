@@ -40,19 +40,21 @@ Fill out the following fields and click **Save**:
 - **Number of Cores per vCPU** - 2
 - **Memory** - 4 GiB
 - Select **+ Add New Disk**
+
   - **Operation** - Clone from Image Service
   - **Image** - Xtract-VM
   - Select **Add**
 - Remove **CD-ROM** Disk
 - Select **Add New NIC**
+
   - **VLAN Name** - Primary
   - **IP Address** - *10.21.XX.42*
   - Select **Add**
 - Select **Custom Script**
 - Select **Type or Paste Script**
 
-  .. literalinclude:: xtract-vm-cloudinit-script
-     :caption: Xtract-VM Custom Script
+.. literalinclude:: xtract-vm-cloudinit-script
+   :caption: Xtract-VM Custom Script
 
 Select the **Xtract-VM** VM and click **Power On**.
 
@@ -83,7 +85,7 @@ Migrating a VM
 
 In this portion of the lab we will configure source and target environments, create a migration plan, and finally perform a cutover operation.
 
-COnfiguring Source and Target
+Configuring Source and Target
 .............................
 
 In **Xtract**, click **+ Add Source Environment**.
@@ -95,7 +97,7 @@ Fill out the following fields and click **Add**:
 - **Source Name** - Tech Summit 2018 vCenter
 - **vCenter Server** - *<Source vCenter Server IP>*
 - **User Name** - administrator@vsphere.local
-- **Passwrod** - *<vCenter Password>*
+- **Password** - *<vCenter Password>*
 
   .. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/xtract-vm/xtractvm09.png
 
@@ -108,7 +110,7 @@ Fill out the following fields and click **Add**:
 - **Target Name** - *<Target Nutanix Cluster Name>*
 - **Nutanix Environment** - *<Nutanix Cluster Virtual IP>*
 - **User Name** - admin
-- **Passwrod** - *<Nutanix admin Password>*
+- **Password** - *<Nutanix admin Password>*
 
   .. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/xtract-vm/xtractvm10.png
 
