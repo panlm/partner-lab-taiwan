@@ -26,21 +26,25 @@ Getting Engaged with the Product Team
 Deploy Acropolis File Services
 ++++++++++++++++++++++++++++++
 
+.. note::
+
+  AFS 3.0 requires AOS 5.5.1 or later. Your team coach will provide you with details for a shared cluster used for AFS deployments. **Do NOT deploy any additional VMs on this cluster other than your AFS VMs.**
+
 In **Prism > File Server**, click **+ File Server**.
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/vdi_ahv/lab7/1.png
 
-The AFS 3.0.0 package has been already been uploaded and the Data Services IP has been configured as 10.21.XXX.38. Click **Continue**.
+The AFS 3.0.0.1 package has been already been uploaded and the Data Services IP has been configured as 10.21.XXX.38. Click **Continue**.
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/vdi_ahv/lab7/7.png
 
 Fill out the following fields and click **Next**:
 
-  - **Name** - AFS
+  - **Name** - TEAM##-AFS (e.g. TEAM01-AFS)
   - **Domain** - ntnxlab.local
   - **File Server Size** - 1 TiB
 
-  .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/afs/8b.png
+  .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/afs/8c.png
 
 .. note:: Clicking **Custom Configuration** will allow you to alter the scale up and scale out sizing of the AFS VMs based on User and Throughput targets.
 
@@ -48,18 +52,19 @@ Select the **Primary - Managed** VLAN for the Client Network. Ensure the **DNS R
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/afs/9c.png
 
-Select the **Primary - Managed** VLAN for the Storage Network. Click **Next**.
+Select the **Secondary - Managed** VLAN for the Storage Network. Click **Next**.
 
-  .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/afs/10b.png
+  .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/afs/10c.png
 
-.. note::
+..
+ .. note::
 
   It is typically desirable to deploy AFS with dedicated networks for client and storage. By design, however, AFS does not allow client connections from the storage network in this configuration. As the Hosted POC environment only provides 2 subnets per cluster, a single network deployment of AFS provides the most flexibility to connect to shares/exports via the Primary or Secondary networks.
 
 Fill out the following fields and click **Next**:
 
   - Select **Use SMB Protocol**
-  - **Username** - Administrator
+  - **Username** - Administrator@ntnxlab.local
   - **Password** - nutanix/4u
   - Select **Make this user a File Server admin**
   - Select **Use NFS Protocol**
@@ -102,7 +107,7 @@ Select **Enable Access Based Enumeration** and **Self Service Restore** and clic
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/afs/15.png
 
-In the **XD** VM console, open ``\\AFS.ntnxlab.local`` in **File Explorer**.
+In the **XD** VM console, open ``\\TEAM##-AFS.ntnxlab.local`` in **File Explorer**.
 
 Right-click **home > Properties**.
 
@@ -112,7 +117,7 @@ Select the **Security** tab and click **Advanced**.
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/vdi_ahv/lab7/20.png
 
-Select **Users (AFS\\Users)** and click **Remove**.
+Select **Users (TEM##-AFS\\Users)** and click **Remove**.
 
 Click **Add**.
 
@@ -122,8 +127,8 @@ Click **Select a principal** and specify **Everyone** in the **Object Name** fie
 
 Fill out the following fields and click **OK**:
 
-  - **Type** - *Allow*
-  - **Applies to** - *This folder only*
+  - **Type** - Allow
+  - **Applies to** - This folder only
   - Select **Read & execute**
   - Select **List folder contents**
   - Select **Read**
@@ -141,7 +146,7 @@ Under **ntnxlab.local > Users**, right-click **devuser01 > Properties**.
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/afs/17.png
 
-Click **Profile**. Under **Home folder**, select **Connect** and specify ``\\afs.ntnxlab.local\home\%username%`` as the path. Click **OK**. Repeat for the following user accounts: **devuser02**, **devuser03**, **devuser04**.
+Click **Profile**. Under **Home folder**, select **Connect** and specify ``\\team##-afs.ntnxlab.local\home\%username%`` as the path. Click **OK**. Repeat for the following user accounts: **devuser02**, **devuser03**, **devuser04**.
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/afs/18.png
 
@@ -166,7 +171,7 @@ Open ``Z:\`` in **File Explorer** and create multiple files, with at least one p
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/afs/19.png
 
-Open ``\\afs.ntnxlab.local\home`` and observe your **%username%** directory is the only directory visible. Disable **Access Based Enumeration (ABE)** in **Prism > File Server > Share > home > Update** and try again.
+Open ``\\team##-afs.ntnxlab.local\home`` and observe your **%username%** directory is the only directory visible. Disable **Access Based Enumeration (ABE)** in **Prism > File Server > Share > home > Update** and try again.
 
 After ~2 hours, validate the presense of **Self Service Restore Snapshots** in **Prism > File Server > Share > home**.
 
@@ -181,16 +186,16 @@ In **Prism > File Server**, click **+ Share/Export**. Fill out the following fie
 
   - **Name** - logs
   - **Protocol** - NFS
-  - **Usage** - General Purpose
+  - **Share/Export Type** - Non-Sharded Directories
 
-  .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/afs/22b.png
+  .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/afs/22.png
 
 Fill out the following fields and click **Create**:
 
   - **Authentication** - System
   - **Default Access** - No Access
   - Select **+ Add Client Exceptions**
-  - **Clients with Read-Write Access** - *Cluster IP Range* (ex. 10.21.XX.*)
+  - **Clients with Read-Write Access** - *<Cluster IP Range>* (ex. 10.21.XX.*)
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/afs/23.png
 
@@ -207,7 +212,7 @@ Click **+ Add New Disk**, fill out the following fields, and click **Add**:
 - **Type** - DISK
 - **Operation** - Clone from Image Service
 - **Bus Type** - SCSI
-- **Image** - *CentOS Disk Image*
+- **Image** - *<CentOS Disk Image>*
 
 Click **Add New NIC**. fill out the following fields, and click **Add**:
 
@@ -223,8 +228,9 @@ Execute the following:
 
   .. code-block:: bash
 
+    [root@CentOS ~]# yum install -y nfs-utils
     [root@CentOS ~]# mkdir /afsmnt
-    [root@CentOS ~]# mount.nfs4 afs.ntnxlab.local:/ /afsmnt/
+    [root@CentOS ~]# mount.nfs4 team##-afs.ntnxlab.local:/ /afsmnt/
     [root@CentOS ~]# df -kh
     Filesystem                      Size  Used Avail Use% Mounted on
     /dev/mapper/centos_centos-root  8.5G  1.7G  6.8G  20% /
@@ -245,13 +251,13 @@ Reboot the VM and observe the export is no longer mounted. To persist the mount,
 
   .. code-block:: bash
 
-    echo 'afs.ntnxlab.local:/logs /afsmnt nfs4' >> /etc/fstab
+    echo 'team##-afs.ntnxlab.local:/logs /afsmnt nfs4' >> /etc/fstab
 
-The following command will add 1000 2MB files filled with random data to ``/afsmnt/logs``:
+The following command will add 100 2MB files filled with random data to ``/afsmnt/logs``:
 
   .. code-block:: bash
 
-    for i in {1..1000}; do dd if=/dev/urandom bs=8k count=256 of=/afsmnt/logs/file$i; done
+    for i in {1..100}; do dd if=/dev/urandom bs=8k count=256 of=/afsmnt/logs/file$i; done
 
 Return to **Prism > File Server > Share > logs** to monitor performance and usage.
 

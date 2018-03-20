@@ -73,10 +73,10 @@ Select **Use the free 30-day trial** and click **Next**.
 Fill out the following fields to configure the connection to your AHV cluster and click **Next**:
 
   - **Connection Type** - Nutanix AHV
-  - **Connection Address** - *Your Nutanix cluster IP*
+  - **Connection Address** - *<Nutanix Cluster Virtual IP>*
   - **User Name** - xd
   - **Password** - nutanix/4u
-  - **Connection Name** - *A friendly name for the connection, such as your Nutanix cluster name*
+  - **Connection Name** - *<Nutanix Cluster Name>*
   - **Create virtual machines using** - Studio tools (Machine Creation Services)
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/vdi_ahv/lab3/21b.png
@@ -130,7 +130,7 @@ Click **+ Add New Disk**, fill out the following fields, and click **Add**:
   - **Type** - DISK
   - **Operation** - Clone from Image Service
   - **Bus Type** - SCSI
-  - **Image** - *Windows 10 Disk Image*
+  - **Image** - *<Windows 10 Disk Image>*
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/vdi_ahv/lab4/2.png
 
@@ -213,7 +213,7 @@ Under **Disks > CD-ROM**, click :fa:`pencil`.
 Fill out the following fields and click **Update**:
 
   - **Operation** - Clone from Image Service
-  - **Image** - *XenDesktop installation .iso*
+  - **Image** - *<XenDesktop installation .iso>*
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/vdi_ahv/lab4/13.png
 

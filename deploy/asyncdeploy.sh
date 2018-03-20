@@ -26,6 +26,7 @@ do
 
 	# Send a file
 	send_file config.sh
+	send_file pcconfig.sh
 	# Execute that file asynchroneously remotely (script keeps running on CVM in the background)
 	remote_exec "MY_PE_PASSWORD=${MY_PE_PASSWORD} nohup bash /home/nutanix/config.sh >> config.log 2>&1 &"
 done

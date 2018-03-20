@@ -64,18 +64,24 @@ Select **I have read and agree to the terms and conditions** and click **Accept*
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/xray/4.png
 
-Click **Use Token** and enter **XRY-BNJMN-AYIM-GDQ7**. Click **Activate > Done**.
+.. Click **Use Token** and enter **XRY-BNJMN-AYIM-GDQ7**. Click **Activate > Done**.
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/xray/1c.png
 
+Click **Log in** and specify your my.nutanix.com credentials. Fill out the following fields and click **Activate**:
+
+  - **Customer Name** - Nutanix Sales Enablement
+  - **Opportunity ID** - Sales Enablement Opportunity
+  - **Choose a reason for using X-Ray** - Self training on Nutanix
+
 Select **Targets** from the navigation bar and click **+ New Target**. Fill out the following fields and click **Next**:
 
-  - **Name** - *Cluster name*
+  - **Name** - *<Nutanix Cluster Name>*
   - **Manager Type** - Prism
   - **Power Management Type** - IPMI
   - **Username** - ADMIN
   - **Password** - ADMIN
-  - **Prism Address** - *<Cluster IP>*
+  - **Prism Address** - *<Nutanix Cluster Virtual IP>*
   - **Username** - xray
   - **Password** - nutanix/4u
 
@@ -95,6 +101,16 @@ Select **Supermicro** from the **IPMI Type** menu. Review **Node Info** and clic
 
 Adding Custom X-Ray Test
 ++++++++++++++++++++++++
+
+Download ``http://10.21.64.50/images/XRay-Extended-Node-Failure-25-VDI-VMs.zip``.
+
+In the navigation bar, click :fa:`cog` **> Add Custom Scenario**. Click **Choose File** and select **XRay-Extended-Node-Failure-25-VDI-VMs.zip**. Click **Save**.
+
+  .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/xray/13.png
+
+.. note::
+
+  You **DO NOT** need to make any modifications to the files below. You have already imported the custom test as part of the previous step. The following steps only serve to explain what changes were made to the X-Ray test.
 
 Click **Tests** in the navigation bar and click **Run Test** in the lower left-hand panel. Select **Extended Node Failure** and click **Actions > Export**.
 
@@ -135,10 +151,6 @@ Due to memory restrictions, your cluster may not be able to support running the 
     :linenos:
     :caption: Extended Node Failure (25 VDI VMs) - vdi.fio
     :name: vdi.fio
-
-In the navigation bar, click :fa:`cog` **> Add Custom Scenario**. Click **Choose File** and select ``\\10.21.249.41\iso\TS18\XRay-Extended-Node-Failure-25-VDI-VMs.zip``. Click **Save**.
-
-  .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/xray/13.png
 
 Running X-Ray Tests
 ++++++++++++++++++++
@@ -190,9 +202,9 @@ Observe the graphs for **OLTP IOPS VM1**, **VM2**, and **VM3**. Immediately afte
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/xray/21.png
 
-Being able to demonstrate Nutanix's performance and availability.
+Download ``http://10.21.64.50/images/XRay-Results.zip``.
 
-In the navigation bar, click :fa:`cog` **> Import Test Results**. Click **Choose File** and select ``\\10.21.249.41\iso\TS18\XRay-Results.zip``. Click **Import**.
+In the navigation bar, click :fa:`cog` **> Import Test Results**. Click **Choose File** and select **XRay-Results.zip**. Click **Import**.
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/xray/18.png
 

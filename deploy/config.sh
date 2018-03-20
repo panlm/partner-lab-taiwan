@@ -3,12 +3,12 @@
 # Please configure according to your needs
 #
 
-function remote_exec {
+function pc_remote_exec {
     sshpass -p nutanix/4u ssh -o StrictHostKeyChecking=no -o GlobalKnownHostsFile=/dev/null -o UserKnownHostsFile=/dev/null nutanix@10.21.${MY_HPOC_NUMBER}.39 "$@"
 }
 
-function pc_ncli {
-    remote_exec /home/nutanix/prism/cli/ncli "$@"
+function pc_send_file {
+	sshpass -p nutanix/4u scp -o StrictHostKeyChecking=no -o GlobalKnownHostsFile=/dev/null -o UserKnownHostsFile=/dev/null "$1" nutanix@10.21.${MY_HPOC_NUMBER}.39:/home/nutanix/"$1"
 }
 
 # Loging date format
@@ -48,8 +48,10 @@ MY_XRAY_NET_VLAN="${MY_HPOC_NUMBER}2"
 #MY_AOS_SRC_URL='https://s3.amazonaws.com/ntnx-portal/releases/euphrates-5.5.0.2-stable/nutanix_installer_package-release-euphrates-5.5.0.2-stable.tar.gz'
 #MY_AOS_META_URL='https://s3.amazonaws.com/ntnx-portal/releases/euphrates-5.5.0.2-stable/nutanix_installer_package-release-euphrates-5.5.0.2-stable-metadata.json'
 
-MY_PC_SRC_URL='http://10.21.64.50/images/euphrates-5.5.1-stable-prism_central.tar'
-MY_PC_META_URL='http://10.21.64.50/images/euphrates-5.5.1-stable-prism_central_metadata.json'
+#MY_PC_SRC_URL='http://10.21.64.50/images/euphrates-5.5.1-stable-prism_central.tar'
+#MY_PC_META_URL='http://10.21.64.50/images/euphrates-5.5.1-stable-prism_central_metadata.json'
+MY_PC_SRC_URL='http://10.21.64.50/images/5.5-prism_central.tar'
+MY_PC_META_URL='http://10.21.64.50/images/5.5-prism_central_metadata.json'
 
 #MY_PC_UPGRADE_URL='https://s3.amazonaws.com/ntnx-portal/pc/pc_upgrade/5.5.0.2/nutanix_installer_package_pc-release-euphrates-5.5.0.2-stable-ef410ac9783225cb380e8565de9c0b8854facf6c.tar.gz'
 #MY_PC_UPGRADE_META_URL='https://s3.amazonaws.com/ntnx-portal/pc/pc_upgrade/5.5.0.2/v3/nutanix_installer_package_pc-release-euphrates-5.5.0.2-stable-metadata.json'
@@ -139,7 +141,7 @@ my_log "Importing XenDesktop Installation iso"
 acli image.create XenDesktop-7.15-ISO container="${MY_IMG_CONTAINER_NAME}" image_type=kIsoImage source_url=http://10.21.64.50/images/XD715.iso wait=true
 
 my_log "Importing X-Ray image"
-acli image.create XRay container="${MY_IMG_CONTAINER_NAME}" image_type=kDiskImage source_url=http://10.21.64.50/images/xray.qcow2 wait=true
+acli image.create XRay container="${MY_IMG_CONTAINER_NAME}" image_type=kDiskImage source_url=http://10.21.64.50/images/xray-2.3.qcow2 wait=true
 
 my_log "Importing HYCU image"
 acli image.create HYCU container="${MY_IMG_CONTAINER_NAME}" image_type=kDiskImage source_url=http://10.21.64.50/images/hycu-2.0.1-90.qcow2 wait=true
@@ -150,8 +152,8 @@ acli image.create Xtract-VM container="${MY_IMG_CONTAINER_NAME}" image_type=kDis
 my_log "Importing Xtract DB image"
 acli image.create Xtract-DB container="${MY_IMG_CONTAINER_NAME}" image_type=kDiskImage source_url=http://10.21.64.50/images/Xtract-1.5.0.qcow2 wait=true
 
-my_log "Importing MSSQL 2014 Installation iso"
-acli image.create MSSQL-2014SP2-ISO container="${MY_IMG_CONTAINER_NAME}" image_type=kDiskImage source_url=http://10.21.64.50/images/SQLServer2014SP2-FullSlipstream-x64-ENU.iso wait=true
+my_log "Importing MSSQL 2016 Installation iso"
+acli image.create MSSQL-2016SP1-ISO container="${MY_IMG_CONTAINER_NAME}" image_type=kIsoImage source_url=http://10.21.64.50/images/SQLServer2016SP1-FullSlipstream-x64-ENU.iso wait=true
 
 # Remove existing VMs, if any
 my_log "Removing \"Windows 2012\" VM if it exists"
@@ -208,7 +210,6 @@ acli vm.create DC num_vcpus=2 num_cores_per_vcpu=1 memory=4G
 acli vm.disk_create DC cdrom=true empty=true
 acli vm.disk_create DC clone_from_image=AutoDC
 acli vm.nic_create DC network=${MY_PRIMARY_NET_NAME} ip=10.21.${MY_HPOC_NUMBER}.40
-acli vm.affinity_set DC host_list=10.21.${MY_HPOC_NUMBER}.26,10.21.${MY_HPOC_NUMBER}.27,10.21.${MY_HPOC_NUMBER}.28
 my_log "Power on DC VM"
 acli vm.on DC
 
@@ -240,9 +241,14 @@ ncli user create user-name=hycu user-password=nutanix/4u first-name=HYCU last-na
 ncli user grant-cluster-admin-role user-name=hycu
 
 # Provision local Prism account for X-Ray
-my_log "Create PE user account hycu for X-Ray"
-ncli user create user-name=hycu user-password=nutanix/4u first-name=X-Ray last-name=Service email-id=no-reply@nutanix.com
+my_log "Create PE user account xray for X-Ray"
+ncli user create user-name=xray user-password=nutanix/4u first-name=X-Ray last-name=Service email-id=no-reply@nutanix.com
 ncli user grant-cluster-admin-role user-name=xray
+
+# Provision local Prism account for Xtract
+my_log "Create PE user account xray for Xtract"
+ncli user create user-name=xtract user-password=nutanix/4u first-name=Xtract last-name=Service email-id=no-reply@nutanix.com
+ncli user grant-cluster-admin-role user-name=xtract
 
 # Create XD & power on
 my_log "Create XD VM"
@@ -250,7 +256,6 @@ acli vm.create XD num_vcpus=4 num_cores_per_vcpu=1 memory=6G
 acli vm.disk_create XD cdrom=true clone_from_image=XenDesktop-7.15-ISO
 acli vm.disk_create XD clone_from_image=AutoXD
 acli vm.nic_create XD network=${MY_PRIMARY_NET_NAME} ip=10.21.${MY_HPOC_NUMBER}.41
-acli vm.affinity_set XD host_list=10.21.${MY_HPOC_NUMBER}.26,10.21.${MY_HPOC_NUMBER}.27,10.21.${MY_HPOC_NUMBER}.28
 my_log "Power on XD VM"
 acli vm.on XD
 
@@ -261,7 +266,6 @@ acli vm.disk_create X-Ray cdrom=true empty=true
 acli vm.disk_create X-Ray clone_from_image=XRay
 acli vm.nic_create X-Ray network=${MY_PRIMARY_NET_NAME} ip=10.21.${MY_HPOC_NUMBER}.45
 acli vm.nic_create X-Ray network=${MY_XRAY_NET_NAME}
-acli vm.affinity_set X-Ray host_list=10.21.${MY_HPOC_NUMBER}.26,10.21.${MY_HPOC_NUMBER}.27,10.21.${MY_HPOC_NUMBER}.28
 my_log "Power on X-Ray VM"
 acli vm.on X-Ray
 
@@ -271,7 +275,6 @@ acli vm.create HYCU num_vcpus=2 num_cores_per_vcpu=2 memory=4G
 acli vm.disk_create HYCU cdrom=true empty=true
 acli vm.disk_create HYCU clone_from_image=HYCU
 acli vm.nic_create HYCU network=${MY_PRIMARY_NET_NAME} ip=10.21.${MY_HPOC_NUMBER}.44
-acli vm.affinity_set HYCU host_list=10.21.${MY_HPOC_NUMBER}.26,10.21.${MY_HPOC_NUMBER}.27,10.21.${MY_HPOC_NUMBER}.28
 my_log "Power on HYCU VM"
 acli vm.on HYCU
 
@@ -308,24 +311,24 @@ curl -u admin:${MY_PE_PASSWORD} -k -H 'Content-Type: application/json' -X PUT \
 }'
 
 # AFS Download
-my_log "Download AFS image from ${MY_AFS_SRC_URL}"
-curl -O ${MY_AFS_SRC_URL}
-my_log "Download AFS metadata JSON from ${MY_AFS_META_URL}"
-curl -O ${MY_AFS_META_URL}
+#my_log "Download AFS image from ${MY_AFS_SRC_URL}"
+#wget -nv ${MY_AFS_SRC_URL}
+#my_log "Download AFS metadata JSON from ${MY_AFS_META_URL}"
+#wget -nv ${MY_AFS_META_URL}
 
 # Staging AFS
-my_log "Stage AFS"
-ncli software upload file-path=/home/nutanix/${MY_AFS_SRC_URL##*/} meta-file-path=/home/nutanix/${MY_AFS_META_URL##*/} software-type=FILE_SERVER
+#my_log "Stage AFS"
+#ncli software upload file-path=/home/nutanix/${MY_AFS_SRC_URL##*/} meta-file-path=/home/nutanix/${MY_AFS_META_URL##*/} software-type=FILE_SERVER
 
 # Freeing up space
-my_log "Delete AFS sources to free some space"
-rm ${MY_AFS_SRC_URL##*/} ${MY_AFS_META_URL##*/}
+#my_log "Delete AFS sources to free some space"
+#rm ${MY_AFS_SRC_URL##*/} ${MY_AFS_META_URL##*/}
 
 # Prism Central Download
 my_log "Download PC tarball from ${MY_PC_SRC_URL}"
-curl -O ${MY_PC_SRC_URL}
+wget -nv ${MY_PC_SRC_URL}
 my_log "Download PC metadata JSON from ${MY_PC_META_URL}"
-curl -O ${MY_PC_META_URL}
+wget -nv ${MY_PC_META_URL}
 
 # Staging Prism Central
 my_log "Stage Prism Central"
@@ -342,9 +345,9 @@ MY_DEPLOY_BODY=$(cat <<EOF
 {
   "resources": {
       "should_auto_register":true,
-      "version":"5.5.1",
+      "version":"5.5",
       "pc_vm_list":[{
-          "data_disk_size_bytes":2684354560000,
+          "data_disk_size_bytes":536870912000,
           "nic_list":[{
               "network_configuration":{
                   "subnet_mask":"255.255.255.128",
@@ -355,8 +358,8 @@ MY_DEPLOY_BODY=$(cat <<EOF
           }],
           "dns_server_ip_list":["10.21.${MY_HPOC_NUMBER}.40"],
           "container_uuid":"${MY_CONTAINER_UUID}",
-          "num_sockets":8,
-          "memory_size_bytes":34359738368,
+          "num_sockets":4,
+          "memory_size_bytes":17179869184,
           "vm_name":"PC"
       }]
   }
@@ -368,48 +371,13 @@ curl -u admin:${MY_PE_PASSWORD} -k -H 'Content-Type: application/json' -X POST h
 my_log "Waiting for PC deployment to complete (Sleeping 15m)"
 sleep 900
 
-# Set Prism Central Password to Prism Element Password
-my_log "Setting PC password to PE password"
-pc_ncli user reset-password user-name="admin" password="${MY_PE_PASSWORD}"
-
-# Add NTP Server\
-my_log "Configure NTP on PC"
-pc_ncli cluster add-to-ntp-servers servers=0.us.pool.ntp.org,1.us.pool.ntp.org,2.us.pool.ntp.org,3.us.pool.ntp.org
-
-# Accept Prism Central EULA
-my_log "Validate EULA on PC"
-curl -u admin:${MY_PE_PASSWORD} -k -H 'Content-Type: application/json' -X POST \
-  https://10.21.${MY_HPOC_NUMBER}.39:9440/PrismGateway/services/rest/v1/eulas/accept \
-  -d '{
-    "username": "SE",
-    "companyName": "NTNX",
-    "jobTitle": "SE"
-}'
-
-# Disable Prism Central Pulse
-my_log "Disable Pulse on PC"
-curl -u admin:${MY_PE_PASSWORD} -k -H 'Content-Type: application/json' -X PUT \
-  https://10.21.${MY_HPOC_NUMBER}.39:9440/PrismGateway/services/rest/v1/pulse \
-  -d '{
-    "emailContactList":null,
-    "enable":false,
-    "verbosityType":null,
-    "enableDefaultNutanixEmail":false,
-    "defaultNutanixEmail":null,
-    "nosVersion":null,
-    "isPulsePromptNeeded":false,
-    "remindLater":null
-}'
-
-my_log "Patching Calm binaries"
-remote_exec mv /usr/local/nutanix/epsilon/epsilon.tar /usr/local/nutanix/epsilon/epsilon.old
-remote_exec mv /usr/local/nutanix/epsilon/nucalm.tar /usr/local/nutanix/epsilon/nucalm.old
-remote_exec curl -O http://10.21.64.50/images/epsilon.tar
-remote_exec curl -O http://10.21.64.50/images/nucalm.tar
-remote_exec mv -v /home/nutanix/epsilon.tar /usr/local/nutanix/epsilon/
-remote_exec mv -v /home/nutanix/nucalm.tar /usr/local/nutanix/epsilon/
+my_log "Sending PC configuration script"
+pc_send_file pcconfig.sh
+# Execute that file asynchroneously remotely (script keeps running on CVM in the background)
+my_log "Launching PC configuration script"
+pc_remote_exec "MY_PE_PASSWORD=${MY_PE_PASSWORD} nohup bash /home/nutanix/pcconfig.sh >> pcconfig.log 2>&1 &"
 
 my_log "Removing sshpass"
 sudo rpm -e sshpass
 
-my_log "Configuration complete"
+my_log "PE Configuration complete"
