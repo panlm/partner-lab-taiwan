@@ -28,47 +28,56 @@ Before you begin
 - Powershell 3.0 or onwards should be installed on the Karan server.
 - .Net framework 4.0 or 4.5 should be installed on the Karan server.
  
-Deploying Karan
-===============
-The steps for deploying Karan are as follows.
+Deploying Karan Guest VM
+=========================
+Use the following steps to deploy the Karan Guest VM as follows.
  
-- Download the karan-installer_ . The link referenced is correct as at January 2018.
 - Deploy a Windows virtual machine running Windows 2012 R2 using the following parameters:
 
 .. code-block:: bash
 
-  vCPU       : 1x
+  vCPU       : 2x
   Cores      : 2x (2x cores/vCPU)
   Mem        : 2GB
   Storage    : 40GB (default-container)
-  Network    : Primary
-  Image      : Windows Server 2012 QCOW
+  Network    : Secondary
+  Image      : Windows2012 (This is a Server 2012 QCOW image)
   Image Type : Disk
   Bus        : SCSI
   
-- Login to the Karan VM and **add** the it to the **ntnxlab.local** domain.
-- Enable PowerShell remote execution on the Karan Windows VM:
+Login to the Karan VM via *Launch Console* or *Remote Desktop*.  Upon successful log-in, **add** the Guest VM to the **ntnxlab.local** domain.  Reboot the server.
+
+.. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/karan/image15.png
+
+After the Karan VM has completed reboot, login to the Karan VM by *Launch Console* or a *Remote Desktop* Session.  Upon successful log-in open a **Command** window.
+
+Within a Command-Window Enable PowerShell remote execution:
  
 .. code-block:: bash
  
     c:\> enable-psremoting
    
-- Set the PowerShell Execution Policy:
+Within a Command-Window set the PowerShell Execution Policy:
  
 .. code-block:: bash
  
     c:\> set-executionpolicy remotesigned
    
-- Set all target machines as trusted machines on the Karan host:
+Within a Command-Window set all target machines as trusted machines on the Karan host:
  
 .. code-block:: bash
  
     c:\> set-item wsman:\localhost\Client\TrustedHosts -Value *
-   
-- Run the Karan installer and, when prompted, populate the fields as follows.
-- Select http or https as required
+
+Installing Karan
+=================
+Download the karan-installer_ . The link referenced is correct as at January 2018.
+
+Upload the karan installer to the Karan Guest VM and launch the Karan installer...  When prompted, populate the fields as follows:
+
+- Select http as required
 - Set the port to 8090 (note that this must not be changed and port 8090 must be allowed through the Windows firewall on both host and client VMs)
-- Set the number of Karan instances (leave as 1 for demo environments)
+- Set the number of Karan instances to 1 (typical for demo/lab environments)
 - Enter the IP Address of the Karan instance. The IP address must be accessible from the Calm/Prism Central VM!
 - Set the gateway UUID to:
  
@@ -101,7 +110,7 @@ The steps for deploying Karan are as follows.
  
   c:\> services.msc
 
-Configuring Windows target VMs
+Configuring Windows Target VMs
 ============================== 
 For Karan to have access to the Windows target/client VMs, the following commands must be run. In most cases, these commands would be run as part of preparing a Windows image for use with Sysprep.
  
