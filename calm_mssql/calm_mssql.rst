@@ -107,7 +107,7 @@ VM Creation
 ===========
 A Windows Server VM is required to host the MS SQL 2014 Database instance. VM settings and configurations can be accomplished by clicking on the VM tab of the service.  Set the following *Substrate Name*, *Cloud*, and *OS* fields using the following values:
 
-.. clode-block:: bash
+.. code-block:: bash
 
   Name        : MSSQL2014
   Cloud       : Nutanix
