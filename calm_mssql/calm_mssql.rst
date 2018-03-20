@@ -105,34 +105,33 @@ Once complete, click **Save** located along the top menu-bar.
 
 VM Creation
 ===========
-A Windows Server VM is required to host the MS SQL 2014 Database instance.  Set the following substrate name, cloud, and os fields using the following values:
+A Windows Server VM is required to host the MS SQL 2014 Database instance. VM settings and configurations can be accomplished by clicking on the VM tab of the service.  Set the following *Substrate Name*, *Cloud*, and *OS* fields using the following values:
 
 .. clode-block:: bash
 
-  Name       : MSSQL2014
-  Cloud      : Nutanix
-  OS         : Windows
+  Name        : MSSQL2014
+  Cloud       : Nutanix
+  OS          : Windows
 
-
-Configure a VDISK using the following parameters:
-
-.. code-block:: bash
-
-  Disk Type .: DISK
-  Device Bus : SCSI
-  Size       : 100GB
-
-Configure a Guest VM using the following parameters:
+Configure a **VDISK** using the following parameters:
 
 .. code-block:: bash
 
-  VM Name .  : @@{calm_application_name}@@
-  Image .    : Windows2012
-  Disk Type .: DISK
-  Device Bus : SCSI
-  vCPU .     : 2
-  Core/vCPU .: 2
-  Memory     : 4 GB
+  Disk Type   : DISK
+  Device Bus  : SCSI
+  Size        : 100GB
+
+Configure a **Guest VM** using the following parameters:
+
+.. code-block:: bash
+
+  VM Name     : @@{calm_application_name}@@
+  Image       : Windows2012
+  Disk Type   : DISK
+  Device Bus  : SCSI
+  vCPU        : 2
+  Core/vCPU   : 2
+  Memory      : 4 GB
 
 Scroll to the bottom and add the NIC **secondary** to the Guest VM.
 
