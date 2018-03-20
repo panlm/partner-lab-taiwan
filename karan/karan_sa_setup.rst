@@ -45,7 +45,11 @@ Create a Windows Virtual Machine running Windows 2012 R2 using the following par
   
 Power the Karan Guest VM on.
 
-Login to the Karan Guest VM via *Launch Console* or *Remote Desktop*.  Upon successful log-in, **add** the Karan Guest VM to the **ntnxlab.local** domain.  Reboot the server.
+Login to the Karan Guest VM via *Launch Console* or *Remote Desktop*.  Upon successful log-in:
+
+- **Change** the Computer Name to **KARAN**
+- **Add** the Karan Guest VM to the **ntnxlab.local** domain.  
+- Reboot the server.
 
 .. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/karan/image15.png
 
