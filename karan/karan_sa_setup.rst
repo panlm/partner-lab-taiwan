@@ -46,24 +46,24 @@ The steps for deploying Karan are as follows.
   Image Type : Disk
   Bus        : SCSI
   
-- Add the Karan VM to the domain, for this lab we will use ntnxlab.local
+- Login to the Karan VM and **add** the it to the **ntnxlab.local** domain.
 - Enable PowerShell remote execution on the Karan Windows VM:
  
 .. code-block:: bash
  
-    > enable-psremoting
+    c:\> enable-psremoting
    
 - Set the PowerShell Execution Policy:
  
 .. code-block:: bash
  
-    > set-executionpolicy remotesigned
+    c:\> set-executionpolicy remotesigned
    
 - Set all target machines as trusted machines on the Karan host:
  
 .. code-block:: bash
  
-    > set-item wsman:\localhost\Client\TrustedHosts -Value *
+    c:\> set-item wsman:\localhost\Client\TrustedHosts -Value *
    
 - Run the Karan installer and, when prompted, populate the fields as follows.
 - Select http or https as required
@@ -91,15 +91,15 @@ The steps for deploying Karan are as follows.
 
 .. code-block::  bash
 
-  > ssh nutanix@10.21.xx.39
-  > password nutanix/4u
-  > /usr/local/nutanix/cluster/bin/modify_firewall -o open -i eth0 -p 8090 -a -f
+  c:\> ssh nutanix@10.21.xx.39
+  c:\> password nutanix/4u
+  c:\> /usr/local/nutanix/cluster/bin/modify_firewall -o open -i eth0 -p 8090 -a -f
   
 - After installation, start the Karan service from the Windows Services application:
  
 .. code-block:: bash
  
-    > services.msc
+  c:\> services.msc
 
 Configuring Windows target VMs
 ============================== 
@@ -107,8 +107,8 @@ For Karan to have access to the Windows target/client VMs, the following command
  
 .. code-block:: bash
  
-    > enable-psremoting
-    > set-executionpolicy remotesigned
+    c:\> enable-psremoting
+    c:\> set-executionpolicy remotesigned
     
 For MSSQL to work with Karan you will need to also make the below changes.
 
