@@ -57,19 +57,21 @@ Login to the Karan Guest VM via *Launch Console* or *Remote Desktop*.  Upon succ
 
 After the Karan Guest VM has completed reboot, login via *Launch Console* or *Remote Desktop*.  Upon successful log-in open a *PowerShell-Command-Window*.
 
-Within the  *PowerShell-Command-Window* enable PowerShell remote execution and answer 'Y' to prompts.
+.. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/karan/image17.png
+
+Within the  *PowerShell-Command-Window* run the following command to enable PowerShell remote execution - answer 'Y' when prompted.
  
 .. code-block:: PowerShell
  
     PS C:\> enable-psremoting
    
-Within the  *PowerShell-Command-Window* set the PowerShell Execution Policy and answer 'Y' to prompts.
+Within the  *PowerShell-Command-Window* run the following command to set the PowerShell Execution Policy - answer 'Y' when prompted.
  
 .. code-block:: PowerShell
  
     PS C:\> set-executionpolicy remotesigned
    
-Within the *powershell-command-window* set all target machines as trusted machines on the Karan host - answer 'Y' to prompts.
+Within the *powershell-command-window* run the following command to set all target machines as trusted machines on the Karan host - answer 'Y' when prompted.
  
 .. code-block:: PowerShell
  
@@ -117,21 +119,21 @@ Upload the karan installer to the Karan Guest VM and launch the Karan installer.
   password: nutanix/4u
   
 - Complete the wizard until Karan has successfully completed the installation.
-- Once karan has successfully installed, perform the following steps to insure the PC VM firewall can communicate through port 8090.  
+- Once karan has successfully installed, *ssh* to the PC VM and perform the following steps to insure the firewall can communicate through port 8090.  
 
 .. code-block::  bash
 
-  c:\> ssh nutanix@10.21.xx.39
-  c:\> password nutanix/4u
-  c:\> /usr/local/nutanix/cluster/bin/modify_firewall -o open -i eth0 -p 8090 -a -f
+  $ ssh nutanix@10.21.xx.39
+  $ password nutanix/4u
+  $ /usr/local/nutanix/cluster/bin/modify_firewall -o open -i eth0 -p 8090 -a -f
   
-- Using a command-prompt start the Windows Services as follows:
+- Using a command-prompt on the Karan Guest VM start the Windows Services as follows:
  
 .. code-block:: bash
  
   c:\> services.msc
 
-- From the Windows Services start the Karan service.
+- From the Windows Services start the Karan service.  The service should start.
 
 .. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/karan/image16.png
 
