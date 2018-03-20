@@ -118,7 +118,7 @@ Upload the karan installer to the Karan Guest VM and launch the Karan installer.
   logon account: administrator
   password: nutanix/4u
   
-- Complete the wizard until Karan has successfully completed the installation.
+- Complete the wizard until Karan installer has successfully completed the installation.
 - Once karan has successfully installed, *ssh* to the PC VM and perform the following steps to insure the firewall can communicate through port 8090.  
 
 .. code-block::  bash
