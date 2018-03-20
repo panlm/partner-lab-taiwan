@@ -124,6 +124,8 @@ To assign a user and a network to the Project, click the **Environment** action 
 - **Network:**  *secondary*
 - **Credentials**: *user: root*, *password: nutanix/4u*
 
+.. note:: Substitute *bootcamp* with *secondary* as the network (NIC).
+
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab8/image27.png
 
 Once configured, click save.
@@ -134,7 +136,6 @@ Launch Blueprint from the Marketplace
 Navigate to the Marketplace by clicking (|image6|) icon located on the left tool ribbon.  This will open the Marketplace. Once Marketplace is displayed, the Blueprint icon published from previous steps should be visible...
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab8/image24.png
-
 
 Click the Blueprint Icon associated with the previous **Publish** exercises/steps and then click **Launch** to deploy the Blueprint as an application.
 
