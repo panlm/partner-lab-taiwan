@@ -65,13 +65,13 @@ Within the  *PowerShell-Command-Window* enable PowerShell remote execution and a
    
 Within the  *PowerShell-Command-Window* set the PowerShell Execution Policy and answer 'Y' to prompts.
  
-.. code-block:: bash
+.. code-block:: PowerShell
  
     PS C:\> set-executionpolicy remotesigned
    
 Within the *powershell-command-window* set all target machines as trusted machines on the Karan host - answer 'Y' to prompts.
  
-.. code-block:: bash
+.. code-block:: PowerShell
  
     PS C:\> set-item wsman:\localhost\Client\TrustedHosts -Value *
 
