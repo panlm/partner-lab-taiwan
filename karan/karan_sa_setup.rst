@@ -108,7 +108,7 @@ Upload the karan installer to the Karan Guest VM and launch the Karan installer.
  
     http://<prism_central_ip_address>:8090
  
-.. note:: Be sure to specify the port 8090, as per the example above for the Epsilon Servi!
+.. note:: Be sure to specify the port 8090, as per the example above in order to connect to the Epsilon Service running on the PC VM!
  
 - Click Next
 - Specify the account information:
