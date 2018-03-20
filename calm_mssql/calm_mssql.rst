@@ -189,7 +189,8 @@ Open a *Command-Prompt* window and run the following command:
 
   C:>\ gpedit.msc
    
-- In the group policy editor navigate to **Computer-configuration -> administrative templates -> system -> credential-delegation**.
+In the group policy editor navigate to **Computer-configuration -> administrative templates -> system -> credential-delegation**.
+
 - Double click on **Allow Delgating Fresh Credentials with NTLM-only server authentication**.
 - Select the **Enable** radio button.
 - Click on the **show** button.
