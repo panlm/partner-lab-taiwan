@@ -66,46 +66,50 @@ Getting Started
 
 .. note::
 
-  Due to resource limitations, many labs are designed to be completed as a group. The Overview section of each lab will indicate whether the lab should be completed once per group/cluster or if it can be performed individually. **Do Not Start Labs Before Electing a Team Lead and Consulting Your Team Coach**
+  Due to resource limitations, many labs are designed to be completed as a group. The Overview section of each lab will indicate whether the lab should be completed once per group/cluster or if it can be performed individually. **Do Not Start Labs Before Electing a Team Lead and Consulting Your Team Coach**.
 
 Following presentations on Tuesday, you will have approximately 4 hours to complete the **Required Labs**.
 
-Beginning on Wednesday you will be provided with a customer challenge. Your goal is to build and propose a solution using Nutanix and optional 3rd party technologies. The **Optional Labs** provide step by step guides for additional technologies you may find useful for your proposed solution. Bonus points can be earned by incorporating additional technologies (Chef, Puppet, Jenkins, etc.) not covered in **Optional Labs**.
+Beginning on Wednesday you will be provided with a customer challenge. Your goal is to build and propose a solution using Nutanix and optional 3rd party technologies. The **Optional Labs** provide step by step guides for additional technologies you may find useful for your proposed solution. Bonus points can be earned by incorporating additional technologies (Chef, Puppet, Jenkins, Nagios, etc.) not covered in **Optional Labs**.
 
 Each team has been provided a four node cluster running AHV and AOS 5.5.1. **Upon Electing a Team Lead and Consulting Your Team Coach Please Exam Your Cluster.** Each cluster has been pre-staged with the following:
 
-**Challenge**
+.. **Challenge**
 
 
-`Uptick Capital English <https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/challenge/challenge-uptick-capital-english.pdf>`_
+.. `Uptick Capital English <https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/challenge/challenge-uptick-capital-english.pdf>`_
 
-`Uptick Capital Chinese <https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/challenge/challenge-uptick-capital-chinese.pdf>`_
+.. `Uptick Capital Chinese <https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/challenge/challenge-uptick-capital-chinese.pdf>`_
 
-`Uptick Capital Korean <https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/challenge/challenge-uptick-capital-korean.pdf>`_
+.. `Uptick Capital Korean <https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/challenge/challenge-uptick-capital-korean.pdf>`_
 
-`Uptick Capital Japanese <https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/challenge/challenge-uptick-capital-japanese.pdf>`_
-
-**Credentials** 
-
-- **Cluster Username:** admin **Password:** techX2018!
-
-**Networks**
-
-- **Network information is located on your team spreadsheet** - https://drive.google.com/drive/folders/1-8vVrC7Ad9uFeWnY1LcaffQQEoD-Eris
-- **Link-Local** Network - **DO NOT ENABLE IPAM**
+.. `Uptick Capital Japanese <https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/challenge/challenge-uptick-capital-japanese.pdf>`_
 
 **Images**
 
-- **All required images are pre-loaded onto your team's cluster**
+- All required images have been pre-staged in your cluster's AHV Image Service
 
 **Virtual Machines**
 
-- **PC** VM - 10.21.XX.39 - Nutanix Prism Central 5.5.1
+- **PC** VM - 10.21.XX.39 - Nutanix Prism Central 5.5.0.6
 - **DC** VM - 10.21.XX.40 - ntnxlab.local Domain Controller
 - **XD** VM - 10.21.XX.41 - Citrix XenDesktop 7.15 Delivery Controller/StoreFront/License Server
 - **HYCU** VM - 10.21.XX.44 - Comtrade HYCU 2.0.0
-- **X-Ray** VM - 10.21.XX.45 - Nutanix X-Ray 2.2
+- **X-Ray** VM - 10.21.XX.45 - Nutanix X-Ray 2.3
+
+**Credentials**
+
+- **Prism Username:** admin **Password:** techX2018!
+- **CVM Username:** nutanix **Password:** techX2018!
+- **Domain Username** NTNXLAB\\Administrator **Password:** nutanix/4u
+
+**Networks**
+
+- `IP information for your team <https://drive.google.com/drive/folders/1-8vVrC7Ad9uFeWnY1LcaffQQEoD-Eris>`_
+- **Primary** Network - 10.21.XX.1/25 - IPAM DHCP Pool 10.21.XX.50-10.21.XX.124
+- **Secondary** Network - 10.21.XX.129/25 - IPAM DHCP Pool 10.21.XX.132-10.21.XX.253
+- **Link-Local** Network - **DO NOT ENABLE IPAM**
 
 .. note::
 
-  Due to resource limitations, many labs are designed to be completed as a group. The Overview section of each lab will indicate whether the lab should be completed once per group/cluster or if it can be performed individually. **Do Not Start Labs Before Electing a Team Lead and Consulting Your Team Coach**
+  Due to resource limitations, many labs are designed to be completed as a group. The Overview section of each lab will indicate whether the lab should be completed once per group/cluster or if it can be performed individually. **Do Not Start Labs Before Electing a Team Lead and Consulting Your Team Coach**.
