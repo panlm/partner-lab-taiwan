@@ -107,6 +107,9 @@ A Windows Server VM is required to host the MS SQL 2014 Database instance. VM se
   Name        : MSSQL2014
   Cloud       : Nutanix
   OS          : Windows
+  
+  
+.. note:: When deploying or working with Windows VMs deployed by Calm, you'll be required to set the operating system to Windows, as opposed to Linux (default) within the blueprint. 
 
 VDISK Settings
 ===============
