@@ -25,13 +25,7 @@ Prerequisites:
 **************
 Certain prerequisites must be met before installation will succeed. The following must be configured:
 
-- Karan Guest VM Configured and Installed: karan-setup_
-- MSSQL installation requires CredSSP to be enabled on Karan host
-- Account running karan service must have the following privileges
-
-.. code-block:: bash
-  
-  (SE_ASSIGNPRIMARYTOKEN_NAME, SE_INCREASE_QUOTA_NAME)
+- Karan Guest VM **MUST** be configured and Installed: karan-setup_
 
 
 Blueprint:
@@ -177,13 +171,13 @@ Enable CredSSP
 ==============
 To Enable CredSSP on the Karan host, please follow steps below:
 
-On the Karan Host run the following command to enable CredSSP as a client role and allow Karan host to Delegate credentials to all computers ( Wild card mask "*"):
+On the Karan Guest VM open a *PowerShell-Command* window and run the following command to enable CredSSP as a client role and allow Karan host to Delegate credentials to all computers ( Wild card mask "*"):
 
 .. code-block:: bash
 
   C:>\ Enable-WSManCredSSP -Role Client -DelegateComputer *
   
-From command prompt window run:
+From a windows command prompt window run:
 
 .. code-block:: bash
 
@@ -198,9 +192,9 @@ From command prompt window run:
 Privileges:
 ============
 
-.. note:: The instructions in this section are applicable to the karan server and required for SQL Server deployments.
+.. note:: The instructions in this section are applicable to the karan Guest VM and required for SQL Server deployments.
 
-Follow the steps below to assign the correct privileges on the karan server:
+Follow the steps below to assign the correct privileges on the karan Guest VM:
 
 - Idenitfy the user account that the Karan service is running as 
 - From the Start menu, point to **Administrative Tools**, and then click **Local Security Policy**.
