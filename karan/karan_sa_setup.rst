@@ -125,13 +125,13 @@ Upload the karan installer to the Karan Guest VM and launch the Karan installer.
   c:\> password nutanix/4u
   c:\> /usr/local/nutanix/cluster/bin/modify_firewall -o open -i eth0 -p 8090 -a -f
   
-- Using a command-prompt start the Windows Services application.
+- Using a command-prompt start the Windows Services as follows:
  
 .. code-block:: bash
  
   c:\> services.msc
 
-- From the Windows Services Application start the Karan service.
+- From the Windows Services start the Karan service.
 
 .. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/karan/image16.png
 
