@@ -149,8 +149,8 @@ In order for MSSQL to work with Karan you'll be required to make the following c
 
 1. From the Start menu, point to Administrative Tools, and then click Local Security Policy.
 2. In the Local Security Settings dialog box, double-click Local Policies, and then double-click User Rights Assignment.
-3. In the details pane, double-click Adjust memory quotas for a process. This is the **SE_INCREASE_QUOTA_NAME** user right.
-4. Click Add User or Group, and, in the Enter the object names to select box, type the user or group name to which you want to assign the user right, and then click OK.
+3. In the details pane, double-click Adjust memory quotas for a process (Note: this is **SE_INCREASE_QUOTA_NAME** user right).
+4. Click **Add User or Group**, and, in the *Enter the object names to select* box, type the user or group name to which you want to assign the user right, and then click OK.  
 5. Click OK again, and then, in the details pane, double-click Replace a process level token. This is the **SE_ASSIGNPRIMARYTOKEN_NAME** user right.
 6. Click Add User or Group, and, in the Enter the object names to select box, type the user or group name to which you want to assign the user right, and then click OK.
  
