@@ -168,7 +168,7 @@ Verify the Guest VM **CONNECTION** settings are as follows:
   Connection Port            : 5985
   Timeout (secs)             : 600
   
-If there were any changes, click **Save** located along the top menu-bar.
+Click **Save** located along the top menu-bar If there were any changes.
 
 Package Settings
 =============================
@@ -186,6 +186,7 @@ Verify **INSTALL** settings:
   Credential  : WINDOWS
   Script      : Enable-WSManCredSSP -Role Server -Force
 
+Click **Save** located along the top menu-bar If there were any changes.
 
 Enable CredSSP
 ==============
