@@ -164,8 +164,8 @@ Monitor the status of the Migration Plan from the dashboard.
 
 .. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/xtract-vm/xtractvm18.png
 
-Perform Cutover Operation
-.........................
+Performing VM Cutover
+.....................
 
 Once the migration completes (**Migrated Data Size** should match **Data Size**), Xtract can perform a cutover operation to automatically shutdown the source VM and power on the migrated VM.
 
@@ -188,7 +188,7 @@ After the Cutover is completed you can launch Prism directly from Xtract to mana
   .. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/xtract-vm/xtractvm23.png
 
 Takeaways
-+++++++++++
++++++++++
 
 - Xtract for VMs simplifies bulk migration of existing VMs to Nutanix, eliminating the friction associated with onboarding new IT infrastructure.
 
