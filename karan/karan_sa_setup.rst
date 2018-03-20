@@ -53,21 +53,23 @@ Login to the Karan Guest VM via *Launch Console* or *Remote Desktop*.  Upon succ
 
 .. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/karan/image15.png
 
-After the Karan Guest VM has completed reboot, login via *Launch Console* or *Remote Desktop*.  Upon successful log-in open a **Command** window.
+- Disabke the Karan Guest VM firewall.
 
-Within the Command-Window Enable PowerShell remote execution:
+After the Karan Guest VM has completed reboot, login via *Launch Console* or *Remote Desktop*.  Upon successful log-in open a *Command-Prompt* window.
+
+Within the Command-Prompt, Enable PowerShell remote execution:
  
 .. code-block:: bash
  
     c:\> enable-psremoting
    
-Within the Command-Window set the PowerShell Execution Policy:
+Within the Command-Prompt set the PowerShell Execution Policy:
  
 .. code-block:: bash
  
     c:\> set-executionpolicy remotesigned
    
-Within the Command-Window set all target machines as trusted machines on the Karan host:
+Within the Command-Prompt set all target machines as trusted machines on the Karan host:
  
 .. code-block:: bash
  
@@ -75,19 +77,20 @@ Within the Command-Window set all target machines as trusted machines on the Kar
 
 Installing Karan
 =================
+
 .. note:: The karan installer is very large and might be best to use a VDI connection to download the file from http://10.21.64.50/images/Karan-1.6.0.0.exe and then map the download to you Guest VM.
 
-If you download the karan-installer_ locally to your Mac, you'll need to establish a cifs connetion
+If you download the karan-installer_ locally to your Mac, you'll need to establish a cifs connection
 
 .. code-block:: bash
 
   % cifs://<karan-guest-vm-ipaddress>/c$ 
   
-.. note:: The karan.exe link referenced is current and has been sourced as of January 2018.
+.. note:: The karan.exe link referenced was sourced as of January 2018.
 
 Upload the karan installer to the Karan Guest VM and launch the Karan installer...  When prompted, populate the fields as follows:
 
-- Select http as required
+- Select HTTP.  DO NOT SELECT HTTPS (Default)!!
 - Set the port to 8090 (note that this must not be changed and port 8090 must be allowed through the Windows firewall on both host and client VMs)
 - Set the number of Karan instances to 1 (typical for demo/lab environments)
 - Enter the IP Address of the Karan instance. The IP address must be accessible from the Calm/Prism Central VM!
@@ -97,17 +100,23 @@ Upload the karan installer to the Karan Guest VM and launch the Karan installer.
  
     2067b70d-bd3f-4b3d-9d82-3add93f30a0a
  
-- Enter the Prism Central VM IP Address, as follows:
+- Enter the Prism Central VM IP Address and the port of the Epsilon Service as follows:
  
 .. code-block:: bash
  
     http://<prism_central_ip_address>:8090
  
-.. note:: Don't forget to specify the port, as per the example above!
+.. note:: Be sure to specify the port 8090, as per the example above for the Epsilon Servi!
  
 - Click Next
-- Specify the account information (for demo/lab environments, the Karan VM’s local administrator account is OK).
-- Complete the wizard until Karan is installed.
+- Specify the account information:
+
+.. code-block:: bash
+  
+  logon account: administrator
+  password: nutanix/4u
+  
+- Complete the wizard until Karan has successfully completed the installation.
 - Once karan has successfully installed, perform the following steps to insure the PC VM firewall can communicate through port 8090.  
 
 .. code-block::  bash
@@ -116,11 +125,15 @@ Upload the karan installer to the Karan Guest VM and launch the Karan installer.
   c:\> password nutanix/4u
   c:\> /usr/local/nutanix/cluster/bin/modify_firewall -o open -i eth0 -p 8090 -a -f
   
-- Post installation of Karan, start the Karan service from the Windows Services application:
+- Using a command-prompt start the Windows Services application.
  
 .. code-block:: bash
  
   c:\> services.msc
+
+- From the Windows Services Application start the Karan service.
+
+.. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/karan/image16.png
 
 
 Configuring Windows Target VMs
