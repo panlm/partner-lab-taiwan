@@ -85,7 +85,7 @@ Click the **Mongo** Blueprint Icon and then click **Clone** to copy the bluerpin
 Edit + Debug + Launch Cloned Blueprint
 **********************************************
 
-Navigate the Blueprint workspace by clicking the (|image8|) icon located on the left tool ribbon.  This will open the Blueprint Workspace.
+Navigate to the Blueprint workspace by clicking the (|image8|) icon located on the left tool ribbon.  This will open the Blueprint Workspace.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image15.png
 
@@ -93,7 +93,35 @@ Click the red exclamation point to see a list fo error desriptions.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image16.png
 
-Fix each of the errors listed within the Blueprint.  Once all the errors have been corrected, make additional changes to each of the **Mongo** services (i.e. VM, Package, etc...).  Insure the **Centos** disk image is selected for each VM in each Service. Save all changes and launch the blueprint.  Continue to make chnages until the the Blueprint successfully deploys.
+Fix each of the errors listed within the Blueprint as follows:
+
+Click on the **Credentials** button along the top of the Blueprint workspace. Update credentials as follows:
+
++-----------------------+---------------+
+| **Name**              | CENTOS        |
++-----------------------+---------------+
+| **Username**          | root          |
++-----------------------+---------------+
+| **Secret**            | Password      |
++-----------------------+---------------+
+| **Password**          | nutanix/4u    |
++-----------------------+---------------+
+| **Use as Default**    | Checked       |
++-----------------------+---------------+
+
+.. code-block:: bash
+
+  Image .    : Centos
+  Disk Type .: DISK
+  Device Bus : SCSI
+  
+Scroll to the bottom and add the NIC **secondary** to the **MongoL** VM.
+
+Configure the **Credentials** to use **CENTOS** created earlier.
+
+Make the changes to each of the **Mongo** services (i.e. VM, Package, etc...). 
+
+Save all changes and launch the blueprint.
 
 Takeaways
 ***********
