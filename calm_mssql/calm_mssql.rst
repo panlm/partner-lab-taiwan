@@ -212,9 +212,9 @@ Follow the steps below to assign the correct privileges on the karan server:
 
 Launch Blueprint
 ================
-Once the blueprint has been successfully updated and saved, click the (|image5|) button to lanuch the Blueprint.  Name the application with *mssql2014*.
+Once the blueprint has been successfully updated and saved, click the (|image5|) button to **lanuch** the Blueprint.  Name the application with *mssql2014*.
 
-.. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab3/image6.png
+.. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/calm_mssql/image2.png
 
 Click **Create** to launch the application.
 
