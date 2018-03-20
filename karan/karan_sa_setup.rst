@@ -30,9 +30,7 @@ Before you begin
  
 Deploying Karan Guest VM
 =========================
-Use the following steps to deploy the Karan Guest VM as follows.
- 
-- Deploy a Windows virtual machine running Windows 2012 R2 using the following parameters:
+Deploy a Windows virtual machine running Windows 2012 R2 using the following parameters:
 
 .. code-block:: bash
 
