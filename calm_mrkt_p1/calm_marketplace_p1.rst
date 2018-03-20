@@ -109,6 +109,8 @@ Click on the **Credentials** button along the top of the Blueprint workspace. Up
 | **Use as Default**    | Checked       |
 +-----------------------+---------------+
 
+Make sure the VM image is set to:
+
 .. code-block:: bash
 
   Image .    : Centos
