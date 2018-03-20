@@ -203,12 +203,13 @@ Privileges:
 Follow the steps below to assign the correct privileges on the karan server:
 
 - Idenitfy the user account that the Karan service is running as 
-- From the Start menu, point to Administrative Tools, and then click Local Security Policy.
-- In the Local Security Settings dialog box, double-click Local Policies, and then double-click User Rights Assignment.
-- In the details pane, double-click Adjust memory quotas for a process. This is the **SE_INCREASE_QUOTA_NAME** user right.
-- Click Add User or Group, and, in the Enter the object names to select box, type the user or group name to which you want to assign the user right, and then click OK.
-- Click OK again, and then, in the details pane, double-click Replace a process level token. This is the **SE_ASSIGNPRIMARYTOKEN_NAME** user right.
-- Click Add User or Group, and, in then <Enter> the object names to select box, type the user or group name to which you want to assign the user right, and then click OK.
+- From the Start menu, point to **Administrative Tools**, and then click **Local Security Policy**.
+- In the **Local Security Settings** dialog box, double-click **Local Policies**, and then double-click **User Rights Assignment**.
+- In the details pane, double-click **Adjust memory quotas for a process**. This is the **SE_INCREASE_QUOTA_NAME** user right.
+- Click **Add User or Group**, and, in the **Enter the object names to select** box, type the user or group name to which you want to assign the user right, and then click OK.
+- Click OK again, and then, in the details pane, double-click **Replace a process level token**. This is the **SE_ASSIGNPRIMARYTOKEN_NAME** user right.
+- Click Add User or Group, and, in then **Enter the object names to select** box, type the user or group name to which you want to assign the user right, and then click OK.
+- Close **Local Security Policy** and **Administrative Tools** windows.
 - Restart the Karan service.
 
 Launch Blueprint
