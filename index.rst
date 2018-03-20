@@ -74,8 +74,19 @@ Beginning on Wednesday you will be provided with a customer challenge. Your goal
 
 Each team has been provided a four node cluster running AHV and AOS 5.5.1. **Upon Electing a Team Lead and Consulting Your Team Coach Please Exam Your Cluster.** Each cluster has been pre-staged with the following:
 
+**Challenge**
 
-**Credentials**
+
+`Uptick Capital English <https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/challenge/challenge-uptick-capital-english.pdf>`_
+
+`Uptick Capital Chinese <https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/challenge/challenge-uptick-capital-chinese.pdf>`_
+
+`Uptick Capital Korean <https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/challenge/challenge-uptick-capital-korean.pdf>`_
+
+`Uptick Capital Japanese <https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/challenge/challenge-uptick-capital-japanese.pdf>`_
+
+**Credentials** 
+
 - **Cluster Username:** admin **Password:** techX2018!
 
 **Networks**
