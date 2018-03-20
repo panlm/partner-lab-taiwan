@@ -119,14 +119,6 @@ Upload the karan installer to the Karan Guest VM and launch the Karan installer.
   password: nutanix/4u
   
 - Complete the wizard until Karan installer has successfully completed the installation.
-- Once karan has successfully installed, *ssh* to the PC VM and perform the following steps to insure the firewall will permit communicate through port 8090.  
-
-.. code-block::  bash
-
-  $ ssh nutanix@10.21.xx.39
-  $ password nutanix/4u
-  $ /usr/local/nutanix/cluster/bin/modify_firewall -o open -i eth0 -p 8090 -a -f
-  
 - Using a command-prompt on the Karan Guest VM start the Windows Services as follows:
  
 .. code-block:: bash
