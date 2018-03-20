@@ -4,92 +4,62 @@ Calm Blueprint (LAMP)
 
 
 Overview
-************
+********
 
-.. note:: Estimated time to complete: **40 MINUTES**
-  
-In this lab participants will extend the Calm Blueprint (MySQL) basic blueprint to create basic LAMP Stack (Linux Apache MySQL PHP). In this lab we’ll build on the previous MySQL blueprint and extend this to the multi-stack application you see above. 
+.. note::
 
-Estimated time to complete: **50mins**
+  This lab should be completed **AFTER** the :ref:`calm_mysql_lab` lab.
 
-Product Feature Resource(s)
-===========================
+  Estimated time to complete: **40 MINUTES**
 
-- **Slack** - #calm
-- **Product Manager** - Jasnoor Gill, jasnoor.gill@nutanix.com
-- **Product Marketing Manager** - Gil Haberman, gil.haberman@nutanix.com
-- **Technical Marketing Engineer** - Chris Brown, christopher.brown@nutanix.com
-- **Field Specialists** - Mark Lavi, mark.lavi@nutanix.com; Andy Schmid, andy.schmid@nutanix.com
-
+In this exercise you will extend the MySQL Blueprint created previously into a basic LAMP Stack (Linux Apache MySQL PHP) deployment with a scalable web tier as shown below.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab2/image1.png
 
+Getting Engaged with the Product Team
+=====================================
+- **Slack** - #calm
+- **Product Manager** - Jasnoor Gill, jasnoor.gill@nutanix.com
+- **Product Marketing Manager** - Chris Brown, christopher.brown@nutanix.com
+- **Technical Marketing Engineer** - Brian Suhr, brian.suhr@nutanix.com
+- **Field Specialists** - Mark Lavi, mark.lavi@nutanix.com; Andy Schmid, andy.schmid@nutanix.com
 
-Calm Glossary
-==============
-- **Service**: One tier of a multiple tier application. This can be made up of 1 more VMs (or existing machines) that all have the same config and do the same thing.
-- **Application (App):** A whole application with multiple parts that are all working towards the same thing (for example, a Web Application might be made up of an Apache Server, a MySQL database and a HAProxy Load balancer. Alone each service doesn’t do much, but as a whole they do what they’re supposed to).
-- **Macro:** A Calm construct that is evaluated and expanded before being ran on the target machine. Macros and Variables are denoted in the @@{[name]}@@ format in the scripts.
-- **Subtrate:** A Calm object used to encapsulate the VM(s) within a Blueprint.
+Creating the Web Server
+***********************
 
-Accessing and Navigating Calm
-*************************************
+From **Prism Central > Apps**, select **Blueprints** from the sidebar and select your Blueprint from the previous exercise.
 
-Getting Familiar with the Tools:
+In **Application Overview > Services**, click :fa:`plus-circle`.
 
-1. Connect to https://<PC-IPAddress:9440>
+Note **Service1** appears in the **Workspace** and the **Configuration Pane** reflects the configuration of the selected Service. You can rearrange the Service icons on the Workspace by clicking and dragging them.
 
-2. Login to Prism Central using the credentials specified above (use these credentials unless specified otherwise throughout this lab).
+Fill out the following fields:
 
-3. Click on the Apps tab across the top of Prism
+- **Service Name** - APACHE_PHP
+- **Name** - APACHE_PHP_AHV
+- **Cloud** - Nutanix
+- **OS** - Linux
+- **VM Name** - APACHE_PHP
+- **Image** - CentOS
+- **Device Type** - Disk
+- **Device Bus** - SCSI
+- Select **Bootable**
+- **vCPUs** - 2
+- **Cores per vCPU** - 1
+- **Memory (GiB)** - 4
+- Select :fa:`plus-circle` under **Network Adapters (NICs)**
+- **NIC** - Secondary
+- **Crendential** - CENTOS
 
-4. Welcome to Calm! Upon accessing this page you will now notice a new ribbon along the left - this is used to navigate through Calm.
+Scroll to the top of the **Configuration Panel**, click **Package**.
 
-5. You are, by default, dropped into the Applications tab and can see all the instances of applications that have been launched from a blueprint.
+Fill out the following fields:
 
-For now, let’s step through each tab:
+- **Name** - APACHE_PHP_PACKAGE
+- **Install Script Type** - Shell
+- **Credential** - CENTOS
 
-.. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab2/image2.png
-
-Creating a Web Server
-*****************************
-
-In this step we’ll add a second tier and connect it to the MYSQL service created from Lab #1 MySQL Blueprint.
-
-Create Service
-===============
-
-Create the Service as follows.
-
-1. Click the + sign next to **Services** in the **Overview** pane.
-2. Notice there are now 2 service block icons in the workspace.
-3. Rearrange the icons to your liking, then click on the new Service 2.
-4. Name your service **APACHE_PHP** in the *Service Name* field.
-5. The Substrate section is the internal Calm name for this Service. Name this **APACHE_PHP_AHV**
-6. Make sure that the Cloud is set to **Nutanix** and the OS set to **Linux**
-7. Configure the VM as follows:
-
-.. code-block:: bash
-
-  VM Name .  : APACHE_PHP
-  Image .    : CentOS
-  Disk Type .: DISK
-  Device Bus : SCSI
-  vCPU .     : 2
-  Core/vCPU .: 1
-  Memory     : 4 GB
-
-8. Scroll to the bottom and add the NIC **secondary** to the **APACHE_PHP** VM.
-9. Configure the **Credentials** to use **CENTOS** created earlier.
-
-Package Configuration
-=====================
-
-1. Scroll to the top of the Service Panel and click **Package**.
-2. Here is where we specify the installation and uninstall scripts for this service.
-3. Name install package **APACHE_PHP_PACKAGE**,
-4. Set the install script to **shell** and select the credential **CENTOS** created earlier.
-5. Copy the following script into the *script* field of the **install** window:
+Copy and paste the following script into the **Install Script** field:
 
 .. code-block:: bash
 
@@ -111,74 +81,80 @@ Package Configuration
    sudo systemctl restart httpd
    sudo systemctl enable httpd
 
-**Fill in the uninstall script:**
+Fill out the following fields:
 
-6. Set the uninstall script to **shell** and select the credential **CENTOS** created earlier.
-7. Copy the following script into the *script* field of the **uninstall** window:
+- **Uninstall Script Type** - Shell
+- **Credential** - CENTOS
+
+Copy and paste the following script into the **Uninstall Script** field:
 
 .. code-block:: bash
 
-   #!/bin/bash
-   echo "goodbye!"
+  #!/bin/bash
+  echo "Goodbye!"
 
-Since we need the DB IP Address to bring up the AppServer, we need to add a **Dependency**.
+Click **Save**.
 
-8. Click on the **APACHE_PHP_PACKAGE** service,
-9. Click on the Arrow icon that appears right above it,
-10. Click on the **MYSQL** service.
-11. This tells Calm to hold running the script until the **MYSQL** service is up.
-12. **Save** the blueprint, then click on the **Create** action from the **Overview** pane to see this.
+Adding Dependencies
+===================
+
+As our application will require the database to be running before the web server starts, our Blueprint requires a dependency to enforce this ordering.
+
+In the **Workspace**, select the **APACHE_PHP** Service and click the **Create Dependency** icon that appears above the Service icon.
+
+Select the **MySQL** Service. This will hold the execution of **APACHE_PHP** installation script until the **MySQL** Service is running.
+
+Click **Save**.
+
+In **Application Overview > Actions**, select **Create** to see the flow of execution after the dependency is added.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab2/image11.png
 
-Scale-out AppService
-====================
-
-Here we'll complete the provisioning of the blueprint.  
-
-1. Click on the **APACHE_PHP_PACKAGE** service. 
-2. Click on the **Service** tab. 
-3. Change **Number of replicas** under **Deployment Config** from 1 to 2.  
-4. This service will now deploy 2 VMs with the same configuration rather than just 1
-
-Create HA Proxy Load Balancer
-***************************************
-
-Now that we've added redundancy or load balancing capacity to the AppServer we need something to actually perform the load balancing.  Lets add another Service **HA Proxy**
-
-Create Service
+Adding Replicas
 ===============
 
-1. Click the + sign next to **Services** in the **Overview** pane.
-2. Notice there are now 3 service block icons in the workspace.
-3. Rearrange the icons to your liking, then click on the new Service 3.
-4. Name your service **HAProxy** in the *Service Name* field.
-5. Name the *Substrate*  **HAPROXYAHV**
-6. Make sure that the Cloud is set to **Nutanix** and the OS set to **Linux**
-7. Configure the VM as follows:
+Calm makes it simple to add multiple copies of a given Service, which is helpful for scale out workloads such as web servers.
 
-.. code-block:: bash
+In the **Workspace**, select the **APACHE_PHP** Service.
 
-  VM Name .  : HAProxy
-  Image .    : CentOS
-  Disk Type .: DISK
-  Device Bus : SCSI
-  vCPU .     : 2
-  Core/vCPU .: 1
-  Memory     : 4 GB
+In the **Configuration Pane**, select the **Service** tab.
 
+Under **Deployment Config**, change the **Number of replicas** from 1 to 2.
 
-8. Scroll to the bottom and add the NIC **secondary** to the **HAProxy** VM.
-9. Configure the **Credentials** to use **CENTOS** created earlier.
+Creating the Load Balancer
+**************************
 
-Package Configuration
-=====================
+To take advantage of a scale out web tier our application needs to be able to load balance connections across multiple web server VMs. HAProxy is a free, open source TCP/HTTP load balancer used to distribute workloads across multiple servers. It can be used in small, simple deployments and large web-scale environments such as GitHub, Instagram, and Twitter.
 
-1. Scroll to the top of the Service Panel and click **Package**.
-2. Here is where we specify the installation and uninstall scripts for this service.
-3. Name the package **HAPROXY_PACKAGE**,
-4. Set the install script to **shell** and select the credential **CENTOS** created earlier.
-5. Copy the following script into the *script* field of the **install** window:
+In **Application Overview > Services**, click :fa:`plus-circle`.
+
+Select **Service1** and fill out the following fields in the **Configuration Pane**:
+
+- **Service Name** - HAProxy
+- **Name** - HAPROXYAHV
+- **Cloud** - Nutanix
+- **OS** - Linux
+- **VM Name** - HAProxy
+- **Image** - CentOS
+- **Device Type** - Disk
+- **Device Bus** - SCSI
+- Select **Bootable**
+- **vCPUs** - 2
+- **Cores per vCPU** - 1
+- **Memory (GiB)** - 4
+- Select :fa:`plus-circle` under **Network Adapters (NICs)**
+- **NIC** - Secondary
+- **Crendential** - CENTOS
+
+Scroll to the top of the **Configuration Panel**, click **Package**.
+
+Fill out the following fields:
+
+- **Name** - HAPROXY_PACKAGE
+- **Install Script Type** - Shell
+- **Credential** - CENTOS
+
+Copy and paste the following script into the **Install Script** field:
 
 .. code-block:: bash
 
@@ -242,38 +218,30 @@ Package Configuration
   sudo systemctl enable haproxy
   sudo systemctl restart haproxy
 
-**Fill in the uninstall script:**
+Fill out the following fields:
 
-6. Set the uninstall script to **shell** and select the credential **CENTOS** created earlier.
-7. Copy the following script into the *script* field of the **uninstall** window:
+- **Uninstall Script Type** - Shell
+- **Credential** - CENTOS
+
+Copy and paste the following script into the **Uninstall Script** field:
 
 .. code-block:: bash
 
-   #!/bin/bash
-   echo "goodbye!"
+  #!/bin/bash
+  echo "Goodbye!"
 
-8. We need to add a **Dependency** between **HAProxy** and **APACHE_PHP_AHV**
+Click **Save**.
 
-9. Click on the **HAProxy** service,
-10. Click on the Arrow icon that appears right above it,
-11. Click on the **APACHE_PHP_AHV** service.
-12. This tells Calm to hold running the script until the **APACHE_PHP_AHV** service is up.
-13. Save the blueprint, and launch it.
+In the **Workspace**, select the **HAProxy** Service and click the **Create Dependency** icon that appears above the Service icon.
+
+Select the **Apache_PHP** Service. This will hold the execution of **HAProxy** installation script until the **APACHE_PHP** Service is running.
+
+Click **Save**.
+
+Click **Launch**. Specify a unique **Application Name** and click **Create**.
 
 Takeaways
 ***********
-- Successfully extended an exsiting blueprint to build a LAMP stack.
-- Successfully added an HA Proxy (Load Balancer)
-- Sucessfully scaled the infrastructure and deployed/launched the blueprint.
-
-.. |image0| image:: lab2/media/image1.png
-.. |image1| image:: lab2/media/image2.png
-.. |image2| image:: lab2/media/image3.png
-.. |image3| image:: lab2/media/image4.png
-.. |image4| image:: lab2/media/image5.png
-.. |image5| image:: lab2/media/image6.png
-.. |image6| image:: lab2/media/image7.png
-.. |image7| image:: lab2/media/image4.png
-.. |image8| image:: lab2/media/image8.png
-.. |image9| image:: lab2/media/image9.png
-.. |image10| image:: lab2/media/image10.png
+- Applications typically span across multiple VMs, each responsible for different services. Calm is capable of automated and orchestrating full applications.
+- Dependencies between services can be easily modeled in the Blueprint Editor.
+- Users can quickly provision entire application stacks for production or testing for repeatable results without time lost to manual configuration.

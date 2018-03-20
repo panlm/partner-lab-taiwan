@@ -64,8 +64,8 @@ Note the additional buttons below as they can be helpful when actively editing a
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab1/image5.png
 
 
-Building A Blueprint
-********************
+Building the Blueprint
+**********************
 
 Creating Blueprint
 ==================
@@ -83,7 +83,7 @@ Select **Calm** from the **Project** drop down menu and click **Proceed**.
   - Repeat for each Object.
   - Connect dependencies between Objects in the Workspace.
 
-Specify **MySQL-Blueprint-<INITIALS>** in the **Name this Blueprint** field.
+Specify **Calm-Workshop-<INITIALS>** in the **Name this Blueprint** field.
 
 Click **Credentials >** :fa:`plus-circle` and fill out the following fields:
 
@@ -155,6 +155,10 @@ Fill out the following fields:
 - **NIC** - Secondary
 - **Crendential** - CENTOS
 
+.. note::
+
+  Ensure selecting the **Credential** is the final selection made before proceeding to the next step, selecting other fields can clear your **Credential** selection.
+
 Scroll to the top of the **Configuration Panel**, click **Package**.
 
 Fill out the following fields:
@@ -222,12 +226,12 @@ Copy and paste the following script into the **Uninstall Script** field:
 
 Click **Save**. You will be prompted with specific errors if there are validation issues such as missing fields or unacceptable characters.
 
-Launching A Blueprint
-*********************
+Launching the Blueprint
+***********************
 
 From the toolbar at the top of the Blueprint Editor, click **Launch**.
 
-In the **Name of the Application** field, specify a unique name (e.g. MySQL-Blueprint-<INITIALS>-1).
+In the **Name of the Application** field, specify a unique name (e.g. Calm-Workshop-<INITIALS>-1).
 
 .. note::
 
