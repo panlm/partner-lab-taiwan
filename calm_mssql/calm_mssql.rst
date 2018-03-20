@@ -209,6 +209,8 @@ Follow the steps below to assign the correct privileges for user: *Administrator
 - Close **Local Security Policy** and **Administrative Tools** windows.
 - Restart the Karan service.
 
+.. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/karan/image16.png
+
 Launch Blueprint
 ================
 Once the *mssql2014* blueprint and Karan Guest VM settings have been successfully configured and saved, click the (|image5|) button to **lanuch** the Blueprint.  Name the application with *mssql2014*.
