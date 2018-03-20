@@ -113,7 +113,7 @@ A Windows Server VM is required to host the MS SQL 2014 Database instance. VM se
   Cloud       : Nutanix
   OS          : Windows
 
-Configure a **VDISK** using the following parameters:
+Add a **VDISK** by clicking on the **(+)** to expand the **VDISKS** configuration window. Configure a **VDISK** using the following parameters:
 
 .. code-block:: bash
 
@@ -121,7 +121,7 @@ Configure a **VDISK** using the following parameters:
   Device Bus  : SCSI
   Size        : 100GB
 
-Configure a **Guest VM** using the following parameters:
+Add an **Image** by clicking on the **(+)** to expand the **IMAGES** configuration window.  Configure the **Guest VM** using the following parameters:
 
 .. code-block:: bash
 
