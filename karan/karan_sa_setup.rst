@@ -140,7 +140,7 @@ Upload the karan installer to the Karan Guest VM and launch the Karan installer.
 
 Configuring Windows Target VMs
 ==============================     
-In order for MSSQL to work with Karan you'll be required to make the following changes:
+In order for MSSQL to work with Karan you'll be required to make the following changes on the Karan Guest VM:
 
 1. From the Start menu, point to Administrative Tools, and then click Local Security Policy.
 2. In the Local Security Settings dialog box, double-click Local Policies, and then double-click User Rights Assignment.
