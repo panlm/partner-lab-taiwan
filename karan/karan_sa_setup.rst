@@ -30,7 +30,7 @@ Before you begin
  
 Deploying Karan Guest VM
 =========================
-Deploy a Windows virtual machine running Windows 2012 R2 using the following parameters:
+Create a Windows Virtual Machine running Windows 2012 R2 using the following parameters:
 
 .. code-block:: bash
 
@@ -43,25 +43,27 @@ Deploy a Windows virtual machine running Windows 2012 R2 using the following par
   Image Type : Disk
   Bus        : SCSI
   
-Login to the Karan VM via *Launch Console* or *Remote Desktop*.  Upon successful log-in, **add** the Guest VM to the **ntnxlab.local** domain.  Reboot the server.
+Power the Karan Guest VM on.
+
+Login to the Karan Guest VM via *Launch Console* or *Remote Desktop*.  Upon successful log-in, **add** the Karan Guest VM to the **ntnxlab.local** domain.  Reboot the server.
 
 .. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/karan/image15.png
 
-After the Karan VM has completed reboot, login to the Karan VM by *Launch Console* or a *Remote Desktop* Session.  Upon successful log-in open a **Command** window.
+After the Karan Guest VM has completed reboot, login via *Launch Console* or *Remote Desktop*.  Upon successful log-in open a **Command** window.
 
-Within a Command-Window Enable PowerShell remote execution:
+Within the Command-Window Enable PowerShell remote execution:
  
 .. code-block:: bash
  
     c:\> enable-psremoting
    
-Within a Command-Window set the PowerShell Execution Policy:
+Within the Command-Window set the PowerShell Execution Policy:
  
 .. code-block:: bash
  
     c:\> set-executionpolicy remotesigned
    
-Within a Command-Window set all target machines as trusted machines on the Karan host:
+Within the Command-Window set all target machines as trusted machines on the Karan host:
  
 .. code-block:: bash
  
@@ -92,9 +94,9 @@ Upload the karan installer to the Karan Guest VM and launch the Karan installer.
 .. note:: Don't forget to specify the port, as per the example above!
  
 - Click Next
-- Specify the account information (for demo environments, the Karan VM’s local administrator account is OK)
-- Complete the wizard until Karan is installed
-- Once karan has successfully installed, perform the following steps to insure that the PC VM firewall can communicate through port 8090.  
+- Specify the account information (for demo/lab environments, the Karan VM’s local administrator account is OK).
+- Complete the wizard until Karan is installed.
+- Once karan has successfully installed, perform the following steps to insure the PC VM firewall can communicate through port 8090.  
 
 .. code-block::  bash
 
@@ -102,11 +104,12 @@ Upload the karan installer to the Karan Guest VM and launch the Karan installer.
   c:\> password nutanix/4u
   c:\> /usr/local/nutanix/cluster/bin/modify_firewall -o open -i eth0 -p 8090 -a -f
   
-- After installation, start the Karan service from the Windows Services application:
+- Post Karan installation, start the Karan service from the Windows Services application:
  
 .. code-block:: bash
  
   c:\> services.msc
+
 
 Configuring Windows Target VMs
 ============================== 
@@ -117,7 +120,7 @@ For Karan to have access to the Windows target/client VMs, the following command
     c:\> enable-psremoting
     c:\> set-executionpolicy remotesigned
     
-For MSSQL to work with Karan you will need to also make the below changes.
+In order for MSSQL to work with Karan you'll be required to make the following changes:
 
 1. From the Start menu, point to Administrative Tools, and then click Local Security Policy.
 2. In the Local Security Settings dialog box, double-click Local Policies, and then double-click User Rights Assignment.
