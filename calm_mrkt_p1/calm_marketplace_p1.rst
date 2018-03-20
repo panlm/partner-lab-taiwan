@@ -117,13 +117,13 @@ Make sure the VM image is set to:
   Disk Type .: DISK
   Device Bus : SCSI
   
-Scroll to the bottom and add the NIC **secondary** to the **MongoL** VM.
+Scroll to the bottom and add the NIC **secondary** to the **Mongo** VM.
 
 Configure the **Credentials** to use **CENTOS** created earlier.
 
-Make the changes to each of the **Mongo** services (i.e. VM, Package, etc...). 
+Make these changes to each of the **Mongo** services (i.e. VM, Package, etc...). 
 
-Save all changes and launch the blueprint.
+Save changes and launch the blueprint.
 
 Takeaways
 ***********
