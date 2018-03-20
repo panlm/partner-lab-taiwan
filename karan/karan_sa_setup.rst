@@ -75,7 +75,15 @@ Within the Command-Window set all target machines as trusted machines on the Kar
 
 Installing Karan
 =================
-Download the karan-installer_ . The link referenced is correct as at January 2018.
+.. note:: The karan installer is very large and might be best to use a VDI connection to download the file from http://10.21.64.50/images/Karan-1.6.0.0.exe and then map the download to you Guest VM.
+
+If you download the karan-installer_ locally to your Mac, you'll need to establish a cifs connetion
+
+.. code-block:: bash
+
+  % cifs://<karan-guest-vm-ipaddress>/c$ 
+  
+.. note:: The karan.exe link referenced is current and has been sourced as of January 2018.
 
 Upload the karan installer to the Karan Guest VM and launch the Karan installer...  When prompted, populate the fields as follows:
 
