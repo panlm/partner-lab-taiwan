@@ -59,19 +59,19 @@ After the Karan Guest VM has completed reboot, login via *Launch Console* or *Re
 
 .. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/karan/image17.png
 
-Within the  *PowerShell-Command-Window* run the following command to enable PowerShell remote execution - answer 'Y' when prompted.
+Within the  *PowerShell-Command-Window* run the following command to enable PowerShell remote execution - answer **'Y'** when prompted.
  
 .. code-block:: PowerShell
  
     PS C:\> enable-psremoting
    
-Within the  *PowerShell-Command-Window* run the following command to set the PowerShell Execution Policy - answer 'Y' when prompted.
+Within the  *PowerShell-Command-Window* run the following command to set the PowerShell Execution Policy - answer **'Y'** when prompted.
  
 .. code-block:: PowerShell
  
     PS C:\> set-executionpolicy remotesigned
    
-Within the *powershell-command-window* run the following command to set all target machines as trusted machines on the Karan host - answer 'Y' when prompted.
+Within the *powershell-command-window* run the following command to set all target machines as trusted machines on the Karan host - answer **'Y'** when prompted.
  
 .. code-block:: PowerShell
  
