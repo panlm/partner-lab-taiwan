@@ -83,7 +83,7 @@ Select **Calm** from the **Project** drop down menu and click **Proceed**.
   - Repeat for each Object.
   - Connect dependencies between Objects in the Workspace.
 
-Specify **Calm-Workshop-<INITIALS>** in the **Name this Blueprint** field.
+Specify **Calm-Intro-<INITIALS>** in the **Name this Blueprint** field.
 
 Click **Credentials >** :fa:`plus-circle` and fill out the following fields:
 
@@ -231,7 +231,7 @@ Launching the Blueprint
 
 From the toolbar at the top of the Blueprint Editor, click **Launch**.
 
-In the **Name of the Application** field, specify a unique name (e.g. Calm-Workshop-<INITIALS>-1).
+In the **Name of the Application** field, specify a unique name (e.g. Calm-Intro-*<INITIALS>*-1).
 
 .. note::
 
@@ -249,6 +249,7 @@ Note the status changes to **Running** after the Blueprint has been successfully
 
 Takeaways
 *********
+- By using different projects assigned to different clusters and users, administrators can ensure that workloads are deployed the right way each time.  For example, a developer can be a Project Admin for a dev/test project, so they have full control to deploy to their development clusters or to a cloud, while having Read Only access to production projects, allowing them access to logs but no ability to alter production workloads.
 - The Blueprint Editor provides a simple UI for modeling potentially complex applications.
 - Blueprints are tied to SSP Projects which can be used to enforce quotas and role based access control.
 - Having a Blueprint install and configure binaries means no longer creating specific images for individual applications. Instead the application can be modified through changes to the Blueprint or installation script, both of which can be stored in source code repositories.

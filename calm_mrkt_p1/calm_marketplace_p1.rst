@@ -8,140 +8,100 @@ Overview
 
 .. note:: Estimated time to complete: **50 MINUTES**
 
-In this lab participants will learn how to manage NuCalm Blueprints within the NuCalm Marketplace.  After this lab
-participants should know how to navigate and manage the Marketplace, publish blueprints to the market, deploy and/or clone
-blueprints from the marketplace.
-
+In this exercise you will learn how to manage Calm Blueprints within the Nutanix Marketplace. As part of the exercise you will publish a pre-configured Blueprint to the local Marketplace, clone the Blueprint from the Marketplace for editing, and launch the application.
 
 Getting Engaged with the Product Team
 =====================================
 - **Slack** - #calm
 - **Product Manager** - Jasnoor Gill, jasnoor.gill@nutanix.com
-- **Product Marketing Manager** - Gil Haberman, gil.haberman@nutanix.com
-- **Technical Marketing Engineer** - Chris Brown, christopher.brown@nutanix.com
+- **Product Marketing Manager** - Chris Brown, christopher.brown@nutanix.com
+- **Technical Marketing Engineer** - Brian Suhr, brian.suhr@nutanix.com
 - **Field Specialists** - Mark Lavi, mark.lavi@nutanix.com; Andy Schmid, andy.schmid@nutanix.com
 
+Publishing Blueprints from Marketplace Manager
+**********************************************
 
-Calm Glossary
-*************
+By default, Calm comes pre-seeded with validated Blueprints for multiple open source and enterprise applications. Marketplace Manager acts as a staging area for publishing default and user-created Blueprints to your local Marketplace. The Marketplace acts as an application store, providing end users with a catalog of available applications.
 
-- **Service:** One tier of a multiple tier application. This can be made up of 1 more VMs (or existing machines) that all have the same config and do the same thing
-- **Application (App):** A whole application with multiple parts that are all working towards the same thing (for example, a Web Application might be made up of an Apache Server, a MySQL database and a HAProxy Load balancer. Alone each service doesn’t do much, but as a whole they do what they’re supposed to)
-- **Macro:** A Calm construct that is evaluated before being ran on the target machine. Macros and Variables are denoted in the *@@{[name]}@@* format in the scripts.
+From **Prism Central > Apps**, select |image1| **Marketplace Manager** from the sidebar.
 
-Accessing and Navigating Calm
-*************************************
+Under **Marketplace Blueprints**, select **Mongo**.
 
-Getting Familiar with the Tools
-================================
-
-1. Connect to https://[HPOC-IP-ADDRESS]:9440
-2. Login to Prism using the credentials specified above (use these credentials unless specified otherwise throughout this lab
-3. Click on the Apps tab across the top of Prism
-
-Welcome to Calm! Upon accessing this page you will now notice a new ribbon along the left ­ this is used to navigate through Calm.
-
-You are, by default, dropped into the Applications tab and can see all the instances of applications that have been launched from a blueprint.
-
-**Tab review:**
-
-.. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image2.png
-
-Marketplace Control - Publish Blueprints
-************************************************
-
-Navigate the to Marketplace control by clicking (|image1|) icon located on the left tool ribbon.  This will open the Marketplace Control Center where pre-configured and self-authored blueprints are staged for publishing to the local Marketplace used for teaming and collaboration.
-
-In this exercise we'll walk through the steps to:
-
-1. Publish the pre-configured MongoDB Blueprint to the local Marketplace
-2. Clone the Blueprint from the Marketplace for editing.
-3. Edit the blueprint and launch as an application.
-
-Make sure *Marketplace Blueprints* is selected along the top of the Blueprint grid. Locate the **Mongo** blueprint within the grid and click the checkbox.
+Note the Blueprint description contains key information including licensing, hardware requirements, OS, supported platforms, and limitations. Click **Publish**.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image5.png
 
-Once the **Mongo** Blueprint has been selected, a catalog is displayed to the right of the grid containing a blueprint description, category, and project assignment. Insure both **Database** and **Calm** are selected for the categroy and project repsectively, and click *apply*.
-
-.. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image8.png
-
-Click **Publish**, and wait until the Blueprint status shows *published* in the grid as shown below.
+Wait for the Blueprint **Status** to appear as **Published**.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image9.png
 
-Marketplace - Clone Blueprint
-*************************************
+Under **Projects Shared With**, select the **Calm** Project and click **Apply**.
 
-Navigate to the Marketplace by clicking (|image5|) icon located on the left tool ribbon.  This will open the Marketplace. Once Marketplace is displayed, the **Mongo** Blueprint icon should be visible...
+.. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image8.png
+
+.. note::
+
+  If the **Projects Shared With** drop down menu is unavailable, refresh your browser.
+
+Cloning Blueprints from Marketplace
+***********************************
+
+From **Prism Central > Apps**, select |image5| **Marketplace** from the sidebar. All Blueprints published in Marketplace Manager are visible here.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image11.png
 
+Select the **Mongo** Blueprint and click **Clone**.
 
-Click the **Mongo** Blueprint Icon and then click **Clone** to copy the bluerpint to the Blueprint workspace for editing.
+.. note::
+
+  Selecting **Actions Included** for a Blueprint will display the actions that have been implemented for a given Blueprint, such as Create, Start, Stop, Delete, Update, Scale Up, Scale Down, etc.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image13.png
 
-Edit + Debug + Launch Cloned Blueprint
-**********************************************
+Fill out the following fields and click **Clone**:
 
-Navigate to the Blueprint workspace by clicking the (|image8|) icon located on the left tool ribbon.  This will open the Blueprint Workspace.
+- **Blueprint Name** - MongoDB-*<INITIALS>*
+- **Project** - Calm
+
+Editing Cloned Blueprint
+************************
+
+Select |image8| **Blueprints** from the sidebar and click your **MongoDB-<INITIALS>** Blueprint to open the Blueprint Editor.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image15.png
 
-Click the red exclamation point to see a list fo error desriptions.
+Click :fa:`exclamation-circle` to review the list of errors that would prevent a successful deployment of the Blueprint.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image16.png
 
-Fix each of the errors listed within the Blueprint as follows:
+Click **Credentials** and select **CENTOS (Default)**.
 
-Click on the **Credentials** button along the top of the Blueprint workspace. Update credentials as follows:
+Fill out the following fields and click **Back**:
 
-+-----------------------+---------------+
-| **Name**              | CENTOS        |
-+-----------------------+---------------+
-| **Username**          | root          |
-+-----------------------+---------------+
-| **Secret**            | Password      |
-+-----------------------+---------------+
-| **Password**          | nutanix/4u    |
-+-----------------------+---------------+
-| **Use as Default**    | Checked       |
-+-----------------------+---------------+
+- **Username** - root
+- **Secret** - Password
+- **Password** - nutanix/4u
 
-Make sure the VM image is set to:
+Select the **Mongo_ConfigSet** Service and make the following changes in the **Configuration Pane**:
 
-.. code-block:: bash
+- Update the **VM Configuration > Image** to **CentOS**.
+- Update the **Network Adapters > NIC** to **Secondary**.
+- Update the **Connection > Credential** to **CENTOS**.
 
-  Image .    : Centos
-  Disk Type .: DISK
-  Device Bus : SCSI
-  
-Scroll to the bottom and add the NIC **secondary** to the **Mongo** VM.
+Repeat these steps for the **Mongo_Router** and **Mongo_ReplicaSet** Services.
 
-Configure the **Credentials** to use **CENTOS** created earlier.
+Click **Save**.
 
-Make these changes to each of the **Mongo** services (i.e. VM, Package, etc...). 
-
-Save changes and launch the blueprint.
-
-Takeaways
-***********
-- Learned how to publish and clone a Calm blueprint from the marketplace.
-- Successfully made modifications to an existing Clam blueprint cloned from the market place so it could be deployed locally.
+Click **Launch**. Specify a unique **Application Name** (e.g. MongoDB-*<INITIALS>*-1) and click **Create**.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image17.png
 
+Takeaways
+***********
+- By using pre-seeded Blueprints from the Nutanix Marketplace, users can quickly try out new applications.
+- Marketplace Blueprints can be cloned and modified to suit a user's needs. For example, the pre-seeded LAMP Blueprint could be a starting point for a developer looking to swap PHP for a Go application server.
+- Marketplace Blueprints can use local disk images or automatically download associated disk images. Users can create their own keys and slipstream them into Blueprints (via cloud-init) to control access.
 
-.. |image0| image:: lab4/media/image2.png
 .. |image1| image:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image4.png
-.. |image2| image:: lab4/media/image5.png
-.. |image3| image:: lab4/media/image8.png
-.. |image4| image:: lab4/media/image9.png
 .. |image5| image:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image10.png
-.. |image6| image:: lab4/media/image11.png
-.. |image7| image:: lab4/media/image13.png
 .. |image8| image:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image14.png
-.. |image9| image:: lab4/media/image15.png
-.. |image10| image:: lab4/media/image16.png
-.. |image11| image:: lab4/media/image17.png
