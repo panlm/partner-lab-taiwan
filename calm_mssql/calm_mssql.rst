@@ -35,11 +35,11 @@ Certain prerequisites must be met before installation will succeed. The followin
 
 Blueprint:
 ***********
-Download the MSSQL Blueprint by clikcing the link provided below:
+Download the MSSQL Blueprint by clicking the link provided below:
 
 :download:`mssql2014.json <./blueprints/windowsMSSQL2014.json>`
 
-From Apps (NuCalm) within Prism Central, navigate to the Blueprint Workspace by clicking (|image1|) icon located on the left tool ribbon.  This will open the Blueprint Workspace where self-authored blueprints are staged for editing, publishing, and/or launching as Applications.  When the Blueprint grid appears, click the **Upload Blueprint** button located along the top of the Blueprint grid.
+From Apps (Calm) within Prism Central, navigate to the Blueprint Workspace by clicking (|image1|) icon located on the left tool ribbon.  This will open the Blueprint Workspace where self-authored blueprints are staged for editing, publishing, and/or launching as Applications.  When the Blueprint grid appears, click the **Upload Blueprint** button located along the top of the Blueprint grid.
 
 .. figure:: https://s3.amazonaws.com//s3.nutanixworkshops.com/calm/lab3/image2.png
 
@@ -47,7 +47,7 @@ Navigate to the blueprint file (i.e. *Troubleshooting.json*) recently downloaded
 
 A modal dialog will appear prompting for a name and project when saving. Complete the fileds as shown below and click **upload**. This will save the blueprint to the workspace.
 
-- **Name:** Calm Workshop Blueprint Debug
+- **Name:** mssql2014
 - **Project:** Calm
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab3/image3.png
@@ -63,12 +63,12 @@ Since Blureprints are exported as clear text, they do not retain credential info
   Secrete         : password
   Password        : nutanix/4u
   
-Once complete, click the **Back** buttoin located in the upper right, and then click **Save** along the top menu-bar.
+Once complete, click the **Back** button located in the upper right, and then click **Save** along the top menu-bar.
 
 
 Configure Blueprint Variables
 =============================
-The **windowsMSSQL2014** blueprint uses service variables to configure pre and post runtime behavior.  The blueprint configuration variables can be accessed by clicking on the **Service** tab of blueprint located to the right of blueprint workspace.
+The **mssql2014** blueprint uses service variables to configure pre and post runtime behavior.  The blueprint configuration variables can be accessed by clicking on the **Service** tab of blueprint located to the right of blueprint workspace.
 
 +-----------------------+----------------------------------------------------------------------+
 |**Variable**           |**Description**                                                       |
@@ -106,7 +106,7 @@ Once complete, click **Save** located along the top menu-bar.
 
 Guest Customization
 ===================
-The **windowsMSSQL2014** blueprint uses **Guest Custiomizations** to configure runtime behavior.  
+The **mssqlL2014** blueprint uses **Guest Custiomizations** to configure runtime behavior.  
 
 Guest Customization can be  accessed by clicking on the **VM** tab of blueprint located to the right of blueprint workspace.
 
@@ -158,7 +158,7 @@ Follow the steps below to assign the correct privileges on the karan server:
 
 Launch Blueprint
 ================
-Once the blueprint has been successfully updated and saved, click the (|image5|) button to lanuch the Blueprint.  Name the application with *Calm Workshop Troubleshooting*.
+Once the blueprint has been successfully updated and saved, click the (|image5|) button to lanuch the Blueprint.  Name the application with *mssql2014*.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab3/image6.png
 
@@ -168,9 +168,9 @@ Once the application has been launched, the Application Management Dialog will a
 
 Takeaways
 ***********
-- Downloaded and Imported an existing blueprint ro the *Blueprint Workspace*.
-- Learned to se variables changing blueprint behavior to source imnages and define credentials.
-- Learned how to setup and configure a Karan proxy server for exeucting powershell to provision windows servers.
+- Downloaded and Imported an existing Windows MSSQL blueprint ro the *Blueprint Workspace*.
+- Learned to set variables that change blueprint behavior to source imnages and define credentials.
+- Learned how to setup and configure a Karan proxy server for executing powershell to provision windows servers.
 
 .. _karan-setup: ../karan/karan_sa_setup.html
 
