@@ -43,7 +43,7 @@ From Apps (Calm) within Prism Central, navigate to the Blueprint Workspace by cl
 
 .. figure:: https://s3.amazonaws.com//s3.nutanixworkshops.com/calm/lab3/image2.png
 
-Navigate to the blueprint file (i.e. *Troubleshooting.json*) recently downloaded and select it by clicking on the file.
+Navigate to the blueprint file (i.e. *mssql2014.json*) recently downloaded and select it by clicking on the file.
 
 A modal dialog will appear prompting for a name and project when saving. Complete the fileds as shown below and click **upload**. This will save the blueprint to the workspace.
 
@@ -64,7 +64,6 @@ Since Blureprints are exported as clear text, they do not retain credential info
   Password        : nutanix/4u
   
 Once complete, click the **Back** button located in the upper right, and then click **Save** along the top menu-bar.
-
 
 Configure Blueprint Variables
 =============================
@@ -104,13 +103,48 @@ The following Blueprint variables should be configured as follows:
 
 Once complete, click **Save** located along the top menu-bar.
 
+VM Creation
+===========
+A Windows Server VM is required to host the MS SQL 2014 Database instance.  Set the following substrate name, cloud, and os fields using the following values:
+
+.. clode-block:: bash
+
+  Name       : MSSQL2014
+  Cloud      : Nutanix
+  OS         : Windows
+
+
+Configure a VDISK using the following parameters:
+
+.. code-block:: bash
+
+  Disk Type .: DISK
+  Device Bus : SCSI
+  Size       : 100GB
+
+Configure a Guest VM using the following parameters:
+
+.. code-block:: bash
+
+  VM Name .  : @@{calm_application_name}@@
+  Image .    : Windows2012
+  Disk Type .: DISK
+  Device Bus : SCSI
+  vCPU .     : 2
+  Core/vCPU .: 2
+  Memory     : 4 GB
+
+Scroll to the bottom and add the NIC **secondary** to the Guest VM.
+
+Assign a *Credential* to the Guest VM using the **WINDOWS** credential created earlier.
+
 Guest Customization
 ===================
-The **mssqlL2014** blueprint uses **Guest Custiomizations** to configure runtime behavior.  
+The **mssql2014** blueprint uses **Guest Custiomizations** to configure runtime behavior.  
 
-Guest Customization can be  accessed by clicking on the **VM** tab of blueprint located to the right of blueprint workspace.
+Guest Customization can be accessed as part of the **VM Configuration**:
 
-- Click the **Guest Customization** Check-Box to access the script window.
+- Click the **Guest Customization** Check-Box just below the Guest VM settings to access the script window.
 - Select the **Sysprep** radio button.
 - Copy the contents from unattend.xml_ and paste it to the **Script** window.
 
