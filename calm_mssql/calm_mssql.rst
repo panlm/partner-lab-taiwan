@@ -174,13 +174,13 @@ Enable CredSSP
 
 To Enable CredSSP on the Karan Guest VM, please follow steps below:
 
-Using a *remote-desktop*, or *console* connection to the Karan Guest VM open a *PowerShell-Command* window and run the following command to enable CredSSP as a client role and allow Karan host to Delegate credentials to all computers ( Wild card mask "*"):
+Using a *remote-desktop* session, or *console* connection to the Karan Guest VM open a *PowerShell-Command* window and run the following command to enable CredSSP as a client role and allow Karan Guest VM to delegate credentials to all computers (Wild card mask "*"):
 
 .. code-block:: bash
 
   PS C:>\ Enable-WSManCredSSP -Role Client -DelegateComputer *
   
-Open a *command-prompt* window and run the following command:
+Open a *Command-Prompt* window and run the following command:
 
 .. code-block:: bash
 
@@ -197,7 +197,7 @@ Privileges:
 
 .. note:: The instructions in this section are applicable to the karan Guest VM and required for SQL Server deployments.
 
-Follow the steps below to assign the correct privileges for user: *Administrator* on the karan Guest VM:
+Using a *remote-desktop* session, or *console* connection to the Karan Guest VM, follow the steps below to assign the correct privileges for user: *Administrator*:
 
 - Idenitfy the user account that the Karan service is running as.  In this lab the user account is: **Administrator**. 
 - From the Start menu, click on **Administrative Tools**, and then click **Local Security Policy**.
