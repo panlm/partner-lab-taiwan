@@ -170,6 +170,23 @@ Verify the Guest VM **CONNECTION** settings are as follows:
   
 If there were any changes, click **Save** located along the top menu-bar.
 
+Package Settings
+=============================
+Verify the Service **Package** settings are as follows:
+
+.. code-block:: bash
+
+  Name        : MSSQLPackage
+  
+Verify **INSTALL** settings:
+
+.. code-block:: bash
+
+  Script Type : Shell
+  Credential  : WINDOWS
+  Script      : Enable-WSManCredSSP -Role Server -Force
+
+
 Enable CredSSP
 ==============
 
