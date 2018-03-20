@@ -121,7 +121,7 @@ Click the Project name associated with or assigned to with Blueprint during publ
 
 To assign a user and a network to the Project, click the **Environment** action located along the top tool-bar of the **Project Manager**.  Scroll through the environment settings and find **Network** and **Credentials** and configure them as you did with the blueprint.
 
-- **Network:**  *bootcamp*
+- **Network:**  *secondary*
 - **Credentials**: *user: root*, *password: nutanix/4u*
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab8/image27.png
