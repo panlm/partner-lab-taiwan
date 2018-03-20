@@ -50,7 +50,7 @@ A modal dialog will appear prompting for a name and project when saving. Complet
 - **Name:** mssql2014
 - **Project:** Calm
 
-.. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab3/image3.png
+.. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/calm_mssql/image1.png
 
 Assign Credential
 =================
