@@ -2,6 +2,7 @@
 Calm Blueprint (MSSQL-2014)
 ***************************
 
+
 .. note:: IMPORTANT! This blueprint is for Lab purposes only. Do not put this into production without modifying it to meet your organizations requirements, Nutanix Best Practices, and Microsoft SQL Best Practices.
 
 Overview:
