@@ -93,7 +93,7 @@ Click the red exclamation point to see a list fo error desriptions.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image16.png
 
-Fix each of the errors listed within the Blueprint.  Once all the errors have been corrected, make additional changes to each of the **Mongo** services (i.e. VM, Package, etc...) and launch the blueprint.  Continue to make chnages until the the Blueprint successfully deploys.
+Fix each of the errors listed within the Blueprint.  Once all the errors have been corrected, make additional changes to each of the **Mongo** services (i.e. VM, Package, etc...).  Insure the **Centos** disk image is selected for each VM in each Service. Save all changes and launch the blueprint.  Continue to make chnages until the the Blueprint successfully deploys.
 
 Takeaways
 ***********
