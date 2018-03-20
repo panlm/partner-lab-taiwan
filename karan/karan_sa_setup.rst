@@ -53,27 +53,27 @@ Login to the Karan Guest VM via *Launch Console* or *Remote Desktop*.  Upon succ
 
 .. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/karan/image15.png
 
-- Disabke the Karan Guest VM firewall.
+- Disable the Karan Guest VM firewall.
 
-After the Karan Guest VM has completed reboot, login via *Launch Console* or *Remote Desktop*.  Upon successful log-in open a *Command-Prompt* window.
+After the Karan Guest VM has completed reboot, login via *Launch Console* or *Remote Desktop*.  Upon successful log-in open a *PowerShell-Command-Window*.
 
-Within the Command-Prompt, Enable PowerShell remote execution:
+Within the  *PowerShell-Command-Window* enable PowerShell remote execution and answer 'Y' to prompts.
  
-.. code-block:: bash
+.. code-block:: PowerShell
  
-    c:\> enable-psremoting
+    PS C:\> enable-psremoting
    
-Within the Command-Prompt set the PowerShell Execution Policy:
+Within the  *PowerShell-Command-Window* set the PowerShell Execution Policy and answer 'Y' to prompts.
  
 .. code-block:: bash
  
-    c:\> set-executionpolicy remotesigned
+    PS C:\> set-executionpolicy remotesigned
    
-Within the Command-Prompt set all target machines as trusted machines on the Karan host:
+Within the *powershell-command-window* set all target machines as trusted machines on the Karan host - answer 'Y' to prompts.
  
 .. code-block:: bash
  
-    c:\> set-item wsman:\localhost\Client\TrustedHosts -Value *
+    PS C:\> set-item wsman:\localhost\Client\TrustedHosts -Value *
 
 Installing Karan
 =================
@@ -137,14 +137,7 @@ Upload the karan installer to the Karan Guest VM and launch the Karan installer.
 
 
 Configuring Windows Target VMs
-============================== 
-For Karan to have access to the Windows target/client VMs, the following commands must be run. In most cases, these commands would be run as part of preparing a Windows image for use with Sysprep.
- 
-.. code-block:: bash
- 
-    c:\> enable-psremoting
-    c:\> set-executionpolicy remotesigned
-    
+==============================     
 In order for MSSQL to work with Karan you'll be required to make the following changes:
 
 1. From the Start menu, point to Administrative Tools, and then click Local Security Policy.
@@ -158,7 +151,7 @@ In order for MSSQL to work with Karan you'll be required to make the following c
 
 Takeaways
 *********
-Congratulations you have successfully configured a guest VM and Karan!
+- Congratulations you have successfully configured a guest VM and Karan!
 
 .. _karan-installer: http://10.21.64.50/images/Karan-1.6.0.0.exe
 
