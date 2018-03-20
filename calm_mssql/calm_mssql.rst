@@ -179,7 +179,7 @@ To Enable CredSSP on the Karan Guest VM, please follow steps below:
 
 Using a *remote-desktop* session, or *console* connection to the Karan Guest VM open a *PowerShell-Command* window and run the following command to enable CredSSP as a client role and allow Karan Guest VM to delegate credentials to all computers (Wild card mask "*"):
 
-.. code-block:: bash
+.. code-block:: powershell
 
   PS C:>\ Enable-WSManCredSSP -Role Client -DelegateComputer *
   
