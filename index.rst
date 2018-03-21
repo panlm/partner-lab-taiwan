@@ -26,9 +26,9 @@
   :name: _opt-labs
   :hidden:
 
-  citrix/index
-  .. karan/karan_sa_setup
+  karan/karan_sa_setup
   calm_mssql/calm_mssql
+  citrix/index
   git/gitlab
   hycu/index
   docker/calm_workshop_lab7_docker

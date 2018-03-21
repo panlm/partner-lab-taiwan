@@ -1,71 +1,67 @@
-***************************
-Calm Blueprint (MSSQL-2014)
-***************************
+.. _calm_mssql_lab:
 
-
-.. note:: IMPORTANT! This blueprint is for Lab purposes only. Do not put this into production without modifying it to meet your organizations requirements, Nutanix Best Practices, and Microsoft SQL Best Practices.
+***************************
+Calm Blueprint (MSSQL 2014)
+***************************
 
 Overview:
 *********
 
-.. note:: Estimated time to complete: **20 MINUTES**
+.. note::
 
-In this lab participants will walk through importing and deploying an MS Windows Server 2012 R2, and an instance of MS SQL Database - 2014.
+  This lab should be completed **AFTER** the :ref:`karan_lab` lab.
 
+  Estimated time to complete: **20 MINUTES**
+
+  **IMPORTANT!** This Blueprint is for test purposes only. Do not put this into production without modifying it to meet your organizations requirements, Nutanix Best Practices, and Microsoft SQL Best Practices.
+
+In this exercise you will use Calm to import and deploy a Blueprint that installs a Microsoft SQL Server 2014 Instance on a Windows Server 2012 R2 VM. This exercise serves as an example of the extensibility of Calm for automating and orchestrating Windows based applications.
 
 Getting Engaged with the Product Team
 =====================================
 - **Slack** - #calm
 - **Product Manager** - Jasnoor Gill, jasnoor.gill@nutanix.com
-- **Product Marketing Manager** - Gil Haberman, gil.haberman@nutanix.com
-- **Technical Marketing Engineer** - Chris Brown, christopher.brown@nutanix.com
+- **Product Marketing Manager** - Chris Brown, christopher.brown@nutanix.com
+- **Technical Marketing Engineer** - Brian Suhr, brian.suhr@nutanix.com
 - **Field Specialists** - Mark Lavi, mark.lavi@nutanix.com; Andy Schmid, andy.schmid@nutanix.com
 
-Prerequisites:
-**************
-Certain prerequisites must be met before installation will succeed. The following must be configured:
+Uploading the Blueprint
+***********************
+Download the provided :download:`MSSQL Blueprint<./blueprints/windowsMSSQL2014.json>`.
 
-- Karan Guest VM **MUST** be configured and Installed: karan-setup_
+From **Prism Central > Apps**, select |image1| **Blueprints** from the sidebar.
 
-
-Blueprint:
-***********
-Download the MSSQL Blueprint by clicking the link provided below:
-
-:download:`mssql2014.json <./blueprints/windowsMSSQL2014.json>`
-
-From Apps (Calm) within Prism Central, navigate to the Blueprint Workspace by clicking (|image1|) icon located on the left tool ribbon.  This will open the Blueprint Workspace where self-authored blueprints are staged for editing, publishing, and/or launching as Applications.  When the Blueprint grid appears, click the **Upload Blueprint** button located along the top of the Blueprint grid.
+Click **Upload Blueprint**.
 
 .. figure:: https://s3.amazonaws.com//s3.nutanixworkshops.com/calm/lab3/image2.png
 
-Navigate to the blueprint file (i.e. *mssql2014.json*) recently downloaded and select it by clicking on the file.
+Select the downloaded MSSQL Blueprint (e.g. **windowsMSSQL2014.json**) and click **Open**.
 
-A modal dialog will appear prompting for a name and project when saving. Complete the fileds as shown below and click **upload**. This will save the blueprint to the workspace.
+Fill out the following fields and click **Upload**:
 
-- **Name:** mssql2014
-- **Project:** Calm
+- **Blueprint Name** - mssql2014-*<INITIALS>*
+- **Project** - Calm
 
-.. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/calm_mssql/image1.png
+Updating the Credential
+***********************
+Blueprints are exported as clear text and subsequently do not retain credential details, as this information could be used maliciously.
 
-Assign Credential
-=================
-Since Blureprints are exported as clear text, they do not retain credential information that could potentially be used maliciously.  You'll be required to set the **Credentials**.  set the creddentials as follows:
+Click **Credentials** and select **WINDOWS (Default)**.
 
-.. code-block:: bash
+Fill out the following fields and click **Back**:
 
-  Credential Name : WINDOWS
-  Username        : ntnxlab.local\administrator
-  Secrete         : password
-  Password        : nutanix/4u
-  
-Once complete, click the **Back** button located in the upper right, and then click **Save** along the top menu-bar.
+- **Username** - ntnxlab.local\\administrator
+- **Secret** - Password
+- **Password** - nutanix/4u
 
-Configure Blueprint Variables
-=============================
-The **mssql2014** blueprint uses service variables to configure pre and post runtime behavior.  The blueprint configuration variables can be accessed by clicking on the **Service** tab of blueprint located to the right of blueprint workspace.
+Click **Save** to save the updated Blueprint.
+
+Configuring Service Variables
+*****************************
+The Blueprint uses the following Service Variables to configure pre-runtime and post-runtime behavior:
 
 +-----------------------+----------------------------------------------------------------------+
-|**Variable**           |**Description**                                                       |
+|**Variable Name**      |**Description**                                                       |
 +-----------------------+----------------------------------------------------------------------+
 |install_location       |A location directive (internal/external) definng if the image is      |
 |                       |accessible internally (fiel share), or externally                     |
@@ -84,175 +80,158 @@ The **mssql2014** blueprint uses service variables to configure pre and post run
 |mapped_drive           |The logical drive designator if using a mapped location/drive.        |
 +-----------------------+----------------------------------------------------------------------+
 
-The following Blueprint variables should be configured as follows: 
+Select the **MSSQL** Service from your **Workspace**.
 
-.. code-block:: bash
+In the **Configuration Pane**, select the **Service** tab.
 
-  install_location     : internal
-  file_share_user      : administrator
-  file_share_password  : nutanix/4u
-  file_server_ip       : 10.21.66.59
-  file_share_name      : sql
-  sql_iso_path         : SQLServer2014SP2-FullSlipstream-x64-ENU.iso
-  mapped_drive         : z
+Verify the Variables match the following values and click **Save**:
 
-Once complete, click **Save** located along the top menu-bar.
+- **install_location** - internal
+- **file_share_user** - administrator
+- **file_share_password** - nutanix/4u
+- **file_server_ip** - 10.21.66.59
+- **file_share_name** - sql
+- **sql_iso_path** - SQLServer2014SP2-FullSlipstream-x64-ENU.iso
+- **mapped_drive** - z
 
-VM Creation
-===========
-A Windows Server VM is required to host the MS SQL 2014 Database instance. VM settings and configurations can be accomplished by clicking on the VM tab of the service.  Set the following *Substrate Name*, *Cloud*, and *OS* fields using the following values:
+Configuring the VM
+******************
 
-.. code-block:: bash
+Select the **MSSQL** Service from your **Workspace**.
 
-  Name        : MSSQL2014
-  Cloud       : Nutanix
-  OS          : Windows
-  
-  
-.. note:: When deploying or working with Windows VMs deployed by Calm, you'll be required to set the operating system to Windows, as opposed to Linux (default) within the blueprint. 
+In the **Configuration Pane**, select the **VM** tab.
 
-VDISK Settings
-===============
-Add a **VDISK** by clicking on the **(+)** to expand the **VDISKS** configuration window. Configure a **VDISK** using the following parameters:
+Verify the following fields:
 
-.. code-block:: bash
+- **Service Name** - MSSQL
+- **Name** - MSSQL2014
+- **Cloud** - Nutanix
+- **OS** - Windows
+- **VM Name** - @@{calm_application_name}@@
 
-  Disk Type   : DISK
-  Device Bus  : SCSI
-  Size        : 100GB
+Fill out the following fields:
 
-Guest VM Image Settings
-=======================
-Add an **Image** by clicking on the **(+)** to expand the **IMAGES** configuration window.  Configure the **Guest VM** using the following parameters:
+- Select :fa:`plus-circle` under **vDisks**
 
-.. code-block:: bash
+  - **Device Type** - Disk
+  - **Device** Bus - SCSI
+  - **Size (GiB)** - 100
 
-  VM Name     : @@{calm_application_name}@@
-  Image       : Windows2012
-  Disk Type   : DISK
-  Device Bus  : SCSI
-  vCPU        : 2
-  Core/vCPU   : 2
-  Memory      : 4 GB
+- **vCPUs** - 2
+- **Cores per vCPU** - 2
+- **Memory (GiB)** - 4
+- Select :fa:`plus-circle` under **Images**
 
-Guest Customization
-===================
-The **mssql2014** blueprint uses **Guest Custiomizations** to configure runtime behavior.  
+  - **Image** - Windows2012
+  - **Device Type** - Disk
+  - **Device** Bus - SCSI
+  - Select **Bootable**
 
-Guest Customization can be accessed as part of the **VM Configuration**:
+- Select **Guest Customization**
 
-- Click the **Guest Customization** Check-Box just below the Guest VM settings to access the script window.
-- Select the **Sysprep** radio button.
-- Copy the contents from unattend.xml_ and paste it to the **Script** window.
+  - **Type** - Sysprep
+  - **Script** - Copy the contents of unattend.xml_ and paste into the **Script** field.
 
-Once complete, click **Save** located along the top menu-bar.
+  .. note:: The sysprep unattend.xml script automates the sysprep process and automatically joins the VM to the ntnxlab.local domain.
 
-Guest VM Network Settings
-==========================
-Verify the Guest VM **NETWORK ADAPTERS (NICS)** settings are as follows:
+- Select :fa:`plus-circle` under **Network Adapters (NICs)**
 
-.. code-block:: bash
+  - **NIC** - Secondary
+- **Connection**
 
-  NIC  : secondary
+  - **Crendential** - WINDOWS
+  - **Address** - @@{platform.status.resources.nic_list[0].ip_endpoint_list[0].ip}@@
+  - **Connection Type** - Windows (PowerShell)
+  - **Connection Port** - 5985
+  - **Timeout (secs)** - 600
 
-Guest VM Connection Settings
-=============================
-Verify the Guest VM **CONNECTION** settings are as follows:
+Click **Save**.
 
-.. code-block:: bash
+Scroll to the top of the **Configuration Panel**, click **Package**.
 
-  Check log-in upon create   : checked
-  Credential                 : WINDOWS
-  Address                    : @@{platform.status.resources.nic_list[0].ip_endpoint_list[0].ip}@@
-  Connection Type            : Windows (Powershell)
-  Connection Port            : 5985
-  Timeout (secs)             : 600
-  
-Click **Save** located along the top menu-bar If there were any changes.
+Configuring the Package
+***********************
 
-Package Settings
-=============================
-Verify the Service **Package** settings are as follows:
+Scroll to the top of the **Configuration Panel**, and select the **Package** tab.
 
-.. code-block:: bash
+Verify the following fields:
 
-  Name        : MSSQLPackage
-  
-Verify **INSTALL** settings:
+- **Name** - MSSQLPackage
+- **Install Script Type** - Shell
+- **Install Credential** - WINDOWS
+- **Install Script** - ``Enable-WSManCredSSP -Role Server -Force``
 
-.. code-block:: bash
+If any changes were required, click **Save**.
 
-  Script Type : Shell
-  Credential  : WINDOWS
-  Script      : Enable-WSManCredSSP -Role Server -Force
+Exploring the Create Action
+***************************
 
-Click **Save** located along the top menu-bar If there were any changes.
+In addition to the Package scripts used to install or uninstall a Service, individual Services within a Calm Blueprint can contain Actions consisting of multiple Tasks and Service Actions.
 
-Enable CredSSP
-==============
+Tasks allow you to set variable values, execute shell scripts on a remote VM, or execute an EScript. EScripts are specialized Python scripts that run locally within Calm and are helpful for use cases such as making REST calls directly to a web service.
 
-.. note:: The instructions in this section are applicable to the karan Guest VM and required for SQL Server deployments.
+Service Actions allow you to Start, Stop, or Delete the VM associated with a Service. These Actions are typically used in lifecycle operations such as scaling up or scaling down an application.
 
-To Enable CredSSP on the Karan Guest VM, please follow steps below:
+In **Application Overview**, select **Services > MSSQL > Create**.
 
-Using a *remote-desktop* session, or *console* connection to the Karan Guest VM open a *PowerShell-Command* window and run the following command to enable CredSSP as a client role and allow Karan Guest VM to delegate credentials to all computers (Wild card mask "*"):
+Select the **InitializeDisk** task and review the PowerShell script in the **Configuration Pane**.
 
-.. code-block:: powershell
+.. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/calm_mssql/image3.png
 
-  PS C:>\ Enable-WSManCredSSP -Role Client -DelegateComputer *
-  
-Open a *Command-Prompt* window and run the following command:
+Select the **InstallMSSQL** task and review the PowerShell script in the **Configuration Pane**.
 
-.. code-block:: bash
+Configuring Priveleges
+**********************
 
-  C:>\ gpedit.msc
-   
-In the group policy editor:
+.. note::
 
-- Navigate to **Computer-configuration -> administrative templates -> system -> credential-delegation**.
-- Double click on **Allow Delgating Fresh Credentials with NTLM-only server authentication**.
-- Select the **Enable** radio button.
-- Click on the **show** button.
-- In the value field add  **WSMAN/***. This allows delegate fresh credentials to **WSMAN** running in any remote computer
-  
-Privileges:
-============
+  To successfully perform a remote SQL Server installation the user account used to run the Karan Service (e.g. NTNXLAB\\Administrator) must be granted SE_INCREASE_QUOTA_NAME and SE_ASSIGNPRIMARYTOKEN_NAME permissions on the Karan VM.
 
-.. note:: The instructions in this section are applicable to the karan Guest VM and required for SQL Server deployments.
+  In a production environment with multiple Karan VMs these permissions could be automatically configured via Domain Group Policy.
 
-Using a *remote-desktop* session, or *console* connection to the Karan Guest VM, follow the steps below to assign the correct privileges for user: *Administrator*:
+From the **Karan** VM console, open **Control Panel > Administrative Tools > Local Security Policy**.
 
-- Idenitfy the user account that the Karan service is running as.  In this lab the user account is: **Administrator**. 
-- From the Start menu, click on **Administrative Tools**, and then click **Local Security Policy**.
-- In the **Local Security Settings** dialog box, double-click **Local Policies**, and then double-click **User Rights Assignment**.
-- In the details pane, double-click **Adjust memory quotas for a process**. This sets the **SE_INCREASE_QUOTA_NAME** user right.
-- Click **Add User or Group**, and, in the **Enter the object names to select** box, type the user **Administrator** and then click **OK**.
-- Click OK again, and then, in the details pane, double-click **Replace a process level token**. This sets the  **SE_ASSIGNPRIMARYTOKEN_NAME** user right.
-- Click **Add User or Group**, and, in the **Enter the object names to select** box, type the user **Administrator** and then click **OK**.
-- Close **Local Security Policy** and **Administrative Tools** windows.
-- Restart the Karan service.
+Navigate to **Local Policies > User Rights Assignment**.
 
-.. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/karan/image16.png
+Double-click the **Adjust memory quotas for a process** Policy.
 
-Launch Blueprint
-================
-Once the *mssql2014* blueprint and Karan Guest VM settings have been successfully configured and saved, click the (|image5|) button to **lanuch** the Blueprint.  Name the application with *mssql2014*.
+Click **Add User or Group**.
 
-.. note:: When performing deployments on a community/team cluster, append your initials to the deployment name for traceability.
+Specify **Administrator** in the **Enter the object names to select** field, and click **OK > OK**.
 
-.. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/calm_mssql/image2.png
+Double-click the **Replace a process level token** Policy.
 
-Click **Create** to launch the application.
+Click **Add User or Group**.
 
-Once the application has been launched, the Application Management Dialog will appear showing the state of the Application.  Click the *Audit* button in the tool-bar located along the top of the Application Management Dialog to monitor or audit the provisioning progress of the application.
+Specify **Administrator** in the **Enter the object names to select** field, and click **OK > OK**.
+
+.. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/calm_mssql/image4.png
+
+Open **Control Panel > Administrative Tools > Services**. Select the **karan_1** service and click **Restart**.
+
+Launching the Blueprint
+***********************
+
+From the toolbar at the top of the Blueprint Editor, click **Launch**.
+
+In the **Name of the Application** field, specify a unique name including your initials (e.g. Calm-MSSQL-*<INITIALS>*-1).
+
+Click **Create**.
+
+You will be taken directly to the **Applications** page to monitor the provisioning of your Blueprint.
+
+Select **Audit > Create** to view the progress of your application. Once available, select **InstallMSSQL** to view the real time output of the installation script.
+
+Note the status changes to **Running** after the Blueprint has been successfully provisioned.
 
 Takeaways
 ***********
-- Downloaded and Imported an existing Windows MSSQL blueprint ro the *Blueprint Workspace*.
-- Learned to set variables that change blueprint behavior to source imnages and define credentials.
-- Learned how to setup and configure a Karan proxy server for executing powershell to provision windows servers.
 
-.. _karan-setup: ../karan/karan_sa_setup.html
+- Blueprints can be exported as JSON files.
+- Blueprints can be easily shared without sharing sensitive data such as credentials and secrets.
+- Calm is capable of automating and orchestrating Windows workloads with PowerShell and uses Karan to satisfy Kerberos authentication requirements.
+- Tasks can be used to structure even complex workflows for workload automation.
+- Variables can be defined globally within a Blueprint or specific to a given Service.
 
 .. |image1| image:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab3/image1.png
 .. |image5| image:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab3/image5.png
