@@ -26,7 +26,7 @@ Getting Engaged with the Product Team
 Deploying Xtract for VMs
 ++++++++++++++++++++++++
 
-In **Prism > VM > Table**, click **+ Create VM**.
+In **Prism Central > Explore > VMs**, click **Create VM**.
 
 Fill out the following fields and click **Save**:
 
@@ -52,7 +52,7 @@ Fill out the following fields and click **Save**:
 .. literalinclude:: xtract-vm-cloudinit-script
    :caption: Xtract-VM Custom Script
 
-Select the **Xtract-VM** VM and click **Power On**.
+Select the **Xtract-VM** VM and click **Actions > Power on**.
 
 Open \https://<*XTRACT-VM-IP*>/ in a browser to access the **Xtract for VMs** dashboard.
 

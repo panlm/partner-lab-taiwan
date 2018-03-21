@@ -26,7 +26,7 @@ Getting Engaged with the Product Team
 Deploying Xtract for DBs
 ++++++++++++++++++++++++
 
-In **Prism > VM > Table**, click **+ Create VM**.
+In **Prism Central > Explore > VMs**, click **Create VM**.
 
 Fill out the following fields and click **Save**:
 
@@ -46,7 +46,7 @@ Fill out the following fields and click **Save**:
   - **IP Address** - *10.21.XX.43*
   - Select **Add**
 
-Select the **Xtract-DB** VM and click **Power On**.
+Select the **Xtract-VM** VM and click **Actions > Power on**.
 
 Open \https://<*XTRACT-DB-VM-IP*>/ in a browser to access **Xtract for DBs**.
 
@@ -137,7 +137,7 @@ Preparing Target Template
 
 In order to migrate the database we need to create a master VM on the target cluster to which the database can be migrated. Xtract can use a single template VM on the target cluster to deploy VMs for multiple projects/instances.
 
-In **Prism > VM > Table**, click **+ Create VM**.
+In **Prism Central > Explore > VMs**, click **Create VM**.
 
 Fill out the following fields and click **Save**:
 
@@ -156,7 +156,7 @@ Fill out the following fields and click **Save**:
   - **VLAN Name** - Primary
   - Select **Add**
 
-Select the **Xtract-DB-2012r2-Master** VM and click **Power On**.
+Select the **Xtract-VM** VM and click **Actions > Power on**.
 
 Once the VM has started, click **Launch Console**.
 
