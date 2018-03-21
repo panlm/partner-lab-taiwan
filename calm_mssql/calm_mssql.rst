@@ -218,17 +218,17 @@ In the group policy editor:
 Privileges:
 ============
 
-.. note:: The instructions in this section are applicable to the karan Guest VM and required for SQL Server deployments.
+.. note:: The instructions in this section are applicable to the karan Guest VM and required for SQL Server deployments by setting **SE_INCREASE_QUOTA_NAME** and **SE_ASSIGNPRIMARYTOKEN_NAME**.
 
 Using a *remote-desktop* session, or *console* connection to the Karan Guest VM, follow the steps below to assign the correct privileges for user: *Administrator*:
 
 - Idenitfy the user account that the Karan service is running as.  In this lab the user account is: **Administrator**. 
 - From the Start menu, click on **Administrative Tools**, and then click **Local Security Policy**.
 - In the **Local Security Settings** dialog box, double-click **Local Policies**, and then double-click **User Rights Assignment**.
-- In the details pane, double-click **Adjust memory quotas for a process**. This sets the **SE_INCREASE_QUOTA_NAME** user right.
-- Click **Add User or Group**, and, in the **Enter the object names to select** box, type the user **Administrator** and then click **OK**.
-- Click OK again, and then, in the details pane, double-click **Replace a process level token**. This sets the  **SE_ASSIGNPRIMARYTOKEN_NAME** user right.
-- Click **Add User or Group**, and, in the **Enter the object names to select** box, type the user **Administrator** and then click **OK**.
+- In the details pane, double-click **Adjust memory quotas for a process**. 
+- To set the **SE_INCREASE_QUOTA_NAME** user right, click **Add User or Group**, and, in the **Enter the object names to select** box, type the user **Administrator** and then click **OK**.
+- Click OK again, and then, in the details pane, double-click **Replace a process level token**. 
+- To set the **SE_ASSIGNPRIMARYTOKEN_NAME** user right, click **Add User or Group**, and, in the **Enter the object names to select** box, type the user **Administrator** and then click **OK**.
 - Close **Local Security Policy** and **Administrative Tools** windows.
 - Restart the Karan service.
 
