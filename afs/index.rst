@@ -199,28 +199,26 @@ Fill out the following fields and click **Create**:
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/afs/23.png
 
-In **Prism > VM**, click **+ Create VM** and fill out the following fields:
+In **Prism > VM > Table**, click **+ Create VM**.
+
+Fill out the following fields and click **Save**:
 
 - **Name** - NFS-Client
 - **Description** - CentOS VM for testing AFS NFS export
-- **vCPU** - 2
+- **vCPU(s)** - 2
 - **Number of Cores per vCPU** - 1
-- **Memory** - 4
+- **Memory** - 4 GiB
+- Select **+ Add New Disk**
 
-Click **+ Add New Disk**, fill out the following fields, and click **Add**:
+  - **Operation** - Clone from Image Service
+  - **Image** - CentOS
+  - Select **Add**
+- Select **Add New NIC**
 
-- **Type** - DISK
-- **Operation** - Clone from Image Service
-- **Bus Type** - SCSI
-- **Image** - *<CentOS Disk Image>*
+  - **VLAN Name** - Secondary
+  - Select **Add**
 
-Click **Add New NIC**. fill out the following fields, and click **Add**:
-
-- **VLAN Name** - Secondary
-
-Click **Save**.
-
-In **Prism > VM > Table**, select the **NFS-Client** VM and click **Power on**.
+Select the **NFS-Client** VM and click **Power on**.
 
 Once the VM has started, click **Launch Console** and log in as **root** or connect via SSH.
 

@@ -115,32 +115,26 @@ Creating the Gold Image
 Creating the VM
 ...............
 
-In **Prism > VM**, click **+ Create VM** and fill out the following fields:
+In **Prism > VM > Table**, click **+ Create VM**.
 
-  - **Name** - W10-Gold
-  - **Description** - Windows 10 x64 XenDesktop Gold Image
-  - **vCPU** - 2
-  - **Number of Cores per vCPU** - 1
-  - **Memory** - 4
+Fill out the following fields and click **Save**:
 
-  .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/vdi_ahv/lab4/1.png
+- **Name** - W10-Gold
+- **Description** - Windows 10 x64 XenDesktop Gold Image
+- **vCPU(s)** - 2
+- **Number of Cores per vCPU** - 1
+- **Memory** - 4 GiB
+- Select **+ Add New Disk**
 
-Click **+ Add New Disk**, fill out the following fields, and click **Add**:
-
-  - **Type** - DISK
   - **Operation** - Clone from Image Service
-  - **Bus Type** - SCSI
-  - **Image** - *<Windows 10 Disk Image>*
-
-  .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/vdi_ahv/lab4/2.png
-
-Click **Add New NIC**. fill out the following fields, and click **Add**:
+  - **Image** - Windows10
+  - Select **Add**
+- Select **Add New NIC**
 
   - **VLAN Name** - Secondary
+  - Select **Add**
 
-Click **Save**.
-
-In **Prism > VM > Table**, select the **W10-Gold** VM and click **Power on**.
+Select the **W10-Gold** VM and click **Power on**.
 
 Once the VM has started, click **Launch Console**.
 
