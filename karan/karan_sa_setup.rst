@@ -129,8 +129,7 @@ Upload the karan installer to the Karan Guest VM and launch the Karan installer.
 
 .. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/karan/image16.png
 
- 
-.. note:: When deploying or working with Windows VMs deployed by Calm, the only change required is to set the operating system to Windows, as opposed to Linux (default) within the blueprint. 
+
 
 Takeaways
 *********

@@ -107,6 +107,9 @@ A Windows Server VM is required to host the MS SQL 2014 Database instance. VM se
   Name        : MSSQL2014
   Cloud       : Nutanix
   OS          : Windows
+  
+  
+.. note:: When deploying or working with Windows VMs deployed by Calm, you'll be required to set the operating system to Windows, as opposed to Linux (default) within the blueprint. 
 
 VDISK Settings
 ===============
@@ -165,25 +168,48 @@ Verify the Guest VM **CONNECTION** settings are as follows:
   Connection Port            : 5985
   Timeout (secs)             : 600
   
-If there were any changes, click **Save** located along the top menu-bar.
+Click **Save** located along the top menu-bar If there were any changes.
 
-Enable CredSSP
-==============
-To Enable CredSSP on the Karan host, please follow steps below:
-
-On the Karan Guest VM open a *PowerShell-Command* window and run the following command to enable CredSSP as a client role and allow Karan host to Delegate credentials to all computers ( Wild card mask "*"):
+Package Settings
+=============================
+Verify the Service **Package** settings are as follows:
 
 .. code-block:: bash
 
-  C:>\ Enable-WSManCredSSP -Role Client -DelegateComputer *
+  Name        : MSSQLPackage
   
-From a windows command prompt window run:
+Verify **INSTALL** settings:
+
+.. code-block:: bash
+
+  Script Type : Shell
+  Credential  : WINDOWS
+  Script      : Enable-WSManCredSSP -Role Server -Force
+
+Click **Save** located along the top menu-bar If there were any changes.
+
+Enable CredSSP
+==============
+
+.. note:: The instructions in this section are applicable to the karan Guest VM and required for SQL Server deployments.
+
+To Enable CredSSP on the Karan Guest VM, please follow steps below:
+
+Using a *remote-desktop* session, or *console* connection to the Karan Guest VM open a *PowerShell-Command* window and run the following command to enable CredSSP as a client role and allow Karan Guest VM to delegate credentials to all computers (Wild card mask "*"):
+
+.. code-block:: powershell
+
+  PS C:>\ Enable-WSManCredSSP -Role Client -DelegateComputer *
+  
+Open a *Command-Prompt* window and run the following command:
 
 .. code-block:: bash
 
   C:>\ gpedit.msc
    
-- In the group policy editor navigate to **Computer-configuration -> administrative templates -> system -> credential-delegation**.
+In the group policy editor:
+
+- Navigate to **Computer-configuration -> administrative templates -> system -> credential-delegation**.
 - Double click on **Allow Delgating Fresh Credentials with NTLM-only server authentication**.
 - Select the **Enable** radio button.
 - Click on the **show** button.
@@ -194,23 +220,25 @@ Privileges:
 
 .. note:: The instructions in this section are applicable to the karan Guest VM and required for SQL Server deployments.
 
-Follow the steps below to assign the correct privileges on the karan Guest VM:
+Using a *remote-desktop* session, or *console* connection to the Karan Guest VM, follow the steps below to assign the correct privileges for user: *Administrator*:
 
-- Idenitfy the user account that the Karan service is running as 
-- From the Start menu, point to **Administrative Tools**, and then click **Local Security Policy**.
+- Idenitfy the user account that the Karan service is running as.  In this lab the user account is: **Administrator**. 
+- From the Start menu, click on **Administrative Tools**, and then click **Local Security Policy**.
 - In the **Local Security Settings** dialog box, double-click **Local Policies**, and then double-click **User Rights Assignment**.
-- In the details pane, double-click **Adjust memory quotas for a process**. This is the **SE_INCREASE_QUOTA_NAME** user right.
-- Click **Add User or Group**, and, in the **Enter the object names to select** box, type the user or group name to which you want to assign the user right, and then click OK.
-- Click OK again, and then, in the details pane, double-click **Replace a process level token**. This is the **SE_ASSIGNPRIMARYTOKEN_NAME** user right.
-- Click Add User or Group, and, in then **Enter the object names to select** box, type the user or group name to which you want to assign the user right, and then click OK.
+- In the details pane, double-click **Adjust memory quotas for a process**. This sets the **SE_INCREASE_QUOTA_NAME** user right.
+- Click **Add User or Group**, and, in the **Enter the object names to select** box, type the user **Administrator** and then click **OK**.
+- Click OK again, and then, in the details pane, double-click **Replace a process level token**. This sets the  **SE_ASSIGNPRIMARYTOKEN_NAME** user right.
+- Click **Add User or Group**, and, in the **Enter the object names to select** box, type the user **Administrator** and then click **OK**.
 - Close **Local Security Policy** and **Administrative Tools** windows.
 - Restart the Karan service.
 
+.. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/karan/image16.png
+
 Launch Blueprint
 ================
-Once the blueprint has been successfully updated and saved, click the (|image5|) button to **lanuch** the Blueprint.  Name the application with *mssql2014*.
+Once the *mssql2014* blueprint and Karan Guest VM settings have been successfully configured and saved, click the (|image5|) button to **lanuch** the Blueprint.  Name the application with *mssql2014*.
 
-.. note:: When performing deployments on a community/team cluster, append your initials to the deployment name.
+.. note:: When performing deployments on a community/team cluster, append your initials to the deployment name for traceability.
 
 .. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/calm_mssql/image2.png
 
