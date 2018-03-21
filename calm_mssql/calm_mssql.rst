@@ -226,9 +226,9 @@ Using a *remote-desktop* session, or *console* connection to the Karan Guest VM,
 - From the Start menu, click on **Administrative Tools**, and then click **Local Security Policy**.
 - In the **Local Security Settings** dialog box, double-click **Local Policies**, and then double-click **User Rights Assignment**.
 - In the details pane, double-click **Adjust memory quotas for a process**. 
-- To set the **SE_INCREASE_QUOTA_NAME** user right, click **Add User or Group**, and, in the **Enter the object names to select** dialog-box, type the user **Administrator** and then click **OK**.
+- To set the **SE_INCREASE_QUOTA_NAME** users-right, click **Add User or Group**, and, in the **Enter the object names to select** dialog-box, type the user **Administrator** and then click **OK**.
 - Click OK again, and then, in the details pane, double-click **Replace a process level token**. 
-- To set the **SE_ASSIGNPRIMARYTOKEN_NAME** user right, click **Add User or Group**, and, in the **Enter the object names to select** dialog-box, type the user **Administrator** and then click **OK**.
+- To set the **SE_ASSIGNPRIMARYTOKEN_NAME** users-right, click **Add User or Group**, and, in the **Enter the object names to select** dialog-box, type the user **Administrator** and then click **OK**.
 - Close **Local Security Policy** and **Administrative Tools** windows.
 - Restart the Karan service.
 
