@@ -214,27 +214,26 @@ Select the **Exclude** policy and click **Set Default > Yes**.
 Backing Up A VM
 +++++++++++++++
 
-In **Prism > VM**, click **+ Create VM** and fill out the following fields:
+In **Prism > VM > Table**, click **+ Create VM**.
 
-  - **Name** - WS12-BackupTest
-  - **vCPU** - 2
-  - **Number of Cores per vCPU** - 1
-  - **Memory** - 4
+Fill out the following fields and click **Save**:
 
-Click **+ Add New Disk**, fill out the following fields, and click **Add**:
+- **Name** - WS12-BackupTest
+- **Description** - WS12-BackupTest
+- **vCPU(s)** - 2
+- **Number of Cores per vCPU** - 1
+- **Memory** - 4 GiB
+- Select **+ Add New Disk**
 
-  - **Type** - DISK
   - **Operation** - Clone from Image Service
-  - **Bus Type** - SCSI
-  - **Image** - *Windows Server 2012 Disk Image*
-
-Click **Add New NIC**. fill out the following fields, and click **Add**:
+  - **Image** - Windows2012
+  - Select **Add**
+- Select **Add New NIC**
 
   - **VLAN Name** - Primary
+  - Select **Add**
 
-Click **Save**.
-
-In **Prism > VM > Table**, select the **WS12-BackupTest** VM and click **Power on**.
+Select the **WS12-BackupTest** VM and click **Power on**.
 
 Once the VM has started, click **Launch Console**.
 
