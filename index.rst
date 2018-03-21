@@ -14,8 +14,8 @@
   calm_lamp/calm_lamp
   calm_mrkt_p1/calm_marketplace_p1
   calm_mrkt_p2/calm_marketplace_p2
-  calm_mssql/calm_mssql
   github/github
+  afs/index
   xtract-vm/xtract-vm
   xtract-db/xtract-db
   xray/index
@@ -26,8 +26,9 @@
   :name: _opt-labs
   :hidden:
 
-  afs/index
   citrix/index
+  .. karan/karan_sa_setup
+  calm_mssql/calm_mssql
   git/gitlab
   hycu/index
   docker/calm_workshop_lab7_docker

@@ -7,8 +7,6 @@ Overview
 
 .. note::
 
-  This lab should be completed **AFTER** the :ref:`citrix_lab` lab.
-
   Estimated time to complete: **1 HOUR**
 
   **Due to limited resources, this lab should be completed as a group.**
@@ -117,7 +115,7 @@ Select the **Security** tab and click **Advanced**.
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/vdi_ahv/lab7/20.png
 
-Select **Users (TEM##-AFS\\Users)** and click **Remove**.
+Select **Users (TEAM##-AFS\\Users)** and click **Remove**.
 
 Click **Add**.
 
@@ -158,6 +156,10 @@ In **Prism > File Server > Share > home**, click **+ Add Quota Policy**. Fill ou
   - **Enforcement Type** - Hard Limit
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/afs/20.png
+
+.. note::
+
+    The remainder of `Configuring SMB Home Share`_ should be completed **AFTER** the :ref:`citrix_lab` lab. Alternatively you can validate your file share configuration by logging into any domain-joined Windows VM as **NTNXLAB\\devuser01**, the VM does not strictly need to be a Citrix virtual desktop.
 
 Open \http://<*XD-VM-IP*>/Citrix/StoreWeb in a browser on the same L3 LAN as your XD VM.
 
