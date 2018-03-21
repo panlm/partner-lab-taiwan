@@ -9,7 +9,7 @@ Overview
 
 .. note::
 
-  This lab should be completed **AFTER** the :ref:`ssp` lab.
+  This lab should be completed **AFTER** the :ref:`ssp_lab` lab.
 
   Estimated time to complete: **1 HOUR**
 
@@ -26,11 +26,7 @@ Getting Engaged with the Product Team
 Deploying Xtract for VMs
 ++++++++++++++++++++++++
 
-In **Prism Central > Explore**, click **VMs**.
-
-  .. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/xtract-vm/xtractvm01.png
-
-Click **Create VM**.
+In **Prism > VM > Table**, click **+ Create VM**.
 
 Fill out the following fields and click **Save**:
 
