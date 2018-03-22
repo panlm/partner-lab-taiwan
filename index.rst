@@ -73,7 +73,11 @@ Following presentations on Tuesday, you will have approximately 4 hours to compl
 
 Beginning on Wednesday you will be provided with a customer challenge. Your goal is to build and propose a solution using Nutanix and optional 3rd party technologies. The **Optional Labs** provide step by step guides for additional technologies you may find useful for your proposed solution. Bonus points can be earned by incorporating additional technologies (Chef, Puppet, Jenkins, Nagios, etc.) not covered in **Optional Labs**.
 
-Each team has been provided a four node cluster running AHV and AOS 5.5.1. **Upon Electing a Team Lead and Consulting Your Team Coach Please Exam Your Cluster.** Each cluster has been pre-staged with the following:
+Each team has been provided a four node cluster running AHV and AOS 5.5.1. It is **HIGHLY RECOMMENDED** that you access the environment via a `Citrix XenDesktop <https://citrixready.nutanix.com>`_ session.
+
+**Do Not Start Labs Before Electing a Team Lead and Consulting Your Team Coach**
+
+Each cluster has been pre-staged with the following:
 
 .. **Challenge**
 
@@ -101,16 +105,15 @@ Each team has been provided a four node cluster running AHV and AOS 5.5.1. **Upo
 **Credentials**
 
 - **Prism Username:** admin **Password:** techX2018!
+- **Prism Central Username:** admin **Password:** techX2018!
 - **CVM Username:** nutanix **Password:** techX2018!
+- **PC VM Username:** nutanix **Password:** nutanix/4u
 - **Domain Username** NTNXLAB\\Administrator **Password:** nutanix/4u
 
 **Networks**
 
-- `IP information for your team <https://drive.google.com/drive/folders/1-8vVrC7Ad9uFeWnY1LcaffQQEoD-Eris>`_
 - **Primary** Network - 10.21.XX.1/25 - IPAM DHCP Pool 10.21.XX.50-10.21.XX.124
 - **Secondary** Network - 10.21.XX.129/25 - IPAM DHCP Pool 10.21.XX.132-10.21.XX.253
 - **Link-Local** Network - **DO NOT ENABLE IPAM**
 
-.. note::
-
-  Due to resource limitations, many labs are designed to be completed as a group. The Overview section of each lab will indicate whether the lab should be completed once per group/cluster or if it can be performed individually. **Do Not Start Labs Before Electing a Team Lead and Consulting Your Team Coach**.
+`Click here to view details of your team cluster assignment. <https://drive.google.com/file/d/1MjlH9s4UjyhDXkNABeRJ49UQdG6YdRhN/view?usp=sharing>`_
