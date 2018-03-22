@@ -53,11 +53,12 @@ Verify the VM has the expected hostname and has been joined to the NTNXLAB.local
 
 .. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/karan/image15.png
 
-Open **Powershell** and execute the following commands:
+Open **PowerShell** and execute the following commands:
 
 .. code-block:: posh
+  :emphasize-lines: 1,3,5
 
-  # Enables the VM to receive Windows Powershell remote commands sent using WS-Management. Enabled by default in Windows Server 2012 R2 and later.
+  # Enables the VM to receive Windows PowerShell remote commands sent using WS-Management. Enabled by default in Windows Server 2012 R2 and later.
   Enable-PSRemoting -Force
   # Default execution policy in Windows Server 2012 R2 and later. Requires a digital signature from a trusted publisher on scripts and configuration files that are downloaded from the Internet. Does not require digital signatures on scripts that you have written on the local computer.
   Set-ExecutionPolicy RemoteSigned -Force
@@ -117,9 +118,10 @@ Enabling CredSSP
 
 CredSSP authentication allows user credentials to be passed to a remote computer to be authenticated. This type of authentication is designed for commands that create a remote session from another remote session. This allows Calm to validate credentials of a target VM through the Karan Service.
 
-Open **Powershell** and execute the following commands:
+Open **PowerShell** and execute the following commands:
 
 .. code-block:: posh
+  :emphasize-lines: 1,3
 
   # Enables CredSSP as a client role and allows Karan VM to delegate credentials to all computers
   Enable-WSManCredSSP -Role Client -DelegateComputer * -Force
@@ -142,5 +144,6 @@ Click **OK > OK**.
 
 Takeaways
 *********
-- Calm can orchestrate Windows workloads via Powershell scripts distributed with the Karan Service.
+- Calm can orchestrate Windows workloads via PowerShell scripts distributed with the Karan Service.
 - Multiple Karan servers can be deployed in the same environment to meet the needs of an increasing number of Windows VMs.
+PowerShell
