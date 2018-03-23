@@ -13,6 +13,8 @@ Overview
 
   Estimated time to complete: **30 MINUTES**
 
+  **This lab should be completed as a group.**
+
 In this exercise you will deploy the Karan Service to a Windows Server 2012 R2 VM. Karan is a scale out service used by Calm to orchestrate Windows VMs. Karan is responsible for proxying remote PowerShell commands from Calm Blueprints to Windows VMs.
 
 Deploying Karan VM
@@ -22,7 +24,7 @@ In **Prism Central > Explore > VMs**, click **Create VM**.
 
 Fill out the following fields and click **Save**:
 
-- **Name** - Karan-*<INITIALS>*
+- **Name** - Karan
 - **Description** - Karan Server
 - **vCPU(s)** - 2
 - **Number of Cores per vCPU** - 2
@@ -40,14 +42,12 @@ Fill out the following fields and click **Save**:
 - Select **Type or Paste Script**
 
 .. literalinclude:: unattend.xml
-   :caption: Karan-<INITIALS> Unattend.xml Custom Script
+   :caption: Karan Unattend.xml Custom Script
    :language: xml
 
 .. note::
 
-  **IMPORTANT!** Replace <ComputerName>\*</ComputerName> with your desired hostname (e.g. <ComputerName>Karan-DJP</ComputerName>) prior to clicking **Save**.
-
-  The Unattend script will update the hostname, join the NTNXLAB.local domain, and disable the Windows Firewall.
+  The Unattend script will change the hostname to **Karan**, join the **NTNXLAB.local** domain, and disable the Windows Firewall.
 
 Verify the VM has the expected hostname and has been joined to the NTNXLAB.local domain.
 
