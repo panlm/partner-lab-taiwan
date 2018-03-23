@@ -37,10 +37,11 @@ Fill out the following fields, highlight **OK** and press **Return**:
   - **Hostname** - HYCU
   - **IPv4 address** - *10.21.XX.44*
   - **Subnet mask** - 255.255.255.128
+  - **Default gateway** - *10.21.XX.1*
   - **DNS server** - *10.21.XX.40*
   - **Search domain** - ntnxlab.local
 
-  .. note:: Switch fields by pressing the Tab key.
+.. note:: Switch fields by pressing the Tab key.
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/1.png
 
@@ -57,8 +58,6 @@ Open \http://<*HYCU-VM-IP*>:8443/ in a browser. Log in to the **HYCU Web Interfa
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/3.png
 
-.. note:: It is recommended to change these as soon as you log in for the first time.
-
 From the toolbar, click :fa:`cog` **> Nutanix Clusters**.
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/4.png
@@ -70,10 +69,6 @@ Click **+ New** and fill out the following fields:
   - **Password** - nutanix/4u
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/5.png
-
-.. note::
-
-  The local Prism account **xd** has already been created for you. To function, the Prism service account used for the connection requires the **Cluster Admin** role.
 
 Click **Save**.
 
@@ -373,123 +368,94 @@ Log in to the VM as **Administrator** and validate the files have been restored 
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/42.png
 
-..  Performing Application Aware Backup And Restore
-  +++++++++++++++++++++++++++++++++++++++++++++++
+Performing SQL Server Backup And Restore
+++++++++++++++++++++++++++++++++++++++++
 
-  .. note::
+.. note::
 
-    This portion of lab should be completed **AFTER** the :ref:`xtractdb_lab` lab.
+  This portion of lab should be completed **AFTER** the :ref:`xtractdb_lab` lab.
 
-    Ensure NGT is Enabled on your migrated **UptickAppDB** VM by mounting Nutanix Guest Tools and restarting the **Nutanix Guest Tools Agent** service within the VM.
+  Ensure NGT is Enabled on your migrated **UptickAppDB** VM by mounting Nutanix Guest Tools and restarting the **Nutanix Guest Tools Agent** service within the VM.
 
-  From **HYCU > Virtual Machines**, select **UptickAppDB**. Select **Credentials > + New**.
+From **HYCU > Virtual Machines**, select **UptickAppDB**. Select **Credentials > + New**.
 
-  Fill out the following fields and click **Save**:
+Fill out the following fields and click **Save**:
 
-    - **Name** - NTNXLAB Administrator Credentials
-    - **Username** - NTNXLAB\\Administrator
-    - **Password** - nutanix/4u
+  - **Name** - NTNXLAB Administrator Credentials
+  - **Username** - NTNXLAB\\Administrator
+  - **Password** - nutanix/4u
 
-    .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/43.png
+  .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/43.png
 
-  Click **Assign**.
+Click **Assign**.
 
-    .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/44.png
+  .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/44.png
 
-  Click **Synchronize** and validate the **Discovery** column in green for **UptickAppDB**.
+Click **Synchronize** and validate the **Discovery** column appears green for **UptickAppDB**.
 
-  Select **Applications** from the sidebar, select **UptickAppDB\\MSSQLSERVER**, and click **Policies**. Select **Gold** and click **Assign**.
+Select **Applications** from the sidebar, select **UptickAppDB\\MSSQLSERVER**, and click **Policies**. Select **Gold** and click **Assign**.
 
-    .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/45.png
+  .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/45.png
 
-  Select **Jobs** from the sidebar and monitor the backup progress for **UptickAppDB**.
+Select **Jobs** from the sidebar and monitor the backup progress for **UptickAppDB**.
 
-    .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/46.png
+  .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/46.png
 
-  .. note::
+.. note::
 
-    The job may finish with a warning status due to some databases on the **UptickAppDB** VM being configured with the **Simple Recovery Model** and not supporting transaction log backup. This warning can be ignored. You can view the detailed output of any warnings or errors by selecting a Job and clicking **Report**.
+  The job may finish with a warning status due to some databases on the **UptickAppDB** VM being configured with the **Simple Recovery Model** and not supporting transaction log backup. This warning can be ignored as the desired database, Uptick, is configured as **Full Recovery Model**. You can view the detailed output of any warnings or errors by selecting a Job and clicking **Report**.
 
-  Select **Applications** from the sidebar, select **UptickAppDB\\MSSQLSERVER**, and click **Backup > Yes**.
+Upon completion of the backup, connect to the **UptickAppDB** VM via RDP.
 
-    .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/47.png
+From the **UptickAppDB** console, open **PowerShell** and execute the following:
 
-  Wait for the incremental backup to complete successfully.
+.. code-block:: posh
+   :emphasize-lines: 3,5,7,9,13
 
-    .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/48.png
+  [System.Reflection.Assembly]::LoadWithPartialName('Microsoft.SqlServer.SMO') | out-null
+  $dbs = New-Object ('Microsoft.SqlServer.Management.Smo.Server') "LOCALHOST"
+  # Selects the Uptick database on the local SQL Server instance
+  $uptickDb = $dbs.Databases["Uptick"]
+  # Displays all tables within the Uptick database
+  $uptickDb.Tables | SELECT Name
+  # Displays the contents of the Make table
+  $uptickDb.ExecuteWithResults("SELECT * FROM dbo.Make").Tables
+  # Deletes the Make table from the Uptick database
+  $uptickDb.ExecuteNonQuery("DROP TABLE dbo.Make")
+  $dbs = New-Object ('Microsoft.SqlServer.Management.Smo.Server') "LOCALHOST"
+  $uptickDb = $dbs.Databases["Uptick"]
+  # Displays all tables within the Uptick database, note the Make table is no longer present
+  $uptickDb.Tables | SELECT Name
 
-  In **Prism > VM > Table**, select the **HYCU** VM and click **Launch Console**.
+From **HYCU > Applications**, select **UptickAppDB\\MSSQLSERVER**. Select the most recent Restore Point (prior to deleting the database table) and click **Restore**.
 
-  Download **SQL Server Management Studio 17.5** from https://10.21.64.50/images/SSMS-Setup-ENU.exe.
+  .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/47.png
 
-  Launch **SSMS-Setup-ENU.exe** and click **Install**. Upon completion, click **Restart**.
+Select **Restore application items** and click **Next**.
 
-  Launch **SQL Server Management Studio 17.5** and click **Connect**.
+  .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/48.png
 
-    .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/49.png
+Select **Uptick** and click **Restore**.
 
-  Select **UPTICKAPPDB > Databases > Uptick > Tables > dbo.Make**, right-click **dbo.Make** and select **Delete > OK**.
+  .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/49.png
 
-    .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/50.png
+Select **Jobs** from the sidebar and monitor the restore progress for **UptickAppDB\\MSSQLSERVER**.
 
-  From **HYCU > Applications**, select **UptickAppDB\\MSSQLSERVER**. Select the most recent Restore Point (prior to deleting the database table) and click **Restore**.
+Upon completion of the restore, from the **UptickAppDB** console, open **PowerShell** and execute the following:
 
-    .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/51.png
+.. code-block:: posh
+  :emphasize-lines: 3,5,7
 
-  Select **Restore application items** and click **Next**.
+  [System.Reflection.Assembly]::LoadWithPartialName('Microsoft.SqlServer.SMO') | out-null
+  $dbs = New-Object ('Microsoft.SqlServer.Management.Smo.Server') "LOCALHOST"
+  # Selects the Uptick database on the local SQL Server instance
+  $uptickDb = $dbs.Databases["Uptick"]
+  # Displays all tables within the RESTORED Uptick database, including the previously deleted Make table
+  $uptickDb.Tables | SELECT Name
+  # Displays the contents of the Make table
+  $uptickDb.ExecuteWithResults("SELECT * FROM dbo.Make").Tables
 
-    .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/52.png
-
-  Select **Uptick** and click **Restore**.
-
-    .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/53.png
-
-  Select **Jobs** from the sidebar and monitor the restore progress for **UptickAppDB\\MSSQLSERVER**.
-
-    .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/24.png
-
-
-
-    Objective: Perform auto discovery of a SQL Server database and perform a backup & restore.
-
-    Prerequisites: SQL Server with a single SQL instance, Credentials for VM access, and Credentials for SQL database access (sysadmin permission).
-
-     .. Note ::HYCU will be able to auto discover applications running inside a VM, and offer application level backup / restore. With this application awareness capability, you can now focus on protecting your applications. Follow the below steps in order to perform an application aware backup / restore.
-
-    1. Select Virtual Machines in the main left menu.
-
-    .. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/hycu/images/image30.png
-
-    2. Click on Credentials on the right-hand side.
-
-    3. Create new credential group, make sure to use credentials with VM & APP access.
-
-    .. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/hycu/images/image31.png
-
-    4. Find the VM with SQL server running on it.
-
-    5. Highlight it with a left mouse click, then click on Credentials.
-
-    6. Assign the proper credentials to that VM. The discovery process will then start automatically.
-
-    7. Once discovery has completed click on Applications in the main left side menu.
-
-    8. Assign your desired Policy to the discovered SQL application, and the backup process will start within 5 minutes.
-
-    .. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/hycu/images/image32.png
-
-    9. Start another backup manually by clicking on the Backup on top, and notice it is an incremental backup.
-
-    10. On the same screen, when you click on the application, you will see all of the application Restore Point's that are   	 	 available.
-
-    11. You can select any of these restore point's and select the “Restore” icon to perform a granular recovery of the database.
-
-    12. Select either individual database, multiple databases, or full SQL instance.
-
-    .. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/hycu/images/image33.png
-
-
-    13. Notice that HYCU will offer Restore capabilities to a particular point in time for Databases which are configured in full recovery mode.
+The **Uptick** database has been restored to the in-place **UptickAppDB\\MSSQLSERVER** instance.
 
 Takeaways
 +++++++++

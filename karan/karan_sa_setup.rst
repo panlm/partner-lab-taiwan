@@ -1,140 +1,149 @@
-***********************
-Karan Configuration SA
-***********************
- 
- 
+.. _karan_lab:
+
+******************
+Calm Karan Service
+******************
+
 Overview
 *********
 
-.. note:: Estimated time to complete: **30 MINUTES**
- 
-In this lab, participants will deploy a Windows 2012 Server Guest VM and provision it with Karan.  Karan is used as a proxy for Calm automation.
- 
-Karan is a component that allows the Calm services to run PowerShell scripts on Windows virtual machines. Think of Karan as a “translation” layer between Calm and the Windows VMs.
- 
- 
-Configure Karan
+.. note::
+
+  This lab should be completed **BEFORE** the :ref:`calm_mssql_lab` lab.
+
+  Estimated time to complete: **30 MINUTES**
+
+  **This lab should be completed as a group.**
+
+In this exercise you will deploy the Karan Service to a Windows Server 2012 R2 VM. Karan is a scale out service used by Calm to orchestrate Windows VMs. Karan is responsible for proxying remote PowerShell commands from Calm Blueprints to Windows VMs.
+
+Deploying Karan VM
 ******************
-Using Windows with Calm
- 
-In order for Calm to work with Windows virtual machines, an additional step is required. After deploying Prism Central and completing the configuration of Calm itself, an additional virtual machine must be deployed that runs the ‘Karan’ service.
- 
-.. note:: Check to make sure that Prism Central has already been configured and Calm has been setup before proceeding.
- 
-Before you begin
-================
-- The Karan service will be installed on Windows Server 2012 R2.
-- Your Windows Server should always be up and running to support Calm automation for windows.
-- Powershell 3.0 or onwards should be installed on the Karan server.
-- .Net framework 4.0 or 4.5 should be installed on the Karan server.
- 
-Deploying Karan Guest VM
-=========================
-Create a Windows Virtual Machine running Windows 2012 R2 using the following parameters:
 
-.. code-block:: bash
+In **Prism Central > Explore > VMs**, click **Create VM**.
 
-  vCPU       : 2x
-  Cores      : 2x (2x cores/vCPU)
-  Mem        : 2GB
-  Storage    : 40GB (default-container)
-  Network    : Secondary
-  Image      : Windows2012 (This is a Server 2012 QCOW image)
-  Image Type : Disk
-  Bus        : SCSI
-  
-Power the Karan Guest VM on.
+Fill out the following fields and click **Save**:
 
-Login to the Karan Guest VM via *Launch Console* or *Remote Desktop*.  Upon successful log-in:
+- **Name** - Karan
+- **Description** - Karan Server
+- **vCPU(s)** - 2
+- **Number of Cores per vCPU** - 2
+- **Memory** - 4 GiB
+- Select **+ Add New Disk**
 
-- **Change** the Computer Name to **KARAN**
-- **Add** the Karan Guest VM to the **ntnxlab.local** domain.  
-- Reboot the server.
+  - **Operation** - Clone from Image Service
+  - **Image** - Windows2012
+  - Select **Add**
+- Select **Add New NIC**
+
+  - **VLAN Name** - Primary
+  - Select **Add**
+- Select **Custom Script**
+- Select **Type or Paste Script**
+
+.. literalinclude:: unattend.xml
+   :caption: Karan Unattend.xml Custom Script
+   :language: xml
+
+.. note::
+
+  The Unattend script will change the hostname to **Karan**, join the **NTNXLAB.local** domain, and disable the Windows Firewall.
+
+Verify the VM has the expected hostname and has been joined to the NTNXLAB.local domain.
 
 .. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/karan/image15.png
 
-- Disable the Karan Guest VM firewall.
+Open **PowerShell** and execute the following commands:
 
-After the Karan Guest VM has completed reboot, login via *Launch Console* or *Remote Desktop*.  Upon successful log-in open a *PowerShell-Command-Window*.
+.. code-block:: posh
+  :emphasize-lines: 1,3,5
 
-.. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/karan/image17.png
-
-Within the  *PowerShell-Command-Window* run the following command to enable PowerShell remote execution - answer **'Y'** when prompted.
- 
-.. code-block:: PowerShell
- 
-    PS C:\> enable-psremoting
-   
-Within the  *PowerShell-Command-Window* run the following command to set the PowerShell Execution Policy - answer **'Y'** when prompted.
- 
-.. code-block:: PowerShell
- 
-    PS C:\> set-executionpolicy remotesigned
-   
-Within the *powershell-command-window* run the following command to set all target machines as trusted machines on the Karan host - answer **'Y'** when prompted.
- 
-.. code-block:: PowerShell
- 
-    PS C:\> set-item wsman:\localhost\Client\TrustedHosts -Value *
+  # Enables the VM to receive Windows PowerShell remote commands sent using WS-Management. Enabled by default in Windows Server 2012 R2 and later.
+  Enable-PSRemoting -Force
+  # Default execution policy in Windows Server 2012 R2 and later. Requires a digital signature from a trusted publisher on scripts and configuration files that are downloaded from the Internet. Does not require digital signatures on scripts that you have written on the local computer.
+  Set-ExecutionPolicy RemoteSigned -Force
+  # Adds all potential target machines (Windows VMs being orchestrated by Calm) as trusted hosts
+  Set-Item WSMan:\localhost\Client\TrustedHosts -Value * -Force
 
 Installing Karan
-=================
+****************
 
-.. note:: The karan installer is very large and might be best to use a VDI connection to download the file from http://10.21.64.50/images/Karan-1.6.0.0.exe and then map the download to you Guest VM.
+.. note:: The Karan Service is supported on both Windows Server 2012 R2 and Windows Server 2016 and requires Poweshell 3.0+ and either .NET Framework 4.0 or .NET Framework 4.5.
 
-If you download the karan-installer_ locally to your Mac, you'll need to establish a cifs connection
+From your **Karan** VM console, download the `Karan installer <http://download.nutanix.com/calm/Karan/1.6.0/Karan-1.6.0.0.exe>`_.
 
-.. code-block:: bash
+.. note:: The provided link to the Karan 1.6.0.0 installer is current as of March 2018.
 
-  % cifs://<karan-guest-vm-ipaddress>/c$ 
-  
-.. note:: The karan.exe link referenced was sourced as of January 2018.
+Launch the Karan installer as an Administrator.
 
-Upload the karan installer to the Karan Guest VM and launch the Karan installer...  When prompted, populate the fields as follows:
+Click **Install > Next**.
 
-- Select HTTP.  DO NOT SELECT HTTPS (Default)!!
-- Set the port to 8090 (note that this must not be changed and port 8090 must be allowed through the Windows firewall on both host and client VMs)
-- Set the number of Karan instances to 1 (typical for demo/lab environments)
-- Enter the IP Address of the Karan instance. The IP address must be accessible from the Calm/Prism Central VM!
-- Set the gateway UUID to:
- 
-.. code-block:: bash
- 
-    2067b70d-bd3f-4b3d-9d82-3add93f30a0a
- 
-- Enter the Prism Central VM IP Address and the port of the Epsilon Service as follows:
- 
-.. code-block:: bash
- 
-    http://<prism_central_ip_address>:8090
- 
-.. note:: Be sure to specify the port 8090, as per the example above in order to connect to the Epsilon Service running on the PC VM!
- 
-- Click Next
-- Specify the account information:
+Fill out the following fields and click **Next**:
 
-.. code-block:: bash
-  
-  logon account: administrator
-  password: nutanix/4u
-  
-- Complete the wizard until Karan installer has successfully completed the installation.
-- Using a command-prompt on the Karan Guest VM start the Windows Services as follows:
- 
-.. code-block:: bash
- 
-  c:\> services.msc
+- Select **HTTP** (Do **NOT** select **HTTPS**)
+- **Port** - 8090
 
-- From the Windows Services start the Karan service.  The service should start.  If the service fails to start, review the previous steps and contact your facilitator.
+.. note:: If a firewall is enabled on either the Karan or target VMs, TCP port 8090 must be allowed.
 
-.. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/karan/image16.png
+- **Service Count** - 1
+- **Hostname** - *<Karan VM IP Address>*
+- **Gateway UUID** - 2067b70d-bd3f-4b3d-9d82-3add93f30a0a
+- **Epsilon Address** - http://*<Prism Central IP Address>*:8090
 
+.. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/karan/karan2.png
 
+.. note::
+
+  Do **NOT** click **Check Epsilon IP**.
+
+Fill out the following fields and click **Next**:
+
+- **Logon Account** - NTNXLAB\\Administrator
+- **Password** - nutanix/4u
+
+.. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/karan/karan3.png
+
+Click **Install**.
+
+After installation has completed, click **Finish**.
+
+Open **Control Panel > Administrative Tools > Services**. Select the **karan_1** service and click **Start**.
+
+.. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/karan/karan4.png
+
+.. note:: If the service fails to start, uninstall Karan and closely follow the installation steps. Common mistakes include selecting HTTPS or providing an incorrect Gateway UUID.
+
+Enabling CredSSP
+****************
+
+CredSSP authentication allows user credentials to be passed to a remote computer to be authenticated. This type of authentication is designed for commands that create a remote session from another remote session. This allows Calm to validate credentials of a target VM through the Karan Service.
+
+Open **PowerShell** and execute the following commands:
+
+.. code-block:: posh
+  :emphasize-lines: 1,3
+
+  # Enables CredSSP as a client role and allows Karan VM to delegate credentials to all computers
+  Enable-WSManCredSSP -Role Client -DelegateComputer * -Force
+  # Opens Local Group Policy Editor
+  gpedit
+
+In the **Local Group Policy Editor**, open **Computer Configuration > Administrative Templates > System > Credentials Delegation**.
+
+Double-click **Allow delegating fresh credentials with NTML-only server authentication**.
+
+Select **Enabled**.
+
+Click **Show** and specify **WSMAN/*** in the **Value** field.
+
+.. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/karan/karan5.png
+
+Click **OK > OK**.
+
+.. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/karan/karan6.png
 
 Takeaways
 *********
-- Congratulations you have successfully configured a guest VM and Karan!
-
-.. _karan-installer: http://10.21.64.50/images/Karan-1.6.0.0.exe
-
- 
+- Calm can orchestrate Windows workloads via PowerShell scripts distributed with the Karan Service.
+- Multiple Karan servers can be deployed in the same environment to meet the needs of an increasing number of Windows VMs.
+PowerShell
