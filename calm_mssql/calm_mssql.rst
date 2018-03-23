@@ -205,9 +205,8 @@ Click **Add User or Group**.
 
 Specify **Administrator** in the **Enter the object names to select** field, and click **OK > OK**.
 
-.. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/calm_mssql/image4.png
-
 Open **Control Panel > Administrative Tools > Services**. Select the **karan_1** service and click **Restart**.
+
 
 Launching the Blueprint
 ***********************
