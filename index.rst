@@ -57,7 +57,7 @@
         </div>
         <div class="col-md-6">
             <h2>Awards and Prizes</h2>
-            <p>In addition to bragging rights and special recognition at SKO there will be prizes for the winning team. There will be awards for most Jira ticket submissions and special contributions.</p>
+            <p>In addition to bragging rights and special recognition at SKO, the winning team will receive a Nutanix Tech Summit branded fleece vest from The North Face.</p>
         </div>
     </div>
     <hr>
@@ -116,4 +116,4 @@ Each cluster has been pre-staged with the following:
 - **Secondary** Network - 10.21.XX.129/25 - IPAM DHCP Pool 10.21.XX.132-10.21.XX.253
 - **Link-Local** Network - **DO NOT ENABLE IPAM**
 
-`Click here to view details of your team cluster assignment. <https://drive.google.com/file/d/1MjlH9s4UjyhDXkNABeRJ49UQdG6YdRhN/view?usp=sharing>`_
+`Click here to view details of your team cluster assignment. <https://docs.google.com/spreadsheets/d/16enUOq3RAOvEz3RmL1zywxDvvIjAlvkqa3StauCeCEk/edit#gid=1728853368>`_
