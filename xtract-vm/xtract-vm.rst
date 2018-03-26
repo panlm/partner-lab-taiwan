@@ -9,9 +9,9 @@ Overview
 
 .. note::
 
-  This lab should be completed **AFTER** the :ref:`ssp_lab` lab.
-
   Estimated time to complete: **1 HOUR**
+
+  **Due to limited resources, this lab should be completed as a group.**
 
 In this exercise you will deploy Xtract for VMs and migrate a VM from ESXi to AHV.
 
