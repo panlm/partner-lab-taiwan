@@ -9,9 +9,9 @@ Overview
 
 .. note::
 
-  This lab should be completed **AFTER** the :ref:`ssp_lab` lab.
-
   Estimated time to complete: **90 MINUTES**
+
+  **Due to limited resources, this lab should be completed as a group.**
 
 In this exercise you will deploy Xtract for DBs and migrate a MS SQL 2014 database from ESXi to AHV. Rather than migrating the entire VM, migrating the database instance allows for streamlined automation of Best Practice configuration.
 
