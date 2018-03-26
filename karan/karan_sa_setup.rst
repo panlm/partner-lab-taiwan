@@ -146,4 +146,3 @@ Takeaways
 *********
 - Calm can orchestrate Windows workloads via PowerShell scripts distributed with the Karan Service.
 - Multiple Karan servers can be deployed in the same environment to meet the needs of an increasing number of Windows VMs.
-PowerShell

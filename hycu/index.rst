@@ -410,7 +410,7 @@ Upon completion of the backup, connect to the **UptickAppDB** VM via RDP.
 From the **UptickAppDB** console, open **PowerShell** and execute the following:
 
 .. code-block:: posh
-   :emphasize-lines: 3,5,7,9,13
+  :emphasize-lines: 3,5,7,9,13
 
   [System.Reflection.Assembly]::LoadWithPartialName('Microsoft.SqlServer.SMO') | out-null
   $dbs = New-Object ('Microsoft.SqlServer.Management.Smo.Server') "LOCALHOST"
