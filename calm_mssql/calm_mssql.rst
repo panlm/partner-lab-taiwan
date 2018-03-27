@@ -130,7 +130,11 @@ Fill out the following fields:
 - Select **Guest Customization**
 
   - **Type** - Sysprep
-  - **Script** - Copy the contents of unattend.xml_ and paste into the **Script** field.
+  - **Script** - Copy the contents of **unattend.xml** and paste into the **Script** field.
+
+  .. literalinclude:: unattend.xml
+     :caption: MSSQL unattend.xml Custom Script
+     :language: xml
 
   .. note:: The sysprep unattend.xml script automates the sysprep process and automatically joins the VM to the ntnxlab.local domain.
 

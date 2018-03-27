@@ -303,7 +303,7 @@ In this section we'll Navigate the REST API Explorer to execute importing a blue
 
 .. note:: The NTNX v3 REST API is intentful, making the JSON very complex and difficult to manage for requests such as Import, Launch, Create, etc..., without using JSON edititng tools.  In the following exercise we'll use the JSON editor integrated as part of the Chrome client web-browser (see requirements Chrome-JSON-Editor-Extension_).
 
-1. Start by opening the file contents from: Import-Blueprint.JSON_, and paste it to the Chrome JSON Editor (Chrome-JSON-Editor-Extension_). Once it's pasted, click (|image9|) to migrate the json to a node-structure.
+1. Start by opening the file contents from: :download:`importBlueprint.json <./blueprints/importBlueprint.json>`, and paste it to the Chrome JSON Editor (Chrome-JSON-Editor-Extension_). Once it's pasted, click (|image9|) to migrate the json to a node-structure.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab5/image20.png
 
@@ -643,7 +643,7 @@ Check If the **v2** imports and function calls are commented with *#* in file */
     importBlueprint(connection, PROJECT, BLUEPRINT_FILE, BLUEPRINT, DRAFT)
     modifyCredential(connection, BLUEPRINT, DRAFT, CREDENTIAL, PASSWORD)
     launchBlueprint(connection, BLUEPRINT, ACTIVE, APPLICATION)
-    
+
     deleteBlueprint(connection, BLUEPRINT, ACTIVE)
     deleteApplication(connection, APPLICATION)
 

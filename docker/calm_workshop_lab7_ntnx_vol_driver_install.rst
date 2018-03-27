@@ -34,8 +34,8 @@ Start the iscsi daemon:
   $ systemd-tmpfiles --create
   $ systemctl start iscsid
   $ systemctl enable iscsid
-  
-Ensure iscsid is running using: 
+
+Ensure iscsid is running using:
 
 .. code-block:: bash
 
@@ -46,9 +46,9 @@ Once you've configured the Docker Host VM, the plugin can be installed as follow
 .. code-block:: bash
 
   $ docker plugin install ntnx/nutanix_volume_plugin:latest PRISM_IP="prism-ip" DATASERVICES_IP="dataservices-ip" PRISM_PASSWORD="prism-passwd" PRISM_USERNAME="username" DEFAULT_CONTAINER="some-storage-container" --alias nutanix
-    
+
 **Notes:**
- 
+
 - PRISM_IP: Prism management IP address of the Nutanix cluster
 
 - DATASERVICES_IP: Data service IP configured in the Nutanix cluster
@@ -59,15 +59,15 @@ Once you've configured the Docker Host VM, the plugin can be installed as follow
 
 - DEFAULT_CONTAINER: This is the name of an existing storage container on the Nutanix cluster. This storage container will be used to store the created persistent volumes
 
-Check if plugin is installed and enabled using: 
+Check if plugin is installed and enabled using:
 
 .. code-block:: bash
 
   $ docker plugin ls
-  
+
     ID                  NAME                DESCRIPTION                        ENABLED
     db1d93096fb9        nutanix:latest      Nutanix volume plugin for docker   true
-  
-  
 
-.. _docker-installation: lab7/calm_workshop_lab7_setup
+
+
+.. _docker-installation: ./calm_workshop_lab7_setup.html
