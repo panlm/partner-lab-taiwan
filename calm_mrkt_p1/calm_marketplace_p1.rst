@@ -60,13 +60,13 @@ Select the **Mongo** Blueprint and click **Clone**.
 
 Fill out the following fields and click **Clone**:
 
-- **Blueprint Name** - MongoDB-*<INITIALS>*
+- **Blueprint Name** - MongoDB*<INITIALS>*
 - **Project** - Calm
 
 Editing Cloned Blueprint
 ************************
 
-Select |image8| **Blueprints** from the sidebar and click your **MongoDB-<INITIALS>** Blueprint to open the Blueprint Editor.
+Select |image8| **Blueprints** from the sidebar and click your **MongoDB<INITIALS>** Blueprint to open the Blueprint Editor.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image15.png
 
@@ -92,7 +92,7 @@ Repeat these steps for the **Mongo_Router** and **Mongo_ReplicaSet** Services.
 
 Click **Save**.
 
-Click **Launch**. Specify a unique **Application Name** (e.g. MongoDB-*<INITIALS>*-1) and click **Create**.
+Click **Launch**. Specify a unique **Application Name** (e.g. MongoDB*<INITIALS>*-1) and click **Create**.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image17.png
 
