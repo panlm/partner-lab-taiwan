@@ -46,7 +46,7 @@ Fill out the following fields and click **Save**:
   - **IP Address** - *10.21.XX.43*
   - Select **Add**
 
-Select the **Xtract-VM** VM and click **Actions > Power on**.
+Select the **Xtract-DB** VM and click **Actions > Power on**.
 
 Open \https://<*XTRACT-DB-VM-IP*>/ in a browser to access **Xtract for DBs**.
 
