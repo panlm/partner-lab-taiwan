@@ -48,6 +48,10 @@ Fill out the following fields and click **Next**:
 
 Select the **Primary - Managed** VLAN for the Client Network. Ensure the **DNS Resolver IP** is configured as the IP of your **DC** VM and **NOT** the cluster Name Server IP. Click **Next**.
 
+.. note::
+
+  Ensure you are using the DNS IP **FOR YOUR CLUSTER** and not the IP of the shared cluster's DC VM.
+
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/afs/9c.png
 
 Select the **Secondary - Managed** VLAN for the Storage Network. Click **Next**.
