@@ -63,6 +63,12 @@ Note the additional buttons below as they can be helpful when actively editing a
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab1/image5.png
 
+In general, the Blueprint creation workflow is as follows:
+
+- Create Object in Application Overview or select existing Object from the Workspace or Application Overview panel.
+- Configure the Object in the Configuration Pane.
+- Repeat for each Object.
+- Connect dependencies between Objects in the Workspace.
 
 Building the Blueprint
 **********************
@@ -74,16 +80,7 @@ From **Prism Central > Apps**, select **Blueprints** from the sidebar and click 
 
 Select **Calm** from the **Project** drop down menu and click **Proceed**.
 
-.. note::
-
-  In general, the Blueprint creation workflow is as follows:
-
-  - Create Object in Application Overview or select existing Object from the Workspace or Application Overview panel.
-  - Configure the Object in the Configuration Pane.
-  - Repeat for each Object.
-  - Connect dependencies between Objects in the Workspace.
-
-Specify **Calm-Intro-<INITIALS>** in the **Name this Blueprint** field.
+Specify **CalmIntro<INITIALS>** in the **Name this Blueprint** field.
 
 Click **Credentials >** :fa:`plus-circle` and fill out the following fields:
 
@@ -231,7 +228,7 @@ Launching the Blueprint
 
 From the toolbar at the top of the Blueprint Editor, click **Launch**.
 
-In the **Name of the Application** field, specify a unique name (e.g. Calm-Intro-*<INITIALS>*-1).
+In the **Name of the Application** field, specify a unique name (e.g. CalmIntro*<INITIALS>*-1).
 
 .. note::
 

@@ -39,7 +39,7 @@ Select the downloaded MSSQL Blueprint (e.g. **windowsMSSQL2014.json**) and click
 
 Fill out the following fields and click **Upload**:
 
-- **Blueprint Name** - mssql2014-*<INITIALS>*
+- **Blueprint Name** - mssql2014*<INITIALS>*
 - **Project** - Calm
 
 Updating the Credential
@@ -217,7 +217,7 @@ Launching the Blueprint
 
 From the toolbar at the top of the Blueprint Editor, click **Launch**.
 
-In the **Name of the Application** field, specify a unique name including your initials (e.g. Calm-MSSQL-*<INITIALS>*-1).
+In the **Name of the Application** field, specify a unique name including your initials (e.g. CalmMSSQL*<INITIALS>*-1).
 
 Click **Create**.
 
