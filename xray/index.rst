@@ -7,7 +7,7 @@ Overview
 
 .. note::
 
-  **This lab should be completed at the end of the day on Tuesday as the Extended Node Failure test will run for several hours.**
+  **This lab should be completed at the end of the day on Tuesday as the Extended Node Failure test will run for several hours. If using a cluster with 128GB RAM nodes, shut down VMs provisioned via Calm Blueprints prior to running the Extended Node Failure Test.**
 
   Estimated time to complete: **1 HOUR**
 
