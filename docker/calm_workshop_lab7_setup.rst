@@ -31,6 +31,7 @@ Install the latest version of Docker CE, or go to the next step to install a spe
 
 .. code-block:: bash 
 
+  $ yum update xfsprogs
   $ sudo yum install docker-ce
 
 **Warning:** If you have multiple Docker repositories enabled, installing or updating without specifying a version in the yum install or yum update command will always install the highest possible version, which may not be appropriate for your stability needs.
