@@ -340,7 +340,7 @@ If successfull, your browser should connect to the new webserver and display the
    List of Databases:
    information_schema foodb mysql performance_schema test
 
-Click on the hyperlink Homepage_ displayed in the browser. The browser should display the following message:
+Click on the hyperlink **Homepage** displayed in the browser. The browser should display the following message:
 
 .. code-block:: bash
 
@@ -352,7 +352,6 @@ Takeaways
 - Successfully deployed Ansible playbooks to configure and provision infrastructure.
 - Successfully automated change management to configure a 3-tier web application.
 
-.. _Homepage:
 .. _configure-centos-server-v7: ./calm_workshop_lab6_config_centos.html
 .. _password-less: ./calm_workshop_lab6_nopass.html
 .. _Building-DockerImages-Automatically-With-Jenkins-Pipeline: https://blog.nimbleci.com/2016/08/31/how-to-build-docker-images-automatically-with-jenkins-pipeline/
