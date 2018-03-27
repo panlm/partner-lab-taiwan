@@ -120,7 +120,7 @@ Select the **Calm** Project and click **Launch**.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab8/image29.png
 
-Specify a unique **Application Name** (e.g. Marketplace-*<INITIALS>*-1) and click **Create**.
+Specify a unique **Application Name** (e.g. Marketplace*<INITIALS>*) and click **Create**.
 
 .. note::
 
