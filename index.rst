@@ -116,4 +116,6 @@ Each cluster has been pre-staged with the following:
 - **Secondary** Network - 10.21.XX.129/25 - IPAM DHCP Pool 10.21.XX.132-10.21.XX.253
 - **Link-Local** Network - **DO NOT ENABLE IPAM**
 
-`Click here to view details of your team cluster assignment. <https://docs.google.com/spreadsheets/d/16enUOq3RAOvEz3RmL1zywxDvvIjAlvkqa3StauCeCEk/edit#gid=1728853368>`_
+`Click here to view details of your team cluster assignment. <https://docs.google.com/spreadsheets/d/16enUOq3RAOvEz3RmL1zywxDvvIjAlvkqa3StauCeCEk>`_
+
+`Click here to view the Team Leader Playbook. <https://drive.google.com/open?id=1oYaZgawgZP-pjZl8Jj_Po1byAitVnRzv>`_
