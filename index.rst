@@ -119,3 +119,5 @@ Each cluster has been pre-staged with the following:
 `Click here to view details of your team cluster assignment. <https://docs.google.com/spreadsheets/d/16enUOq3RAOvEz3RmL1zywxDvvIjAlvkqa3StauCeCEk>`_
 
 `Click here to view the Team Leader Playbook. <https://drive.google.com/open?id=1oYaZgawgZP-pjZl8Jj_Po1byAitVnRzv>`_
+
+`Click here to view the Tech Summit EMEA Challenge. <https://drive.google.com/open?id=1BXlnPI9Uvx-JuzNNskOq4VtDplSR3reL>`_
