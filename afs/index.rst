@@ -52,7 +52,7 @@ Select the **Primary - Managed** VLAN for the Client Network. Ensure the **DNS R
 
   Ensure you are using the DNS IP **FOR YOUR CLUSTER** and not the IP of the shared cluster's DC VM.
 
-  .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/afs/9c.png
+.. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/afs/9c.png
 
 Select the **Secondary - Managed** VLAN for the Storage Network. Click **Next**.
 
@@ -110,6 +110,10 @@ Select **Enable Access Based Enumeration** and **Self Service Restore** and clic
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/afs/15.png
 
 In the **XD** VM console, open ``\\TEAM##-AFS.ntnxlab.local`` in **File Explorer**.
+
+  .. note::
+
+  The **XD** VM has already been created on your cluster. Alternatively, you can use any Windows VM joined to the ntnxlab.local domain to complete the following steps.
 
 Right-click **home > Properties**.
 
