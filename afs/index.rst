@@ -86,6 +86,10 @@ Monitor deployment progress in **Prism > Tasks**.
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/vdi_ahv/lab7/13.png
 
+.. note::
+
+  If you receive a warning regarding DNS record validation failure, this can be safely ignored. The shared cluster does not use the same DNS servers as your AFS cluster, and as a result is unable to resolve the DNS entries created when deploying AFS.
+
 Upon completion, select the **AFS** server and click **Protect**.
 
 Observe the default Self Service Restore schedules, this feature controls the snapshot schedule for Windows' Previous Versions functionality. Supporting Previous Versions allows end users to roll back changes to files without engaging storage or backup administrators. Note these local snapshots do not protect the file server cluster from local failures and that replication of the entire file server cluster can be performed to remote Nutanix clusters. Click **Close**.
