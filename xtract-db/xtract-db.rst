@@ -13,6 +13,8 @@ Overview
 
   **Due to limited resources, this lab should be completed as a group.**
 
+  Refer to :ref:`cluster_details` to find the source SQL Server VM assigned to your team.
+
 In this exercise you will deploy Xtract for DBs and migrate a MS SQL 2014 database from ESXi to AHV. Rather than migrating the entire VM, migrating the database instance allows for streamlined automation of Best Practice configuration.
 
 Getting Engaged with the Product Team

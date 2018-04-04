@@ -13,6 +13,8 @@ Overview
 
   **Due to limited resources, this lab should be completed as a group.**
 
+  Refer to :ref:`cluster_details` to find the source VM and vCenter assigned to your team.
+
 In this exercise you will deploy Xtract for VMs and migrate a VM from ESXi to AHV.
 
 Getting Engaged with the Product Team
