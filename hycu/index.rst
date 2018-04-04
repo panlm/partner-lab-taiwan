@@ -1,6 +1,6 @@
------------------------
-Comtrade HYCU
------------------------
+----
+HYCU
+----
 
 Overview
 ++++++++
@@ -11,17 +11,17 @@ Overview
 
   **Due to limited resources, this lab should be completed as a group.**
 
-Comtrade HYCU is the only solution built from the ground up to deliver a full suite of backup capabilities for Nutanix AHV, eliminating a key barrier to entry for AHV prospects. Additionally, as pure software, HYCU can help grow Nutanix deals as additional nodes are positioned to act as a backup target for workloads.
+HYCU is the only solution built from the ground up to deliver a full suite of backup capabilities for Nutanix AHV, eliminating a key barrier to entry for AHV prospects. Additionally, as pure software, HYCU can help grow Nutanix deals as additional nodes are positioned to act as a backup target for workloads.
 
 In this exercise you will configure a HYCU appliance, configure the connection to your Nutanix cluster, configure a Nutanix Volume Group to act as a backup target, and execute backup and restore operations at the VM, file, and application level.
 
 Getting Engaged with the Product Team
 .....................................
 
-- **Slack** - #_comtrade-support-ext
+- **Slack** - #_HYCU-support-ext
 - **Nutanix Product Manager** - Mark Nijmeijer, mark.nijmeijer@nutanix.com
 - **Nutanix Technical Marketing Engineer** - Dwayne Lessner, dwayne@nutanix.com
-- **Comtrade VP Products** - Subbiah Sundaram, subbiah.sundaram@comtrade.com
+- **HYCU VP Products** - Subbiah Sundaram, subbiah.sundaram@hycu.com
 
 Configuring HYCU Appliance
 ++++++++++++++++++++++++++
@@ -54,7 +54,7 @@ Note the default credentials and press **Return**. Close the **HYCU** VM console
 Adding A Nutanix Cluster
 ++++++++++++++++++++++++
 
-Open \http://<*HYCU-VM-IP*>:8443/ in a browser. Log in to the **HYCU Web Interface** using the default credentials.
+Open \https://<*HYCU-VM-IP*>:8443/ in a browser. Log in to the **HYCU Web Interface** using the default credentials.
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/3.png
 
@@ -131,7 +131,7 @@ Fill out the following fields and click **Save**:
 
 .. note::
 
-  By default, Comtrade's recommendation is 1 disk per Volume Group. Customers can utilize > 1 disk per Volume Group today to increase throughput to support a greater number of concurrent backups. Currently, Comtrade Support should be engaged to configure > 1 disk per Volume Group.
+  By default, HYCU's recommendation is 1 disk per Volume Group. Customers can utilize > 1 disk per Volume Group today to increase throughput to support a greater number of concurrent backups. Currently, HYCU Support should be engaged to configure > 1 disk per Volume Group.
 
   CHAP passwords must be between 12 and 16 characters long.
 
@@ -159,7 +159,7 @@ Click **+ New**, fill out the following fields, and click **Save**:
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/17.png
 
-.. note:: Maximum concurrent backups is a factor of how much disk throughput the backup target is capable of providing. Comtrade is currently developing guidance for concurrent backups based on Nutanix hardware configuration.
+.. note:: Maximum concurrent backups is a factor of how much disk throughput the backup target is capable of providing. HYCU is currently developing guidance for concurrent backups based on Nutanix hardware configuration.
 
 Configuring Backup Policies
 +++++++++++++++++++++++++++
@@ -213,8 +213,8 @@ In **Prism > VM > Table**, click **+ Create VM**.
 
 Fill out the following fields and click **Save**:
 
-- **Name** - WS12-BackupTest
-- **Description** - WS12-BackupTest
+- **Name** - WS12-HYCUBackupTest
+- **Description** - WS12-HYCUBackupTest
 - **vCPU(s)** - 2
 - **Number of Cores per vCPU** - 1
 - **Memory** - 4 GiB
@@ -228,7 +228,7 @@ Fill out the following fields and click **Save**:
   - **VLAN Name** - Primary
   - Select **Add**
 
-Select the **WS12-BackupTest** VM and click **Power on**.
+Select the **WS12-HYCUBackupTest** VM and click **Power on**.
 
 Once the VM has started, click **Launch Console**.
 
@@ -242,19 +242,19 @@ From the **HYCU Web Interface**, select **Virtual Machines** from the sidebar.
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/21.png
 
-Select **WS12-BackupTest** and click **Policies**.
+Select **WS12-HYCUBackupTest** and click **Policies**.
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/22.png
 
 .. note::
 
-  HYCU will automatically synchronize at regular intervals. If **WS12-BackupTest** does not appear in the list of available Virtual Machines, click **Synchronize** to pull the updated list from Prism.
+  HYCU will automatically synchronize at regular intervals. If **WS12-HYCUBackupTest** does not appear in the list of available Virtual Machines, click **Synchronize** to pull the updated list from Prism.
 
 Select **Fast** and click **Assign**.
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/23.png
 
-Select **Jobs** from the sidebar and monitor the backup progress for **WS12-BackupTest**.
+Select **Jobs** from the sidebar and monitor the backup progress for **WS12-HYCUBackupTest**.
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/24.png
 
@@ -262,14 +262,14 @@ Upon completion of the first full backup, select **Dashboard** from the sidebar 
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/25.png
 
-Select **Virtual Machines** from the sidebar and select **WS12-BackupTest**. Click **Backup** to manually trigger an incremental backup.
+Select **Virtual Machines** from the sidebar and select **WS12-HYCUBackupTest**. Click **Backup** to manually trigger an incremental backup.
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/26.png
 
 Restoring A VM
 ++++++++++++++
 
-Select **Virtual Machines** from the sidebar and select **WS12-BackupTest**.
+Select **Virtual Machines** from the sidebar and select **WS12-HYCUBackupTest**.
 
 In the **Details** table below, mouse over the **Compliancy** and **Backup Status** icons for additional information about each Restore Point.
 
@@ -301,7 +301,7 @@ From **HYCU > Virtual Machines**, click **Synchronize**.
 
 .. note:: The cloned VM inherits the default HYCU Policy, and not the Policy assigned to the original VM.
 
-Select **WS12-BackupTest**. Select the most recent Restore Point and click **Restore VM**. Select **Restore VM** and click **Next**.
+Select **WS12-HYCUBackupTest**. Select the most recent Restore Point and click **Restore VM**. Select **Restore VM** and click **Next**.
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/33.png
 
@@ -318,17 +318,17 @@ In **Prism > Tasks**, validate that the original VM was deleted, restored, and p
 Restoring Files
 +++++++++++++++
 
-In **Prism > VM > Table**, select the **WS12-BackupTest** VM and click **Launch Console**.
+In **Prism > VM > Table**, select the **WS12-HYCUBackupTest** VM and click **Launch Console**.
 
 Log in to the VM as **Administrator** and permanently delete the files previously created on the desktop. Close the console.
 
-From **HYCU > Virtual Machines**, select **WS12-BackupTest**. Select **Credentials > + New**.
+From **HYCU > Virtual Machines**, select **WS12-HYCUBackupTest**. Select **Credentials > + New**.
 
 Fill out the following fields and click **Save**:
 
-  - **Name** - WS12-BackupTest Credentials
+  - **Name** - WS12-HYCUBackupTest Credentials
   - **Username** - Administrator
-  - **Password** - *<WS12-BackupTest Password>*
+  - **Password** - *<WS12-HYCUBackupTest Password>*
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/36.png
 
@@ -338,7 +338,7 @@ Click **Assign**.
 
 .. note::
 
-  Credentials are only required to restore files directly to the VM. Note the **Discovery** icon is now green for **WS12-BackupTest** after valid credentials are applied.
+  Credentials are only required to restore files directly to the VM. Note the **Discovery** icon is now green for **WS12-HYCUBackupTest** after valid credentials are applied.
 
 Select the original Full backup Restore Point (prior to deleting the files) and click **Restore Files**.
 
@@ -362,7 +362,7 @@ Fill out and the fields and click **Restore**:
 
   .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/hycu/41.png
 
-In **Prism > VM > Table**, select the **WS12-BackupTest** VM and click **Launch Console**.
+In **Prism > VM > Table**, select the **WS12-HYCUBackupTest** VM and click **Launch Console**.
 
 Log in to the VM as **Administrator** and validate the files have been restored with ``.hycu.restored`` file extensions. Remove the extention and open your previously deleted file.
 
