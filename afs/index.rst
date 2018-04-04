@@ -11,6 +11,8 @@ Overview
 
   **Due to limited resources, this lab should be completed as a group.**
 
+  AFS 3.0 requires AOS 5.6 or later and cannot be deployed on the AOS 5.5.0.6 cluster used for the remainder of Tech Summit labs. Refer to :ref:`cluster_details` to find the Cluster Virtual IP of the shared AOS 5.6 cluster assigned to your team. Do **NOT** deploy any additional VMs on the shared AOS 5.6 clusters.
+
 In this exercise you will use Prism to deploy Acropolis File Services (AFS), a native, distributed file server solution for Nutanix clusters. You will configure both SMB and NFS shares, and familiarize yourself with new features of the AFS offering.
 
 Getting Engaged with the Product Team
@@ -23,10 +25,6 @@ Getting Engaged with the Product Team
 
 Deploy Acropolis File Services
 ++++++++++++++++++++++++++++++
-
-.. note::
-
-  AFS 3.0 requires AOS 5.5.1 or later. Your team coach will provide you with details for a shared cluster used for AFS deployments. **Do NOT deploy any additional VMs on this cluster other than your AFS VMs.**
 
 In **Prism > File Server**, click **+ File Server**.
 
@@ -46,11 +44,11 @@ Fill out the following fields and click **Next**:
 
 .. note:: Clicking **Custom Configuration** will allow you to alter the scale up and scale out sizing of the AFS VMs based on User and Throughput targets.
 
-Select the **Primary - Managed** VLAN for the Client Network. Ensure the **DNS Resolver IP** is configured as the IP of your **DC** VM and **NOT** the cluster Name Server IP. Click **Next**.
+Select the **Primary - Managed** VLAN for the Client Network. Specify your cluster's **DC** VM IP as the **DNS Resolver IP**. Click **Next**.
 
 .. note::
 
-  Ensure you are using the DNS IP **FOR YOUR CLUSTER** and not the IP of the shared cluster's DC VM.
+  In order for the AFS cluster to successfully find and join the **NTNXLAB.local** domain it is critical that the **DNS Resolver IP** is set to the **DC** VM IP **FOR YOUR CLUSTER**. By default, this field is set to the primary **Name Server** IP configured for the Nutanix cluster, **this value is incorrect and will not work.**
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/ts18/afs/9c.png
 

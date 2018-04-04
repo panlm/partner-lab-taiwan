@@ -1,7 +1,5 @@
 .. title:: Tech Summit 2018
 
-.. _intro-docs:
-
 .. toctree::
   :maxdepth: 2
   :caption:     Required Labs
@@ -14,8 +12,9 @@
   calm_lamp/calm_lamp
   calm_mrkt_p1/calm_marketplace_p1
   calm_mrkt_p2/calm_marketplace_p2
+  karan/karan_sa_setup
+  calm_mssql/calm_mssql
   github/github
-  afs/index
   xtract-vm/xtract-vm
   xtract-db/xtract-db
   xray/index
@@ -26,26 +25,14 @@
   :name: _opt-labs
   :hidden:
 
-  karan/karan_sa_setup
-  calm_mssql/calm_mssql
   citrix/index
+  afs/index
   git/gitlab
   hycu/index
+  veeam/index
   docker/calm_workshop_lab7_docker
-  .. k8s/index
   ansible/calm_workshop_lab6
   rest/calm/calm_workshop_lab5_api
-  .. terraform/index
-
-.. toctree::
-  :maxdepth: 2
-  :caption:     Other Resources
-  :name: _resources
-  :hidden:
-
-  .. jenkins/index
-  .. chef/index
-  .. puppet/index
 
 .. raw:: html
 
@@ -62,45 +49,70 @@
     </div>
     <hr>
 
+.. _getting_started:
+
 Getting Started
 ===============
 
-.. note::
+.. raw:: html
 
-  Due to resource limitations, many labs are designed to be completed as a group. The Overview section of each lab will indicate whether the lab should be completed once per group/cluster or if it can be performed individually. **Do Not Start Labs Before Electing a Team Lead and Consulting Your Team Coach**.
+  <strong><font color="red">Do not start any labs before being told to do so by your Team Coach.</font></strong>
 
-Following presentations on Tuesday, you will have approximately 4 hours to complete the **Required Labs**.
+Following presentations on Tuesday, you will have the remainder of the day to complete the **Required Labs** and begin **Optional Labs**.
 
 Beginning on Wednesday you will be provided with a customer challenge. Your goal is to build and propose a solution using Nutanix and optional 3rd party technologies. The **Optional Labs** provide step by step guides for additional technologies you may find useful for your proposed solution. Bonus points can be earned by incorporating additional technologies (Chef, Puppet, Jenkins, Nagios, etc.) not covered in **Optional Labs**.
 
-Each team has been provided a four node cluster running AHV and AOS 5.5.1. It is **HIGHLY RECOMMENDED** that you access the environment via a `Citrix XenDesktop <https://citrixready.nutanix.com>`_ session.
+Due to resource limitations, many labs are designed to be completed as a group. The Overview section of each lab will indicate whether the lab should be completed once per group/cluster or if it can be performed individually. Teams should **NOT** simply divide and conquer to get through the lab exercises as fast as possible. The challenge exercise will give you ample opportunity to showcase your skillset, but approach the labs as an opportunity to expose yourselves to new tools and features that you may not have had an opportunity to play with yet.
 
-**Do Not Start Labs Before Electing a Team Lead and Consulting Your Team Coach**
+To complete both the labs and the challenge, each team has been provided a four node cluster running AHV and AOS 5.5.0.6 running in the Hosted POC environment.
+
+Team Assignments
+++++++++++++++++
+
+Using the spreadsheet below, locate your team assignment and note your **Team Number**.
+
+.. raw:: html
+
+  <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSf9BaV63Un42od-9BiC62QcYCKLSJmz7L0Vsfnwz7Zx1nu_oQiVGiZ7IC_AcT8dXWB_qzksn9c6Dpj/pubhtml?gid=1097423445&amp;single=false&amp;widget=false&amp;chrome=false&amp;headers=false&amp;range=a1:l51" style="position: relative; height: 600px; width: 98%; border: none"></iframe>
+
+.. _cluster_details:
+
+Cluster Details
++++++++++++++++
+
+Using the spreadsheet below, locate your **Team Number** and corresponding details for your assigned cluster.
+
+.. raw:: html
+
+  <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSf9BaV63Un42od-9BiC62QcYCKLSJmz7L0Vsfnwz7Zx1nu_oQiVGiZ7IC_AcT8dXWB_qzksn9c6Dpj/pubhtml?gid=427935111&amp;single=false&amp;widget=false&amp;chrome=false&amp;headers=false&amp;range=a1:g51" style="position: relative; height: 600px; width: 98%; border: none"></iframe>
 
 Each cluster has been pre-staged with the following:
 
-.. **Challenge**
+**Pre-staged Images**
 
+- **Windows2012** - Windows Server 2012 R2 Standard Disk Image
+- **Windows10** - Windows 10 Disk Image
+- **CentOS** - CentOS 7 Disk Image
+- **Xtract-VM** - Nutanix Xtract for VMs 1.1.3 Disk Image
+- **Xtract-DB** - Nutanix Xtract for DBs 1.5.0 Disk Image
+- **VeeamBackupProxy** - Veeam Backup Proxy for AHV BETA Disk Image
+- **XenDesktop-7.15-ISO** - Citrix XenDesktop 7.15 ISO Image
+- **VeeamBR-9.5U3-ISO** - Veeam Backup & Replication 9.5 Update 3 ISO Image
+- **MSSQL-2016SP1-ISO** - Microsoft SQL Server 2016 SP1 ISO Image
 
-.. `Uptick Capital English <https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/challenge/challenge-uptick-capital-english.pdf>`_
-
-.. `Uptick Capital Chinese <https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/challenge/challenge-uptick-capital-chinese.pdf>`_
-
-.. `Uptick Capital Korean <https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/challenge/challenge-uptick-capital-korean.pdf>`_
-
-.. `Uptick Capital Japanese <https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/challenge/challenge-uptick-capital-japanese.pdf>`_
-
-**Images**
-
-- All required images have been pre-staged in your cluster's AHV Image Service
-
-**Virtual Machines**
+**Pre-staged Virtual Machines**
 
 - **PC** VM - 10.21.XX.39 - Nutanix Prism Central 5.5.0.6
 - **DC** VM - 10.21.XX.40 - ntnxlab.local Domain Controller
 - **XD** VM - 10.21.XX.41 - Citrix XenDesktop 7.15 Delivery Controller/StoreFront/License Server
 - **HYCU** VM - 10.21.XX.44 - Comtrade HYCU 2.0.0
 - **X-Ray** VM - 10.21.XX.45 - Nutanix X-Ray 2.3
+
+**Networks**
+
+- **Primary** Network - 10.21.XX.1/25 - IPAM DHCP Pool 10.21.XX.50-10.21.XX.124
+- **Secondary** Network - 10.21.XX.129/25 - IPAM DHCP Pool 10.21.XX.132-10.21.XX.253
+- **Link-Local** Network - **DO NOT ENABLE IPAM**
 
 **Credentials**
 
@@ -110,14 +122,50 @@ Each cluster has been pre-staged with the following:
 - **PC VM Username:** nutanix **Password:** nutanix/4u
 - **Domain Username** NTNXLAB\\Administrator **Password:** nutanix/4u
 
-**Networks**
+Cluster Access Options
+++++++++++++++++++++++
 
-- **Primary** Network - 10.21.XX.1/25 - IPAM DHCP Pool 10.21.XX.50-10.21.XX.124
-- **Secondary** Network - 10.21.XX.129/25 - IPAM DHCP Pool 10.21.XX.132-10.21.XX.253
-- **Link-Local** Network - **DO NOT ENABLE IPAM**
+The Nutanix Hosted POC environment can be accessed a number of different ways:
 
-`Click here to view details of your team cluster assignment. <https://docs.google.com/spreadsheets/d/16enUOq3RAOvEz3RmL1zywxDvvIjAlvkqa3StauCeCEk>`_
+Citrix XenDesktop
+.................
 
-`Click here to view the Team Leader Playbook. <https://drive.google.com/open?id=1oYaZgawgZP-pjZl8Jj_Po1byAitVnRzv>`_
+https://citrixready.nutanix.com - *Accessible via the Citrix Receiver client or HTML5*
 
-.. `Click here to view the Tech Summit EMEA Challenge. <https://drive.google.com/open?id=1BXlnPI9Uvx-JuzNNskOq4VtDplSR3reL>`_
+**Nutanix Employees** - Use your NUTANIXDC credentials
+
+**Partners** - **Username:** POCxxx-User01 (up to POCxxx-User20), **Password:** techX2018!
+
+VMware Horizon View
+...................
+
+https://hostedpoc.nutanix.com - *Accessible via the Horizon View client or HTML5*
+
+**Nutanix Employees** - Use your NUTANIXDC credentials
+
+**Partners** - **Username:** POCxxx-User01 (up to POCxxx-User20), **Password:** techX2018!
+
+Employee Pulse Secure VPN
+..........................
+
+https://sslvpn.nutanix.com - Use your CORP credentials
+
+Partner Pulse Secure VPN
+........................
+
+https://lab-vpn.nutanix.com - **Username:** POCxxx-User01 (up to POCxxx-User20), **Password:** techX2018!
+
+Under **Client Application Sessions**, click **Start** to the right of **Pulse Secure** to download the client.
+
+Install and open **Pulse Secure**.
+
+Add a connection:
+
+- **Type** - Policy Secure (UAC) or Connection Server
+- **Name** - HPOC VPN
+- **Server URL** - lab-vpn.nutanix.com
+
+Tech Summit Challenge
++++++++++++++++++++++
+
+**Watch this space for additional information starting on Wednesday morning!**
