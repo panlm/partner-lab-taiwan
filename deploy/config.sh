@@ -156,7 +156,7 @@ my_log "Importing MSSQL 2016 Installation iso"
 acli image.create MSSQL-2016SP1-ISO container="${MY_IMG_CONTAINER_NAME}" image_type=kIsoImage source_url=http://10.21.64.50/images/SQLServer2016SP1-FullSlipstream-x64-ENU.iso wait=true
 
 my_log "Importing Veeam Installation iso"
-acli image.create VeeamBR-9.5U3-ISO container="${MY_IMG_CONTAINER_NAME}" image_type=kIsoImage source_url=http://10.21.64.50/images/VeeamBackup&Replication_9.5.0.1536.Update3.iso wait=true
+acli image.create VeeamBR-9.5U3-ISO container="${MY_IMG_CONTAINER_NAME}" image_type=kIsoImage source_url=http://10.21.64.50/images/VeeamBackupReplication_9.5.0.1536.Update3.iso wait=true
 
 my_log "Importing Veeam Backup Proxy image"
 acli image.create VeeamBackupProxy container="${MY_IMG_CONTAINER_NAME}" image_type=kDiskImage source_url=http://10.21.64.50/images/veeam-backup-agent-vm_1780_80_331_2-1.vmdk wait=true
