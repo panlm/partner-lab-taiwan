@@ -1,10 +1,6 @@
 #!/bin/bash
-#
-# Please configure according to your needs
-#
 
 MY_PC_UPGRADE_URL='http://10.21.64.50/images/nutanix_installer_package_pc-release-euphrates-5.5.0.6-stable-14bd63735db09b1c9babdaaf48d062723137fc46.tar.gz'
-MY_PC_UPGRADE_META_URL='http://10.21.64.50/images/nutanix_installer_package_pc-release-euphrates-5.5.0.6-metadata.json'
 
 # Script file name
 MY_SCRIPT_NAME=`basename "$0"`
@@ -57,14 +53,6 @@ curl -u admin:${MY_PE_PASSWORD} -k -H 'Content-Type: application/json' -X PUT \
     "remindLater":null
 }'
 
-#my_log "Patching Calm binaries"
-#remote_exec mv /usr/local/nutanix/epsilon/epsilon.tar /usr/local/nutanix/epsilon/epsilon.old
-#remote_exec mv /usr/local/nutanix/epsilon/nucalm.tar /usr/local/nutanix/epsilon/nucalm.old
-#remote_exec wget -nv http://10.21.64.50/images/epsilon.tar
-#remote_exec wget -nv http://10.21.64.50/images/nucalm.tar
-#remote_exec mv -v /home/nutanix/epsilon.tar /usr/local/nutanix/epsilon/
-#remote_exec mv -v /home/nutanix/nucalm.tar /usr/local/nutanix/epsilon/
-
 # Prism Central upgrade
 my_log "Download PC upgrade image: ${MY_PC_UPGRADE_URL##*/}"
 wget -nv ${MY_PC_UPGRADE_URL}
@@ -75,6 +63,3 @@ rm ${MY_PC_UPGRADE_URL##*/}
 
 my_log "Upgrade PC"
 cd /home/nutanix/install ; ./bin/cluster -i . -p upgrade
-
-#my_log "Opening TCP port 8090 on PC for Karan"
-#remote_exec /usr/local/nutanix/cluster/bin/modify_firewall -o open -i eth0 -p 8090 -a -f
