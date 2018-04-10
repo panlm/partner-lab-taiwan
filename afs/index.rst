@@ -19,7 +19,7 @@ Getting Engaged with the Product Team
 .....................................
 
 - **Slack** - #afs
-- **Product Manager** - Shubhankar Chatterjee, shubhan.chatter@nutanix.com
+- **Product Manager** - Raymon Epping, raymon.epping@nutanix.com
 - **Product Marketing Manager** - Shubhika Taneja, shubhika.taneja@nutanix.com
 - **Technical Marketing Engineer** - Dwayne Lessner, dwayne@nutanix.com
 

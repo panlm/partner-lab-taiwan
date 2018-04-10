@@ -73,7 +73,7 @@ Using the spreadsheet below, locate your team assignment and note your **Team Nu
 
 .. raw:: html
 
-  <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSf9BaV63Un42od-9BiC62QcYCKLSJmz7L0Vsfnwz7Zx1nu_oQiVGiZ7IC_AcT8dXWB_qzksn9c6Dpj/pubhtml?gid=1097423445&amp;single=false&amp;widget=false&amp;chrome=false&amp;headers=false&amp;range=a1:l51" style="position: relative; height: 600px; width: 98%; border: none"></iframe>
+  <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSf9BaV63Un42od-9BiC62QcYCKLSJmz7L0Vsfnwz7Zx1nu_oQiVGiZ7IC_AcT8dXWB_qzksn9c6Dpj/pubhtml?gid=1097423445&amp;single=false&amp;widget=false&amp;chrome=false&amp;headers=false&amp;range=a1:k50" style="position: relative; height: 600px; width: 98%; border: none"></iframe>
 
 .. _cluster_details:
 
@@ -84,7 +84,7 @@ Using the spreadsheet below, locate your **Team Number** and corresponding detai
 
 .. raw:: html
 
-  <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSf9BaV63Un42od-9BiC62QcYCKLSJmz7L0Vsfnwz7Zx1nu_oQiVGiZ7IC_AcT8dXWB_qzksn9c6Dpj/pubhtml?gid=427935111&amp;single=false&amp;widget=false&amp;chrome=false&amp;headers=false&amp;range=a1:g51" style="position: relative; height: 600px; width: 98%; border: none"></iframe>
+  <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSf9BaV63Un42od-9BiC62QcYCKLSJmz7L0Vsfnwz7Zx1nu_oQiVGiZ7IC_AcT8dXWB_qzksn9c6Dpj/pubhtml?gid=427935111&amp;single=false&amp;widget=false&amp;chrome=false&amp;headers=false&amp;range=a1:g50" style="position: relative; height: 600px; width: 98%; border: none"></iframe>
 
 Each cluster has been pre-staged with the following:
 
