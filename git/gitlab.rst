@@ -227,7 +227,7 @@ Create the users for each Guest VM:
 .. code-block:: bash
 
   [root@CentOS ~]# groupadd dev
-  [root@CentOS ~]# useradd -G devs -d /home/gituser -m -s /bin/bash gituser
+  [root@CentOS ~]# useradd -G dev -d /home/gituser -m -s /bin/bash gituser
   [root@CentOS ~]# passwd gituser
    Changing password for user gituser.
    New password:        <--------------------------------- set to nutanix/4u
