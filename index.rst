@@ -12,8 +12,8 @@
   calm_lamp/calm_lamp
   calm_mrkt_p1/calm_marketplace_p1
   calm_mrkt_p2/calm_marketplace_p2
-  karan/karan_sa_setup
-  calm_mssql/calm_mssql
+  .. karan/karan_sa_setup
+  .. calm_mssql/calm_mssql
   github/github
   xtract-vm/xtract-vm
   xtract-db/xtract-db
@@ -168,4 +168,4 @@ Add a connection:
 Tech Summit Challenge
 +++++++++++++++++++++
 
-**Watch this space for additional information starting on Wednesday morning!**
+`Click here to view the Tech Summit AMER Challenge. <https://nutanixinc.sharepoint.com/:b:/s/Sales-Enablement/Technical-Enablement/Ed1qBZbxaJRMt7t9dfPnhecBQwNsPp3O8qUbrNHNnBm9og?e=mfSdvV>`_
