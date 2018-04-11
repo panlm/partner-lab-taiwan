@@ -22,6 +22,8 @@ Getting Engaged with the Product Team
 - **Nutanix Product Manager** - Mark Nijmeijer, mark.nijmeijer@nutanix.com
 - **Nutanix Technical Marketing Engineer** - Dwayne Lessner, dwayne@nutanix.com
 - **HYCU VP Products** - Subbiah Sundaram, subbiah.sundaram@hycu.com
+- **HYCU Sales Engineer (East Coast)** - Jason D'Alessio, jason.dalessio@hycusoftware.com, 813.484.5651
+- **HYCU Sales Engineer (West Coast)** - Adam Clark, adam.clark@comtradesoftware.com, 512.423.6335
 
 Configuring HYCU Appliance
 ++++++++++++++++++++++++++
