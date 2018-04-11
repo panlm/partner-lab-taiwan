@@ -12,7 +12,7 @@
   calm_lamp/calm_lamp
   calm_mrkt_p1/calm_marketplace_p1
   calm_mrkt_p2/calm_marketplace_p2
-  .. karan/karan_sa_setup
+  karan/karan_sa_setup
   .. calm_mssql/calm_mssql
   github/github
   xtract-vm/xtract-vm
