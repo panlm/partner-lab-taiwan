@@ -86,7 +86,7 @@ Open **PowerShell** and execute the following command:
   # Initializes and formats the 250GB disk added to the VeeamServer VM
   Get-Disk | Where partitionstyle -eq 'raw' | Initialize-Disk -PartitionStyle MBR -PassThru | New-Partition -AssignDriveLetter -UseMaximumSize | Format-Volume -FileSystem NTFS -NewFileSystemLabel "Backups" -Confirm:$false
 
-Download the :download:`Veeam NFR license file<./veeam_availability_suite_nfr_6_6.lic>`.
+.. Download the :download:`Veeam NFR license file<./veeam_availability_suite_nfr_6_6.lic>`.
 
 Open the **Veeam Backup and Replication 9.5** Setup from the mounted .iso image. Click **Install**.
 
