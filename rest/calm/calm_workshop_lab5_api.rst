@@ -25,14 +25,6 @@ NTNX REST API Explorer Requests:
 - Role
 - Project
 
-Getting Engaged with the Product Team
-=====================================
-- **Slack** - #calm
-- **Product Manager** - Tarak Parekh, tarak.parekh@nutanix.com
-- **Technical Marketing Engineer** - Chris Brown, christopher.brown@nutanix.com
-- **Field Specialists** - Mark Lavi, mark.lavi@nutanix.com; Andy Schmid, andy.schmid@nutanix.com
-
-
 Requirements:
 *************
 
@@ -125,11 +117,11 @@ Once *pip has been installed and verified, we can now install *requests* as foll
 
 Configure Postman (Optional)
 ****************************
-This lab will use Postman allowing you to preserve the v3 REST API Requests so they can be used later when demonstrating NuCalm REST API's and HOW-TO guidance with a partner or customer.  If you use another REST API tool, feel to use it in place of Postman.
+This lab will use Postman allowing you to preserve the v3 REST API Requests so they can be used later when demonstrating NuCalm REST APIs and HOW-TO guidance with a partner or customer.  If you use another REST API tool, feel to use it in place of Postman.
 
 Lab setup for Postman:  configure-postman_
 
-Accessing the REST API's
+Accessing the REST APIs
 ************************
 A link for launching the REST API Explorer may not be accessible via Prism Central - specifically in the case of AOS v5.5.  The explorer can be launched by explicitly typing the *url* in the address bar of your browser as follows:
 

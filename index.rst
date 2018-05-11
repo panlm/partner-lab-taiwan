@@ -44,7 +44,7 @@ Takeaways from the labs, at a high-level, are as follows:
 
 .. raw:: html
 
-  <strong><font color="red">There are a small number of labs that are not required for this session but that have been left on this site later reference.  Please don't do them, during this session.  :)</font></strong> 
+  <strong><font color="red">There are a small number of labs that are not required for this session but that have been left on this site for later reference.  Please don't do them, during this session.  :)</font></strong> 
 
 .. _cluster_details:
 

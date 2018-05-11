@@ -17,17 +17,17 @@ By default, Calm comes pre-seeded with validated Blueprints for multiple open so
 
 From **Prism Central > Apps**, select |image1| **Marketplace Manager** from the sidebar.
 
-Under **Marketplace Blueprints**, select **XClarity**.
+Under **Marketplace Blueprints**, select **Mongo**.
 
-Note the Blueprint description contains key information including licensing, hardware requirements, OS, supported platforms, and limitations.
-
-Under normal circumstances you can click the **Publish** to start the publication workflow.  Because we are using a single cluster for the Lenovo Tech Summit, this can only be done once and has already been done for you.
-
-The screenshots below shows the "Mongo" project selected, since these guides were originally written for another global Tech Summit event.  However, the workflow for XClarity is identical.
+Note the Blueprint description contains key information including licensing, hardware requirements, OS, supported platforms, and limitations. Click **Publish**.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image5.png
 
-To configure which projects (and, therefore, users) can use the application, the project's name can be selected from the provided dropdown box.
+Wait for the Blueprint **Status** to appear as **Published**.
+
+.. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image9.png
+
+Under **Projects Shared With**, select the **default** Project and click **Apply**.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image8.png
 
@@ -42,7 +42,7 @@ From **Prism Central > Apps**, select |image5| **Marketplace** from the sidebar.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image11.png
 
-Select the **XClarity** marketplace application and click **Clone**.
+Select the **Mongo** Blueprint and click **Clone**.
 
 .. note::
 
@@ -52,13 +52,13 @@ Select the **XClarity** marketplace application and click **Clone**.
 
 Fill out the following fields and click **Clone**:
 
-- **Blueprint Name** - XClarity*<INITIALS>*
+- **Blueprint Name** - MongoDB*<INITIALS>*
 - **Project** - default
 
 Editing Cloned Blueprint
 ************************
 
-Select |image8| **Blueprints** from the sidebar and click your **XClarity<INITIALS>** Blueprint to open the Blueprint Editor.
+Select |image8| **Blueprints** from the sidebar and click your **MongoDB<INITIALS>** Blueprint to open the Blueprint Editor.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image15.png
 
@@ -66,7 +66,7 @@ Click :fa:`exclamation-circle` to review the list of errors that would prevent a
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image16.png
 
-Click **Credentials** and select **admin**.
+Click **Credentials** and select **CENTOS (Default)**.
 
 Fill out the following fields and click **Back**:
 
@@ -74,21 +74,17 @@ Fill out the following fields and click **Back**:
 - **Secret** - Password
 - **Password** - nutanix/4u
 
-Select the **Xclarity** Service and confirm the following settings in the **Configuration Pane**:
+Select the **Mongo_ConfigSet** Service and make the following changes in the **Configuration Pane**:
 
-- **VM Configuration > Image** is set to to **XclarityImage**.  This is a pre-prepared Xclarity image created and published by Lenovo.
-- **Connection > Credential** to **admin**.
-- **NIC** is connected to **VLAN0**
+- Update the **VM Configuration > Image** to **CentOS**.
+- Update the **Network Adapters > NIC** to **Secondary**.
+- Update the **Connection > Credential** to **CENTOS**.
 
-Launching XClarity
-******************
+Repeat these steps for the **Mongo_Router** and **Mongo_ReplicaSet** Services.
 
-- Click **Launch**
-- Specify a unique **Application Name** (e.g. XClarity*<INITIALS>*-1)
-- Confirm all variables are correct e.g. Prism Central IP etc
-- Use a static IP address for **APPLIANCE_IP** as per the provided list
-- Expand the **XCLARITY** VM configuration and confirm NIC is connected to **VLAN0**
-- Click **Create**.
+Click **Save**.
+
+Click **Launch**. Specify a unique **Application Name** (e.g. MongoDB*<INITIALS>*-1) and click **Create**.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image17.png
 

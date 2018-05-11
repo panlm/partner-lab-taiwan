@@ -9,7 +9,7 @@ Overview
 
 .. note::
 
-  This lab is **NOT** required for the Lenovo Tech Summit and is available here for later reference.
+  This lab is **NOT** required for the Taiwan Partner Lab and is available here for later reference.
 
   Estimated time to complete: **30 MINUTES**
 
@@ -34,7 +34,7 @@ Fill out the following fields and click **Save**:
   - Select **Add**
 - Select **Add New NIC**
 
-  - **VLAN Name** - Primary
+  - **VLAN Name** - Select the only network available in the list
   - Select **Add**
 - Select **Custom Script**
 - Select **Type or Paste Script**

@@ -8,13 +8,13 @@ Overview
 ++++++++
 
 .. note::
-  This lab is **NOT** required for the Lenovo Tech Summit.  It has been left in place for later reference, if required.
+  This lab is **NOT** required for the Taiwan Partner Lab.  It has been left in place for later reference, if required.
 
   Estimated time to complete: **45 Minutes**
 
   **This lab can only be completed once per cluster, unless previous changes are undone.**
   
-  **When completing this lab on a cluster after the Lenovo Tech Summit, please ensure you replace the cluster details with your own e.g. usernames, passwords, etc.
+  **When completing this lab on a cluster after today's event, please ensure you replace the cluster details with your own e.g. usernames, passwords, etc.
 
 In this exercise you will enable Self Service Portal (SSP) in Prism Central. SSP provides fast and simple IaaS capabilities for your Nutanix cluster. In addition to enabling SSP, you will configure 3 separate projects mapping to different Active Directory groups and explore roles and permissions available to those groups.
 
@@ -53,7 +53,7 @@ Fill out the following fields and click **Save**:
 
 Click **Close > Close**.
 
-The **DC** VM is pre-populated with the following groups and user accounts:
+The **DC** VM, in some lab environments, is pre-populated with the following groups and user accounts:
 
 +-----------------+-----------------------+--------------------------------+
 | **Group**       | **Usernames**         | **Password**                   |
@@ -121,7 +121,7 @@ Fill out the following fields and click **Save**:
 
   .. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/ssp/ssp08.png
 
-Under **Network**, select the **Primary** and **Secondary** networks. Select :fa:`star` for the **Primary** network to make it the default virtual network for VMs in the Developer project.
+Under **Network**, select the only network available in the list (note that the network names may vary between labs).
 
   .. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/ssp/ssp09b.png
 
@@ -153,7 +153,7 @@ Fill out the following fields and click **Save**:
 - **Name** - SSP Power Users
 - **Role** - Developer
 
-Under **Network**, select the **Primary** and **Secondary** networks. Select :fa:`star` for the **Primary** network to make it the default virtual network for VMs in the Developer project.
+Under **Network**, select the only network available in the list (note that the network names may vary between labs).
 
 Select **Quotas** and fill out the following fields:
 
@@ -198,7 +198,7 @@ Click **+ User**, fill out the following fields and click **Save**:
 - **Name** - SSP Basic Users
 - **Role** - Operator
 
-Under **Network**, select the **Primary** and **Secondary** networks. Select :fa:`star` for the **Primary** network to make it the default virtual network for VMs in the Developer project.
+Under **Network**, select the only network available in the list (note that the network names may vary between labs).
 
 Click **Save**.
 
@@ -281,7 +281,7 @@ Fill out the following fields and click **Save**:
 - **Name** - Developer VM 001
 - **Target Project** - Developers
 - **Disks** - Select **Boot From** scsi.0
-- **Network** - Select **Primary**
+- **Network** - Select the only network available in the list
 - **Advance Settings** - Check **Manually Configure CPU & Memory**
 - **CPU** - 1 VCPU
 - **Memory** - 2 GB
@@ -317,7 +317,7 @@ Fill out the following fields and click **Save**:
 - **Name** - Calm VM 001
 - **Target Project** - Calm
 - **Disks** - Select **Boot From** scsi.0
-- **Network** - Select **Secondary**
+- **Network** - Select the only network available in the list
 - **Advance Settings** - Check **Manually Configure CPU & Memory**
 - **CPU** - 1 VCPU
 - **Memory** - 2 GB
