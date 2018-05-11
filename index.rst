@@ -13,7 +13,15 @@
   calm_mrkt_p1/calm_marketplace_p1
   calm_mrkt_p2/calm_marketplace_p2
   karan/karan_sa_setup
+  
+.. toctree::
+  :maxdepth: 2
+  :caption:     Optional Labs
+  :name: _opt-labs
+  :hidden:
 
+  rest/calm/calm_workshop_lab5_api
+  
 .. _getting_started:
 
 Getting Started
