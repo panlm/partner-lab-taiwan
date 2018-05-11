@@ -8,19 +8,15 @@ Overview
 ++++++++
 
 .. note::
-  This lab should be completed **BEFORE** any additional labs.
+  This lab is **NOT** required for the Lenovo Tech Summit.  It has been left in place for later reference, if required.
 
   Estimated time to complete: **45 Minutes**
 
-  **Due to limited resources, this lab should be completed as a group.**
+  **This lab can only be completed once per cluster, unless previous changes are undone.**
+  
+  **When completing this lab on a cluster after the Lenovo Tech Summit, please ensure you replace the cluster details with your own e.g. usernames, passwords, etc.
 
 In this exercise you will enable Self Service Portal (SSP) in Prism Central. SSP provides fast and simple IaaS capabilities for your Nutanix cluster. In addition to enabling SSP, you will configure 3 separate projects mapping to different Active Directory groups and explore roles and permissions available to those groups.
-
-Getting Engaged with the Product Team
-.....................................
-- **Slack** - #ssp
-- **Product Manager** - Constantine Kousoulis, constantine.kousouli@nutanix.com
-- **Product Marketing Manager** - Shubhika Taneja, shubhika.taneja@nutanix.com
 
 Configuring Authentication
 ++++++++++++++++++++++++++

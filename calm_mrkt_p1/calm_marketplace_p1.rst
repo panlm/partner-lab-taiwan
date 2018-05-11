@@ -10,14 +10,6 @@ Overview
 
 In this exercise you will learn how to manage Calm Blueprints within the Nutanix Marketplace. As part of the exercise you will publish a pre-configured Blueprint to the local Marketplace, clone the Blueprint from the Marketplace for editing, and launch the application.
 
-Getting Engaged with the Product Team
-=====================================
-- **Slack** - #calm
-- **Product Manager** - Jasnoor Gill, jasnoor.gill@nutanix.com
-- **Product Marketing Manager** - Chris Brown, christopher.brown@nutanix.com
-- **Technical Marketing Engineer** - Brian Suhr, brian.suhr@nutanix.com
-- **Field Specialists** - Mark Lavi, mark.lavi@nutanix.com; Andy Schmid, andy.schmid@nutanix.com
-
 Publishing Blueprints from Marketplace Manager
 **********************************************
 
@@ -25,17 +17,17 @@ By default, Calm comes pre-seeded with validated Blueprints for multiple open so
 
 From **Prism Central > Apps**, select |image1| **Marketplace Manager** from the sidebar.
 
-Under **Marketplace Blueprints**, select **Mongo**.
+Under **Marketplace Blueprints**, select **XClarity**.
 
-Note the Blueprint description contains key information including licensing, hardware requirements, OS, supported platforms, and limitations. Click **Publish**.
+Note the Blueprint description contains key information including licensing, hardware requirements, OS, supported platforms, and limitations.
+
+Under normal circumstances you can click the **Publish** to start the publication workflow.  Because we are using a single cluster for the Lenovo Tech Summit, this can only be done once and has already been done for you.
+
+The screenshots below shows the "Mongo" project selected, since these guides were originally written for another global Tech Summit event.  However, the workflow for XClarity is identical.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image5.png
 
-Wait for the Blueprint **Status** to appear as **Published**.
-
-.. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image9.png
-
-Under **Projects Shared With**, select the **Calm** Project and click **Apply**.
+To configure which projects (and, therefore, users) can use the application, the project's name can be selected from the provided dropdown box.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image8.png
 
@@ -50,7 +42,7 @@ From **Prism Central > Apps**, select |image5| **Marketplace** from the sidebar.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image11.png
 
-Select the **Mongo** Blueprint and click **Clone**.
+Select the **XClarity** marketplace application and click **Clone**.
 
 .. note::
 
@@ -60,13 +52,13 @@ Select the **Mongo** Blueprint and click **Clone**.
 
 Fill out the following fields and click **Clone**:
 
-- **Blueprint Name** - MongoDB*<INITIALS>*
-- **Project** - Calm
+- **Blueprint Name** - XClarity*<INITIALS>*
+- **Project** - default
 
 Editing Cloned Blueprint
 ************************
 
-Select |image8| **Blueprints** from the sidebar and click your **MongoDB<INITIALS>** Blueprint to open the Blueprint Editor.
+Select |image8| **Blueprints** from the sidebar and click your **XClarity<INITIALS>** Blueprint to open the Blueprint Editor.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image15.png
 
@@ -74,7 +66,7 @@ Click :fa:`exclamation-circle` to review the list of errors that would prevent a
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image16.png
 
-Click **Credentials** and select **CENTOS (Default)**.
+Click **Credentials** and select **admin**.
 
 Fill out the following fields and click **Back**:
 
@@ -82,17 +74,21 @@ Fill out the following fields and click **Back**:
 - **Secret** - Password
 - **Password** - nutanix/4u
 
-Select the **Mongo_ConfigSet** Service and make the following changes in the **Configuration Pane**:
+Select the **Xclarity** Service and confirm the following settings in the **Configuration Pane**:
 
-- Update the **VM Configuration > Image** to **CentOS**.
-- Update the **Network Adapters > NIC** to **Secondary**.
-- Update the **Connection > Credential** to **CENTOS**.
+- **VM Configuration > Image** is set to to **XclarityImage**.  This is a pre-prepared Xclarity image created and published by Lenovo.
+- **Connection > Credential** to **admin**.
+- **NIC** is connected to **VLAN0**
 
-Repeat these steps for the **Mongo_Router** and **Mongo_ReplicaSet** Services.
+Launching XClarity
+******************
 
-Click **Save**.
-
-Click **Launch**. Specify a unique **Application Name** (e.g. MongoDB*<INITIALS>*-1) and click **Create**.
+- Click **Launch**
+- Specify a unique **Application Name** (e.g. XClarity*<INITIALS>*-1)
+- Confirm all variables are correct e.g. Prism Central IP etc
+- Use a static IP address for **APPLIANCE_IP** as per the provided list
+- Expand the **XCLARITY** VM configuration and confirm NIC is connected to **VLAN0**
+- Click **Create**.
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab4/image17.png
 

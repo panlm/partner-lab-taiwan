@@ -10,19 +10,11 @@ Overview
 
 .. note::
 
-  This lab should be completed **AFTER** the :ref:`ssp_lab` lab.
+  This lab must be completed after SSP has been configured.  For the Lenovo Tech Summit, this step has already been completed for you.
 
   Estimated time to complete: **40 MINUTES**
 
 In this exercise you will explore the basics of Nutanix Calm by building and deploying a Blueprint that installs and configures a single service, MySQL, on a CentOS image.
-
-Getting Engaged with the Product Team
-=====================================
-- **Slack** - #calm
-- **Product Manager** - Jasnoor Gill, jasnoor.gill@nutanix.com
-- **Product Marketing Manager** - Chris Brown, christopher.brown@nutanix.com
-- **Technical Marketing Engineer** - Brian Suhr, brian.suhr@nutanix.com
-- **Field Specialists** - Mark Lavi, mark.lavi@nutanix.com; Andy Schmid, andy.schmid@nutanix.com
 
 Calm Basics
 ***********
@@ -78,7 +70,7 @@ Creating Blueprint
 
 From **Prism Central > Apps**, select **Blueprints** from the sidebar and click **+ Create Application Blueprint**.
 
-Select **Calm** from the **Project** drop down menu and click **Proceed**.
+If prompted, select **default** from the **Project** drop down menu and click **Proceed**.  If you are not prompted for a project name, continue as normal.  Calm won't prompt for a project if only a single project exists.
 
 Specify **CalmIntro<INITIALS>** in the **Name this Blueprint** field.
 
@@ -141,7 +133,7 @@ Fill out the following fields:
 - **Cloud** - Nutanix
 - **OS** - Linux
 - **VM Name** - MYSQL
-- **Image** - CentOS
+- **Image** - CentOS7-ForCalm
 - **Device Type** - Disk
 - **Device Bus** - SCSI
 - Select **Bootable**
@@ -149,8 +141,8 @@ Fill out the following fields:
 - **Cores per vCPU** - 1
 - **Memory (GiB)** - 4
 - Select :fa:`plus-circle` under **Network Adapters (NICs)**
-- **NIC** - Secondary
-- **Crendential** - CENTOS
+- **NIC** - Select the available network (there should be only one network in the list)
+- **Credential** - CENTOS
 
 .. note::
 

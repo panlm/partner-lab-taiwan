@@ -9,13 +9,11 @@ Overview
 
 .. note::
 
-  This lab should be completed **BEFORE** the :ref:`calm_mssql_lab` lab.
+  This lab is **NOT** required for the Lenovo Tech Summit and is available here for later reference.
 
   Estimated time to complete: **30 MINUTES**
 
-  **This lab should be completed as a group.**
-
-In this exercise you will deploy the Karan Service to a Windows Server 2012 R2 VM. Karan is a scale out service used by Calm to orchestrate Windows VMs. Karan is responsible for proxying remote PowerShell commands from Calm Blueprints to Windows VMs.
+In this exercise you will deploy the Karan Service to a Windows Server VM. Karan is a scale out service used by Calm to orchestrate Windows VMs. Karan is responsible for proxying remote PowerShell commands from Calm Blueprints to Windows VMs.
 
 Deploying Karan VM
 ******************

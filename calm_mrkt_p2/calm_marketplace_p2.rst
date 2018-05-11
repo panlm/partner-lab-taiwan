@@ -14,14 +14,6 @@ Overview
 
 In this exercise you will learn how to manage Calm Blueprints within the Nutanix Marketplace. As part of the exercise you will publish a Blueprint from the Blueprint Editor, use Marketplace Manager to approve, assign roles and projects, and publish to the Marketplace. Finally you will edit a project environment so your Blueprint can be launched directly from the Marketplace.
 
-Getting Engaged with the Product Team
-=====================================
-- **Slack** - #calm
-- **Product Manager** - Jasnoor Gill, jasnoor.gill@nutanix.com
-- **Product Marketing Manager** - Chris Brown, christopher.brown@nutanix.com
-- **Technical Marketing Engineer** - Brian Suhr, brian.suhr@nutanix.com
-- **Field Specialists** - Mark Lavi, mark.lavi@nutanix.com; Andy Schmid, andy.schmid@nutanix.com
-
 Publishing Blueprints
 *********************
 

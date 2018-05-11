@@ -16,14 +16,6 @@ In this exercise you will extend the MySQL Blueprint created previously into a 
 
 .. figure:: https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab2/image1.png
 
-Getting Engaged with the Product Team
-=====================================
-- **Slack** - #calm
-- **Product Manager** - Jasnoor Gill, jasnoor.gill@nutanix.com
-- **Product Marketing Manager** - Chris Brown, christopher.brown@nutanix.com
-- **Technical Marketing Engineer** - Brian Suhr, brian.suhr@nutanix.com
-- **Field Specialists** - Mark Lavi, mark.lavi@nutanix.com; Andy Schmid, andy.schmid@nutanix.com
-
 Creating the Web Server
 ***********************
 
@@ -40,7 +32,7 @@ Fill out the following fields:
 - **Cloud** - Nutanix
 - **OS** - Linux
 - **VM Name** - APACHE_PHP
-- **Image** - CentOS
+- **Image** - CentOS7-For-Calm
 - **Device Type** - Disk
 - **Device Bus** - SCSI
 - Select **Bootable**
@@ -49,7 +41,7 @@ Fill out the following fields:
 - **Memory (GiB)** - 4
 - Select :fa:`plus-circle` under **Network Adapters (NICs)**
 - **NIC** - Secondary
-- **Crendential** - CENTOS
+- **Credential** - CENTOS
 
 Scroll to the top of the **Configuration Panel**, click **Package**.
 
@@ -135,7 +127,7 @@ Select **Service1** and fill out the following fields in the **Configuration Pan
 - **Cloud** - Nutanix
 - **OS** - Linux
 - **VM Name** - HAProxy
-- **Image** - CentOS
+- **Image** - CentOS7-For-Calm
 - **Device Type** - Disk
 - **Device Bus** - SCSI
 - Select **Bootable**
@@ -144,7 +136,7 @@ Select **Service1** and fill out the following fields in the **Configuration Pan
 - **Memory (GiB)** - 4
 - Select :fa:`plus-circle` under **Network Adapters (NICs)**
 - **NIC** - Secondary
-- **Crendential** - CENTOS
+- **Credential** - CENTOS
 
 Scroll to the top of the **Configuration Panel**, click **Package**.
 
