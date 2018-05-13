@@ -1,3 +1,4 @@
+*****************
 Calm - REST APIs
 *****************
 
@@ -194,8 +195,8 @@ All *list* requests require a small payload.  The following is the minimal paylo
         .
         .
 
-      }
-   }
+      }
+   }
 
 
 5. Run and persist in Postman (optional): postman-execution_
@@ -215,7 +216,7 @@ Repeat steps 1-5 above, substituting *app* with *role* and */roles/list*.
 Summary
 ==========
 
-The key takeway of this exercise is that it provides an inventory of elements with a small subset of metadata that can be used to retrieve more comprehensive data using other Nutanix Calm REST API requests...
+The key takeway of this exercise is that it provides an inventory of elements with a small subset of metadata that can be used to retrieve more comprehensive data using other NTNX NuCalm REST API requests...
 
 Issuing GET/UUID Requests
 *************************
@@ -265,7 +266,7 @@ In this section we'll learn how to Navigate the REST API Explorer to read and ga
         .
         .
 
-   }
+   }
 
 
 6. Run and persist in Postman (optional): postman-execution_
@@ -582,7 +583,7 @@ Edit */root/development/automation/solution/config.py* and set the connection va
 
   USER         = "admin"           < edit
   PASSWD       = "nx2Tech476!"     < edit
-  IPADDRESS    = "10.21.81.39"     < edit
+  IPADDRESS    = "10.21.81.39"     < edit
   PORT         = "9440"
 
 Check If the **v2** imports and function calls are commented with *#* in file */root/development/automation/solution/main.py*.  If they aren't, be sure to comment **v2** imports and function calls using *#*, and uncomment **v3** imports by removing *#* as shown:
