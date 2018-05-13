@@ -2,6 +2,14 @@
 
 .. toctree::
   :maxdepth: 2
+  :caption:     Accessing The Labs
+  :name: _lab-access
+  :hidden:
+  
+  access/index
+
+.. toctree::
+  :maxdepth: 2
   :caption:     Required Labs
   :name: _req-labs
   :hidden:
@@ -76,3 +84,8 @@ The lab cluster has been pre-staged with the following:
 - **Prism Central Username:** admin **Password:** nx2Tech576!
 - **CVM Username:** nutanix **Password:** nx2Tech576!
 - **PC VM Username:** root **Password:** nx2Tech576!
+
+Accessing The Labs
+==================
+
+Please see the "Accessing The Labs" section in the left-sidebar.
