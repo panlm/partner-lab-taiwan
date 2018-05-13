@@ -141,7 +141,7 @@ Fill out the following fields:
 - **Cores per vCPU** - 1
 - **Memory (GiB)** - 4
 - Select :fa:`plus-circle` under **Network Adapters (NICs)**
-- **NIC** - Select the available network (there should be only one network in the list)
+- **NIC** - vlan.0
 - **Credential** - CENTOS
 
 .. note::

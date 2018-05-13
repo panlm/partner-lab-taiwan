@@ -17,7 +17,7 @@ By default, Calm comes pre-seeded with validated Blueprints for multiple open so
 
 From **Prism Central > Apps**, select |image1| **Marketplace Manager** from the sidebar.
 
-Under **Marketplace Blueprints**, select **Mongo**.
+Under **Marketplace Blueprints**, select any application with a status of **Accepted**.
 
 Note the Blueprint description contains key information including licensing, hardware requirements, OS, supported platforms, and limitations. Click **Publish**.
 
@@ -77,7 +77,7 @@ Fill out the following fields and click **Back**:
 Select the **Mongo_ConfigSet** Service and make the following changes in the **Configuration Pane**:
 
 - Update the **VM Configuration > Image** to **CentOS**.
-- Update the **Network Adapters > NIC** to **Secondary**.
+- Update the **Network Adapters > NIC** to **vlan.0**.
 - Update the **Connection > Credential** to **CENTOS**.
 
 Repeat these steps for the **Mongo_Router** and **Mongo_ReplicaSet** Services.

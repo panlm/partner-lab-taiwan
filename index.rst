@@ -55,22 +55,24 @@ The lab cluster has been pre-staged with the following:
 
 **Pre-staged Images**
 
-- **Windows2016** - Windows Server 2016 Standard ISO Image
-- **CentOS7-For-Calm** - CentOS 7 Disk Image
-- **NTNXVirtIO** - Nutanix VirtIO, used when creating Windows VMs (not a required part of this lab)
-- **CENTOS-7.4 x2** - Used for other marketplace applications, e.g. LAMP
+- **CentOS7-Base** - CentOS 7 Linux VM base image
+- **CentOS7-ISO** - CentOS 7 ISO installation image
+- **Windows10-Image** - Windows 10 desktop disk image (preinstalled)
+- **Windows10_Ent-ISO** - Windows 10 Enterprise ISO installation image
+- **Windows2016-ISO** - Windows 2016 ISO installation image
+- **Windows2016_Image** - Windows 2016 disk image (preinstalled)
 
 **Pre-staged Virtual Machines**
 
-- **PC** VM - Provided during lab - Nutanix Prism Central 5.6
+- **Prism Central** VM - 10.21.32.45
 
 **Networks**
 
-- **VLAN0** Network (name may be different in the live lab) - 10.134.20.0/24 - IPAM DHCP Pool 10.134.20.55-10.134.20.95
+- **vlan.0** Network - 10.21.32.0/25 - IPAM DHCP Pool 10.21.32.60-10.21.32.125
 
 **Credentials**
 
-- **Prism Username:** Provided during lab **Password:** Provided during lab
-- **Prism Central Username:** Provided during lab **Password:** Provided during lab!
-- **CVM Username:** Provided during lab **Password:** Provided during lab
-- **PC VM Username:** Provided during lab **Password:** Provided during lab
+- **Prism Username:** admin **Password:** nx2Tech576!
+- **Prism Central Username:** admin **Password:** nx2Tech576!
+- **CVM Username:** nutanix **Password:** nx2Tech576!
+- **PC VM Username:** root **Password:** nx2Tech576!

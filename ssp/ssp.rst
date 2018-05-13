@@ -121,7 +121,7 @@ Fill out the following fields and click **Save**:
 
   .. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/ssp/ssp08.png
 
-Under **Network**, select the only network available in the list (note that the network names may vary between labs).
+Under **Network**, select **vlan.0**.
 
   .. figure:: https://s3.us-east-2.amazonaws.com/s3.nutanixtechsummit.com/ssp/ssp09b.png
 
@@ -153,7 +153,7 @@ Fill out the following fields and click **Save**:
 - **Name** - SSP Power Users
 - **Role** - Developer
 
-Under **Network**, select the only network available in the list (note that the network names may vary between labs).
+Under **Network**, select **vlan.0**.
 
 Select **Quotas** and fill out the following fields:
 
@@ -198,7 +198,7 @@ Click **+ User**, fill out the following fields and click **Save**:
 - **Name** - SSP Basic Users
 - **Role** - Operator
 
-Under **Network**, select the only network available in the list (note that the network names may vary between labs).
+Under **Network**, select **vlan.0**.
 
 Click **Save**.
 
@@ -281,7 +281,7 @@ Fill out the following fields and click **Save**:
 - **Name** - Developer VM 001
 - **Target Project** - Developers
 - **Disks** - Select **Boot From** scsi.0
-- **Network** - Select the only network available in the list
+- **Network** - vlan.0
 - **Advance Settings** - Check **Manually Configure CPU & Memory**
 - **CPU** - 1 VCPU
 - **Memory** - 2 GB
@@ -317,7 +317,7 @@ Fill out the following fields and click **Save**:
 - **Name** - Calm VM 001
 - **Target Project** - Calm
 - **Disks** - Select **Boot From** scsi.0
-- **Network** - Select the only network available in the list
+- **Network** - vlan.0
 - **Advance Settings** - Check **Manually Configure CPU & Memory**
 - **CPU** - 1 VCPU
 - **Memory** - 2 GB

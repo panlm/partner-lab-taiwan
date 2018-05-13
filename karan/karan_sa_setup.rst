@@ -34,7 +34,7 @@ Fill out the following fields and click **Save**:
   - Select **Add**
 - Select **Add New NIC**
 
-  - **VLAN Name** - Select the only network available in the list
+  - **VLAN Name** - vlan.0
   - Select **Add**
 - Select **Custom Script**
 - Select **Type or Paste Script**

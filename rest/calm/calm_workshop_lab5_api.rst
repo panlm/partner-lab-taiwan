@@ -1,4 +1,3 @@
-*****************
 Calm - REST APIs
 *****************
 
@@ -50,7 +49,7 @@ Create a CentOS Server v7 VM on the assigned cluster using Prism Central with th
 
 - vCPU: 2x, 1x core/vCPU
 - mem:  4 GiB
-- network: bootcamp
+- network: vlan.0
 - name: calm_lab_dev
 - image: CentOS Server v7  (Disk)
 
@@ -216,7 +215,7 @@ Repeat steps 1-5 above, substituting *app* with *role* and */roles/list*.
 Summary
 ==========
 
-The key takeway of this exercise is that it provides an inventory of elements with a small subset of metadata that can be used to retrieve more comprehensive data using other NTNX NuCalm REST API requests...
+The key takeway of this exercise is that it provides an inventory of elements with a small subset of metadata that can be used to retrieve more comprehensive data using other Nutanix Calm REST API requests...
 
 Issuing GET/UUID Requests
 *************************
